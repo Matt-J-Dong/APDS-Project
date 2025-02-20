@@ -13,5 +13,6 @@ Which posts do we deem the most valuable?
 - Controversial flag?
 - Get awards provided to a post or comment. Let's ignore Low Quality Article.
 - Did Reddit truly remove downvotes?
+- "Free API access rates are as follows: 100 queries per minute per OAuth client id if you are using OAuth authentication 10 queries per minute if you are not using OAuth authentication"
 
 As a side note, I didn't know USERNAME was already a system environment variable! The more you know.
