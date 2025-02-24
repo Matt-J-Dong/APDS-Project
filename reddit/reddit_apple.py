@@ -8,7 +8,7 @@ load_dotenv()
 
 client_id = os.environ.get("CLIENT_ID")
 client_secret = os.environ.get("CLIENT_SECRET")
-username = os.environ.get("REDDIT_USERNAME") #Huh wow
+username = os.environ.get("REDDIT_USERNAME")  # Huh wow
 password = os.environ.get("PASSWORD")
 user_agent = 'Test/0.0.1'
 
@@ -34,26 +34,33 @@ res = requests.get(
 rows = []
 for post in res.json()["data"]["children"]:
     data_post = post["data"]
-    rows.append({
-        "id": data_post["id"],
-        "subreddit": data_post["subreddit"],
-        "title": data_post["title"],
-        "selftext": data_post["selftext"],
-        "upvote_ratio": data_post["upvote_ratio"],
-        "ups": data_post["ups"],
-        "downs": data_post["downs"],
-        "score": data_post["score"],
-        "edited": data_post.get("edited"),                  
-        "all_awardings": data_post.get("all_awardings"),        
-        "controversiality": data_post.get("controversiality"), 
-        "num_comments": data_post.get("num_comments"),         
-        "link_flair_text": data_post.get("link_flair_text"),
-    })
+    rows.append(
+        {
+            "id": data_post["id"],
+            "subreddit": data_post["subreddit"],
+            "title": data_post["title"],
+            "selftext": data_post["selftext"],
+            "upvote_ratio": data_post["upvote_ratio"],
+            "ups": data_post["ups"],
+            "downs": data_post["downs"],
+            "score": data_post["score"],
+            "edited": data_post.get("edited"),
+            "all_awardings": data_post.get("all_awardings"),
+            "controversiality": data_post.get("controversiality"),
+            "num_comments": data_post.get("num_comments"),
+            "link_flair_text": data_post.get("link_flair_text"),
+            "created_utc": data_post.get("created_utc"),  # Epoch seconds
+        }
+    )
 
 df = pd.DataFrame(rows)
+# Convert epoch time to human-readable UTC Zulu time for posts.
+df["created_time"] = pd.to_datetime(df["created_utc"], unit="s", utc=True).dt.strftime(
+    "%Y-%m-%dT%H:%M:%SZ"
+)
 print("Posts DataFrame:")
 print(df)
-#print(tabulate(df, headers='keys', tablefmt='psql')) #This doesn't work well right now because of weird post formatting.
+# print(tabulate(df, headers='keys', tablefmt='psql')) # This doesn't work well right now because of weird post formatting.
 print("\n" + "="*50 + "\n")
 
 def extract_comments(comments_list, post_id, depth=0):
@@ -63,21 +70,23 @@ def extract_comments(comments_list, post_id, depth=0):
         if comment["kind"] != "t1":
             continue
         data = comment["data"]
-        extracted.append({
-            "post_id": post_id,
-            "comment_id": data.get("id"),
-            "parent_id": data.get("parent_id"),
-            "author": data.get("author"),
-            "body": data.get("body"),
-            "ups": data.get("ups"),
-            "downs": data.get("downs"),
-            "score": data.get("score"),
-            "edited": data.get("edited"),                    
-            "all_awardings": data.get("all_awardings"),       
-            "controversiality": data.get("controversiality"),
-            "created_utc": data.get("created_utc"),
-            "depth": depth,
-        })
+        extracted.append(
+            {
+                "post_id": post_id,
+                "comment_id": data.get("id"),
+                "parent_id": data.get("parent_id"),
+                "author": data.get("author"),
+                "body": data.get("body"),
+                "ups": data.get("ups"),
+                "downs": data.get("downs"),
+                "score": data.get("score"),
+                "edited": data.get("edited"),
+                "all_awardings": data.get("all_awardings"),
+                "controversiality": data.get("controversiality"),
+                "created_utc": data.get("created_utc"),
+                "depth": depth,
+            }
+        )
         # Process nested replies if they exist
         if data.get("replies") and isinstance(data["replies"], dict):
             child_comments = extract_comments(
@@ -88,7 +97,7 @@ def extract_comments(comments_list, post_id, depth=0):
 
 all_comments = []
 
-#Only 10 for now to save compute.
+# Only process the first 10 posts to save compute.
 for idx, row in df.head(10).iterrows():
     post_id = row["id"]
     comments_url = f"https://oauth.reddit.com/comments/{post_id}"
@@ -101,11 +110,15 @@ for idx, row in df.head(10).iterrows():
 
 # Create a DataFrame from the extracted comment data
 comments_df = pd.DataFrame(all_comments)
+# Convert epoch time to human-readable UTC Zulu time for comments.
+comments_df["created_time"] = pd.to_datetime(
+    comments_df["created_utc"], unit="s", utc=True
+).dt.strftime("%Y-%m-%dT%H:%M:%SZ")
 print("Combined Comments DataFrame (from first 10 posts):")
 print(comments_df.head())
 print("\n" + "="*50 + "\n")
 
-# Create separate DataFrames for each post
+# Create separate DataFrames for each post (if needed)
 dfs_by_post = {}
 for post_id in comments_df["post_id"].unique():
     dfs_by_post[post_id] = comments_df[comments_df["post_id"] == post_id]
@@ -114,3 +127,43 @@ for post_id, post_comments_df in dfs_by_post.items():
     print(f"Comments for post {post_id}:")
     print(post_comments_df)
     print("\n" + "-"*40 + "\n")
+
+# --------------------------------------------------
+# Save the posts and comments DataFrames to CSV files
+# --------------------------------------------------
+
+# Save posts data to 'reddit_posts.csv'
+df.to_csv("reddit_posts.csv", index=False)
+print("Saved posts to reddit_posts.csv")
+
+# Save comments data to 'reddit_comments.csv'
+comments_df.to_csv("reddit_comments.csv", index=False)
+print("Saved comments to reddit_comments.csv")
+
+# --------------------------------------------------
+# Create a new CSV file with two columns:
+#   - created_time: the UTC Zulu time (YYYY-MM-DDTHH:MM:SSZ)
+#   - text: contains either the post title, post selftext, or comment body.
+# For posts that have both a title and selftext, each becomes a separate row.
+# --------------------------------------------------
+
+text_rows = []
+
+# Process posts: include title and selftext as separate data points.
+for idx, row in df.iterrows():
+    # If title is non-empty, add it.
+    if row["title"] and str(row["title"]).strip():
+        text_rows.append({"created_time": row["created_time"], "text": row["title"]})
+    # If selftext is non-empty, add it.
+    if row["selftext"] and str(row["selftext"]).strip():
+        text_rows.append({"created_time": row["created_time"], "text": row["selftext"]})
+
+# Process comments: use the comment body.
+for idx, row in comments_df.iterrows():
+    if row["body"] and str(row["body"]).strip():
+        text_rows.append({"created_time": row["created_time"], "text": row["body"]})
+
+# Create the new DataFrame and save to CSV.
+text_df = pd.DataFrame(text_rows)
+text_df.to_csv("reddit_texts.csv", index=False)
+print("Saved combined texts to reddit_texts.csv")
