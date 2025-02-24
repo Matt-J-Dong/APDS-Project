@@ -182,14 +182,16 @@ text_rows = []
 # Process posts: include title and selftext as separate data points.
 for idx, row in df.iterrows():
     if row["title"] and str(row["title"]).strip():
-        text_rows.append({"created_time": row["created_time"], "text": row["title"]})
+        text_rows.append({"Time Data": row["created_time"], "Headline": row["title"]})
     if row["selftext"] and str(row["selftext"]).strip():
-        text_rows.append({"created_time": row["created_time"], "text": row["selftext"]})
+        text_rows.append(
+            {"Time Data": row["created_time"], "Headline": row["selftext"]}
+        )
 
 # Process comments: use the comment body.
 for idx, row in comments_df.iterrows():
     if row["body"] and str(row["body"]).strip():
-        text_rows.append({"created_time": row["created_time"], "text": row["body"]})
+        text_rows.append({"Time Data": row["created_time"], "Headline": row["body"]})
 
 # Create the new DataFrame and save to CSV.
 text_df = pd.DataFrame(text_rows)

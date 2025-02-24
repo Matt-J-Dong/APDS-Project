@@ -1,4 +1,4 @@
-created_time,text
+Time Data,Headline
 2025-02-24T11:00:58Z,"Daily Advice Thread - February 24, 2025"
 2025-02-24T11:00:58Z,"Welcome to the Daily Advice Thread for /r/Apple. This thread can be used to ask for technical advice regarding Apple software and hardware, to ask questions regarding the buying or selling of Apple products or to post other short questions.
 
@@ -20,6 +20,7 @@ Note: Comments are sorted by /new for your convenience.
 2025-02-24T20:14:09Z,Apple will spend more than $500 billion in the U.S. over the next four years
 2025-02-24T03:53:49Z,Apple wants the iPhone 17 Pro to replace your camera for video recording
 2025-02-24T13:07:43Z,Happy Birthday Steve Jobs
+2025-02-24T22:13:29Z,MacRumors Turns 25 Years Old
 2025-02-24T10:52:34Z,You can now use AirPods Pro as hearing aids in the UK
 2025-02-24T05:01:05Z,Gurman: Future Apple modems likely to be integrated with main chipset
 2025-02-24T11:07:08Z,Revealed: Entire iPhone 17 Lineup's Various Camera Designs in CAD
@@ -28,6 +29,7 @@ Note: Comments are sorted by /new for your convenience.
 2025-02-23T23:18:39Z,Bring Cover Flow back pls
 2025-02-23T23:18:39Z,If Apple brought Cover Flow back I would be elated. I listen to music every chance I get every day. When switching between landscape apps &amp; music it’s annoying I either have to turn my head or my phone. Landscape lyrics would be greatly appreciated as well. Does anyone know or have a theory why they got rid of Cover Flow ? 
 2025-02-23T08:19:26Z,Apple preparing Google Gemini integration with Apple Intelligence
+2025-02-24T22:24:04Z,Apple's New U.S. Chip Factory to Produce AI Servers With High-End M5 Chips
 2025-02-23T21:25:21Z,US demands EU antitrust chief clarify rules reining in Big Tech
 2025-02-23T11:33:40Z,Was the Apple Rainbow Stage removed from Apple Park?
 2025-02-23T11:33:40Z,"There is a Google Maps image floating around showing the dismantling of the famous Apple Stage: https://maps.app.goo.gl/2cdSCaiLgRjUSZGH8
@@ -129,6 +131,7 @@ App includes some features to help person during this journey here are some feat
 📌Also app predict next urge,craving according to the previous crises/relapses and sending different notifications like ""Be careful theme""
 "
 2025-02-21T18:31:46Z,Apple introduces News+ Food
+2025-02-21T15:07:17Z,Apple pulls data protection tool after UK government security row
 2025-02-23T14:15:53Z,"👋 I Created Petfetti: A Powerful, Easy-to-Use App to Track and Visualize Your Pet’s Health and Care (Limited-Time Offer + 1-week free trial)"
 2025-02-23T14:15:53Z,"Hi everyone! I’m a software developer who has been caring for pets for over 12 years, helping over 30 cats and dogs. While it’s been incredibly rewarding, staying on top of everything—vaccinations, medications, new symptoms, and emerging problems—has always been a challenge. Life gets busy, and things can slip through the cracks, sometimes leading to preventable health issues.
 
@@ -190,7 +193,6 @@ To mark Petfetti’s launch, I’m offering a **limited-time 50% discount**—ge
 And hey, if you feel like sharing your experience, a quick review on the App Store would be amazing—your reviews can go a long way in helping independent developers like me to keep building and shipping useful tools.
 
 Finally, feel free to drop your thoughts in the comments or reach out directly!"
-2025-02-21T15:07:17Z,Apple pulls data protection tool after UK government security row
 2025-02-21T15:15:14Z,"Nobody's rushing to buy the iPhone 16e yet | Now some hours after preorders for the iPhone 16e opened, every configuration remains in stock to deliver on February 28."
 2025-02-22T01:13:44Z,Here's a Look at Apple's Secret Modem Testing Lab Where C1 Was Developed
 2025-02-21T16:58:43Z,iPhone 16e pricing hints at unpopular changes ahead for iPhone 17
@@ -447,9 +449,6 @@ Note: Comments are sorted by /new for your convenience.
 2025-02-14T19:32:11Z,"Netflix says its brief Apple TV app integration was a mistake. The short-lived support for Apple’s watchlist has been rolled back, according to a spokesperson"
 2025-02-14T22:44:45Z,Apple Announces New Downtown Detroit Store is 'Coming Soon'
 2025-02-14T20:02:27Z,iPhone SE 4 might come with a ridiculous amount of base storage
-2025-02-14T22:16:54Z,"Apple’s Long-Promised AI Overhaul for Siri Runs Into Bugs, Possible Delays (Gift Article)"
-2025-02-14T22:51:12Z,Is anyone using Apple Intelligence?
-2025-02-14T22:51:12Z,"Is anyone actually using Apple Intelligence, regularly? What for? What is it you like or dislike about it?"
 2025-02-24T20:53:17Z,"Hi all. I'm on the fence between an iPhone 15 and new 16e (or maybe a used 16, there are lots in my area due to a promo that flooded the market with them). I do basic stuff (music, photos, podcasts, email, text) and have had my 11 since 2020. 
 
 I'm thinking that the biggest consideration for someone like myself is the chip, the 16e has the latest, which seems to me will last longer/give better performance over 4-5yrs. 
@@ -462,6 +461,8 @@ https://preview.redd.it/f5vshakea5le1.jpeg?width=1206&amp;format=pjpg&amp;auto=w
 2025-02-24T21:08:44Z,There’s nothing to it; Core Location will use whatever satellite service is available to it at the moment.
 2025-02-24T21:34:54Z,Nope not true it only uses the L1 and L2 GPS I am in a active war zone. And I need the full functions when we get spoofed or jammed
 2025-02-24T21:45:17Z,"It is true. The other services are not available where you are. All iPhones since the iPhone 8 support Galileo, but there’s no way to pick and choose which service is used."
+2025-02-24T21:50:42Z,They support it but it’s maybe not in use by software?
+2025-02-24T21:49:48Z,Sir I mention that I am in a active war zone. My name has Ukraine in it. So some others country should pop up bright and light hey. 😅
 2025-02-24T19:47:19Z,"I'd be grateful of any help, please. 
 
 My friends daughter passed away and she has her phone and icloud account with all her photos. She has access to the daughters phone and knows the PIN (obviously can't do face ID or biometrics). She would like to keep the icloud access and storage.
@@ -504,15 +505,16 @@ That said, the 15 Pro is no longer on sale, so any you see are either refurbishe
 2025-02-24T18:40:56Z,Waiting for the 2030 iPhone is the best move with the upgraded camera *and* in the new color way you’ll never see through the case!
 2025-02-24T18:46:22Z,"Reminds me of this comic. https://www.reddit.com/r/VR_memes/s/W8roCg7ge9
 If you wait forever, you never get to enjoy now."
+2025-02-24T21:49:53Z,This is really the rule of tech. And it's been that way since OEM PCs have been sold. Just get what you want and can afford now. It's going to be outdated soon enough anyway.
 2025-02-24T17:15:34Z,"Damn! I had no idea that was coming and that Apple thinks we’re gonna love it, definitely buying it on day 1."
 2025-02-24T17:30:17Z,"Ahhh, you should be doing what Tim Apple loves - buy the 2027 \*and then\* buy the 2028"
 2025-02-24T17:14:21Z,The one that hasn’t been announced yet in 2028 will be the iPhone XX. Probably a big change planned! Maybe hold off till then
 2025-02-24T17:21:03Z,I’m holding off till 2038 for the IPhone XXX model. It’s not announced to be the sexiest iPhone yet!
 2025-02-24T18:35:50Z,Either way we think you’re gonna love it.
-2025-02-24T18:28:44Z,Buy iPhone futures
 2025-02-24T18:31:21Z,You keep waiting your current iphone will go for some $1mil auction in 50 years time
 2025-02-24T19:32:22Z,You should just keep waiting for the announced ones for eternity.
 2025-02-24T19:45:01Z,Both please. Tim Cook's shares will vest much more nicely if we all do this for him.
+2025-02-24T18:26:18Z,Never buy a first non announced version of a product. Way for the second non announced version that fixes all the non announced issues.
 2025-02-24T17:25:27Z,If you run the story every year that a new design is coming next year eventually you will be right. Lol
 2025-02-24T17:42:55Z,Except “Siri will be smarter next year”
 2025-02-24T17:52:54Z,"Is that’s what’s happening here?
@@ -546,20 +548,21 @@ Unfolded it will probably be the same size as a current iPhone, so it'd probably
 2025-02-24T18:30:30Z,"We don't know if it's gonna be a Fold type (folds open into an iPad Mini size) or a Flip (the one you mention a normal phone that folds in half).
 
 Companies seem to be doing both, with the Flip style being the most popular (and cheaper) of the two."
-2025-02-24T18:41:52Z,I'm not sure if Apple would bother with a Fold-style phone given how little it seems to care about the iPad Mini
+2025-02-24T19:26:17Z,"Rumours are both. Flip first, followed by fold."
 2025-02-24T19:21:11Z,And twice as thick… just what my pockets need!
 2025-02-24T19:34:13Z,"my dumb and subjective answer is they brought back the ""fun"" of a phone to me, where a neat gimmick made it feel like more of a style choice. But the bendable screen was a nightmare for repairs and Samsungs jacked up system. Honestly being able to get one with AppleCare having my back, I'll prob do it again."
 2025-02-24T18:48:25Z,"The ideal case would be having an iPhone and iPad Mini in one device. 
 
 Apple could do this better than some of the others by leveraging the tablet UI and app library that already exists for the iPad."
+2025-02-24T21:56:36Z,"If you ever had a flip phone in the 90s or 00s, then you can probably see some value in the form factor. Oftentimes the phones also let you do a fair bit without opening them. In the case of a folding iPhone, you could use Siri to dictate messages or other actions without having to open it. (Not too far off from what you can do now with the phone locked)."
 2025-02-24T19:59:46Z,"As someone who has a galaxy fold its actually not dumb.
 
 
 Its very useful especially as a cyclist. I love that the phone is made compact and can go intoy top tube much easier than my S24 ultra. "
 2025-02-24T17:04:12Z,Praying my 13 Pro can make it until then 🙏
 2025-02-24T17:14:30Z,"13 Pro is great, haven’t kept a phone this long since the 6s. I’m thinking I’ll keep using the 13 Pro until it stops getting updates"
-2025-02-24T17:21:26Z,Had the 6s then XS now 13pro. All solid models of iPhone.
 2025-02-24T17:49:15Z,"We’re in the exact same boat, even with both phone and length of time. 13 pro works just like it did on day 1. I see no reason to upgrade yet since the AI features aren’t worthwhile. I may downgrade to anything but the pro version next time around. I don’t feel the cameras and promotion really make the pro model worth it unless you’re a hobbiest photographer."
+2025-02-24T17:21:26Z,Had the 6s then XS now 13pro. All solid models of iPhone.
 2025-02-24T17:30:33Z,Anything from 12 onwards are solid as a rock.
 2025-02-24T19:02:48Z,Still rocking my 12 pro max
 2025-02-24T19:02:25Z,"I've upgraded to a 12 but still use my 7 as a backup phone and shit runs smooth as hell, just poor battery life"
@@ -576,22 +579,20 @@ The same."
 2025-02-24T18:52:18Z,"I'd legitimately buy an iPhone with a bigger and better camera sensor and lens. Like a 1"" or micro 4/3 sensor. 
 
 Yes it would be bulkier, but having something closer in performance to a dedicated camera but with much better HDR capabilities and always synced to my cloud photo library would be great."
+2025-02-24T19:35:27Z,Are folding phones in demand or something?  I don’t think I want my phone to fold.
+2025-02-24T21:48:33Z,"It's not necessarily ideal but I hate how big the phones are, rocking a 13 mini and dreading having to get some monstrosity of a phone.  
+
+So flip would be better suited for me than anything else, unless of course a mini model is coming. (doubtful)"
 2025-02-24T17:28:57Z,I think a flip iPhone would be very popular among young women.
 2025-02-24T18:16:27Z,This is my favorite prediction so far
-2025-02-24T19:35:27Z,Are folding phones in demand or something?  I don’t think I want my phone to fold.
 2025-02-24T17:32:25Z,"I really hope that we get a clamshell foldable and it is a pro iPhone. It’s probably the only type of foldable I would be interested in. The weird aspect ratio tablet foldable just does not intrigue me at all. Even then, I probably wouldn’t buy any type of foldable if I have to sacrifice a lot of power battery life or camera quality."
 2025-02-24T17:52:35Z,"There’s no time in the future I’ll ever look at a folding phone and think “oh boy, I want that”. 
 
 It’s a solution where no problem exists. Not only that, it also adds a ton of its own problems. It’s like evolving backwards."
 2025-02-24T17:16:31Z,I wonder if it’s gonna be popular Samsung doesn’t sell -that- many and I feel it would be kind of annoying having to “open” my phone and be hyper fixated on that center fold..
-2025-02-24T17:35:33Z,"We all know once Apple does something it gains traction and companies imitate it. It has happened with almost everything and will happen with this too. Plug/brick in box, notch, wired earbuds in box, list goes on and on…"
-2025-02-24T17:55:59Z,"What do you mean by companies imitate it in this case?
-
-Apple is like the last to do a screen like this"
 2025-02-24T17:37:07Z,"Give us a smaller phone, another mini please! Think different."
 2025-02-24T18:02:49Z,A mini phone with pro specs updated every 3 years would be good by me
 2025-02-24T18:09:30Z,They tried and it didn’t sell
-2025-02-24T19:08:06Z,Times have changed with the SE removal. There’s a market for smaller but still powerful phones
 2025-02-24T17:06:32Z,Sweet! That will be an easy pass.
 2025-02-24T18:24:26Z,Why does this sub hate foldable phones so much? It’s literally just more screen estate. I’d buy one in a heartbeat.
 2025-02-24T18:29:14Z,"They also hated big phones, and said 3.5 inches was perfect and phablets were a fad... Now they carry 7 inch phones.
@@ -599,7 +600,6 @@ Apple is like the last to do a screen like this"
 Same will happen with foldables."
 2025-02-24T18:50:35Z,I still hate big phones homie. I will use my 12 mini until it dies.
 2025-02-24T20:38:26Z,"I also hate big phones and would prefer foldables that go from standard phone to a smaller phone, not the other way around of big phone unfolding into a tablet."
-2025-02-24T18:51:10Z,It’s almost as if there are different people with different needs here.
 2025-02-24T19:11:39Z,I’ve never understood the fascination with foldable iPhones
 2025-02-24T19:49:11Z,I don’t want a folding phone. They will not last.
 2025-02-24T17:05:46Z,"Please be a flip phone half size foldable, not a giant square."
@@ -622,7 +622,7 @@ I don’t understand why people think the word innovate means “brand new idea 
 2025-02-24T19:04:23Z,Sales increasing every year from what I remember. Not something I’m personally interested in but obviously a growing market with a willingness to pay a premium.
 2025-02-24T17:18:05Z,Could be wrong but I believe they will treat this as a new product category outside of iPhone or iPad branding
 2025-02-24T18:53:35Z,BiPhone or TriPhone if they go with a 3 fold display.
-2025-02-24T17:32:25Z,So glad I got the 16 Pro Max. Now I can wait it out and have my pick once all these new Apple made chips and iPhone design changes get sorted out 🥂
+2025-02-24T17:32:25Z,So glad I got the 16 Pro Max. Now I can wait it out and have my pick once all these new Apple made chips and iPhone design changes/foldable styles get sorted out 🥂
 2025-02-24T17:50:52Z,I think most people don’t like foldable smartphones until Apple release their first model…
 2025-02-24T18:09:07Z,"I can only hope that Apple continues to make Pro phones that don’t fold. Plenty of people will still want the best processor, best camera system, etc. without the folding gimmick, so I hope that continues to be an option."
 2025-02-24T18:24:51Z,Ill believe it when i see it
@@ -632,6 +632,7 @@ When foldables first came out, they were shit. The crease was visible and dust c
 
 I've looked at new foldables from Samsung and Honor (Huawei). The crease is still visible, but a little less so. The actual crease looks ten times better these days, and the dust protection is better. I almost think it's time for foldables, though I still don't like the form factor. They do have their uses. I know Apple won't go for it until it's ready, and it will probably be ready by September 2026. Maybe this year, maybe not."
 2025-02-24T21:14:08Z,What a meaningless article. I just read the same information written different words again and again and again.
+2025-02-24T22:16:59Z,It folds just like our president when dealing with Putin.
 2025-02-24T18:49:53Z,"Unpopular opinion, but foldable phones are just a pointless gimmick, and honestly, smartphones have already peaked in design."
 2025-02-24T18:12:55Z,This would be the first new iPhone I ever buy on release day
 2025-02-24T18:23:32Z,Folding phones costs twice as much (at least) and last half as long (at best) so they're too enticing for Apple to leave alone forever
@@ -657,6 +658,7 @@ I'm happy Apple is building products that are more usable than in the Ive era. 
 
 For me, I’d rather Apple focus on improving what they have while keeping the same footprint. Any thinner and they’re wasting potential, but any thicker and it’s inconvenient to carry around."
 2025-02-24T21:44:28Z,I’d like them to make a thinner air to really differentiate between Pro and Air
+2025-02-24T21:21:59Z,"Honestly the current form factor of MacBook pros seems pretty idea to me. I wouldn’t say no to more IO, but other than that I wouldn’t be upset with incremental improvements for the foreseeable future."
 2025-02-24T17:08:32Z,"I am in the unpopular category where I do want a thin MacBook, but I also want it to to have at least 3, preferably 4, usb ports an access for sd cards, and yes, a HDMI-access port. I don’t want to have to pay €1900,- for that"
 2025-02-24T17:08:06Z,"And I don’t. I want a portable device to become more portable with time. Nevertheless, Jony Ive was responsible for that 2021 redesign. 
 
@@ -664,10 +666,15 @@ When M1 was put in the same chassis as the previous Intel models, everyone sudde
 
 It was Intel’s fault, and I’ll be glad when they go bankrupt"
 2025-02-24T18:56:13Z,"Same here. My M1 Max MBP replace my 2013 MBP, so I just kind of “blooped over” the no MagSafe, no SD reader, touchbar era."
-2025-02-24T21:21:59Z,"Honestly the current form factor of MacBook pros seems pretty idea to me. I wouldn’t say no to more IO, but other than that I wouldn’t be upset with incremental improvements for the foreseeable future."
 2025-02-24T18:34:22Z,"This is spot on.
 
 I also thought you were Jony Ive who forgot an apostrophe for a minute when you said “Ive lost that critical editor.”"
+2025-02-24T16:21:04Z,"This is such a good analysis, and I'm sure it's true. I have loved many Jobs / Ive era products, but agree that once Steve passed, some things started to go south."
+2025-02-24T17:11:54Z,"South in… what way? My dude, people have been crapping on Apple design for years, including when Steve was alive. 
+
+The much beloved iPhone 4 design was CHASTISED when it was leaked. Everyone thought it was the fugliest thing ever, and it wasn’t a mock up. It was the real thing. And people thought it was so ugly it was fake. Same thing with original iMac mouse. Same thing with the Cube. Same thing with MacBook Air. 
+
+If Apple isn’t getting criticized, that’s a concern"
 2025-02-24T19:41:09Z,"&gt; Steve was Jony's editor.
 
 A year after Jobs passed away, Scott Forstall was forced out of Apple. That's part of the reason lots of things went to sht. He and Ive may have not gotten along but together, they helped create balance between design and usability. When Forstall left, Apple mostly focused on design and usability suffered.
@@ -680,12 +687,6 @@ Same. I refused to buy those butterfly keyboard macs and paid more to get a used
 All he had to do was pen a 3 paragraph ""I'm sorry Apple Maps isn't up to par, it'll be our goal to improve it and I look forward to updating you in 180 days and 1 year from now.""
 
 Instead he dug in his heels and Cook had to fire him. Jobs was able to mediate between Ive and Forstall... Cook was given the order by Jobs that Ive was untouchable, but no such order for Scott Forstall came."
-2025-02-24T16:21:04Z,"This is such a good analysis, and I'm sure it's true. I have loved many Jobs / Ive era products, but agree that once Steve passed, some things started to go south."
-2025-02-24T17:11:54Z,"South in… what way? My dude, people have been crapping on Apple design for years, including when Steve was alive. 
-
-The much beloved iPhone 4 design was CHASTISED when it was leaked. Everyone thought it was the fugliest thing ever, and it wasn’t a mock up. It was the real thing. And people thought it was so ugly it was fake. Same thing with original iMac mouse. Same thing with the Cube. Same thing with MacBook Air. 
-
-If Apple isn’t getting criticized, that’s a concern"
 2025-02-24T15:27:05Z,"The 2016 MacBook Pro was my first and only MacBook I’ve bought. I loved the form factor but over time, I resented the 4 USBC ports, the stupid keyboard, and non upgradable ram or ssd, back when in 2016, those were still standard on many laptops. 
 
 My 2 year old accidentally drowned it in Gatorade and I felt relieved to see it go. Went and bought an XPS after. 
@@ -724,13 +725,13 @@ The other issue is that it's *very* isolating. When I've got it on, my wife/daug
 These are big issues that Apple is going to have to figure out if they want it to be a solid product line, long term. iPhone numbers it will never do... but even to hit iPad Pro numbers would be a mountain. 
 
 Cutting the weight and price in half, and getting developer holdouts onboard with free development hardware... would be a good start."
-2025-02-24T21:37:06Z,Why do designers and artists need editors ? Just because you assert it doesn’t make it a fact
 2025-02-24T15:12:16Z,"Met Ive once, lovely guy actually, but before the first iPhone launched, he was pained to put a camera in a phone!"
 2025-02-24T20:38:26Z,"If he didn't want a camera on the phone back then, wonder what he must think about the enormous cameras jutting out of the back now haha"
 2025-02-24T20:50:08Z,"If he was in the grave instead of Steve, we’d be able to power the world with his spinning."
 2025-02-24T15:21:40Z,"Wow, one of the only nice comments here. Where did you meet him? That’s so cool!"
 2025-02-24T16:23:32Z,"By the way, I think your comment got hidden. "
 2025-02-24T17:03:43Z,I see it
+2025-02-24T17:05:47Z,"No, i asked about how he met him, and because he didn’t reply, i checked his profile and saw a second comment that was “[removed]”"
 2025-02-24T14:36:39Z,"From a design and functionality standpoint, I agree. They should not be trying to follow in Steve's footsteps. But Steve was also a brilliant marketer, and they would be foolish to throw away some of his practices."
 2025-02-24T15:22:33Z,A reasonable and sensible comment!
 2025-02-24T14:28:28Z,"Ive is one of those people that needs to be kept on a short leash when it comes to the kinds of unilateral design choices he makes. And he absolutely should never have the ability to override the technical folks. He has proven he will gimp the device just to make it ""pretty"". Which is a net negative when we are talking about a tool and not an art piece."
@@ -748,6 +749,7 @@ The problem with the MacBook was that it thermal throttled."
 2025-02-24T15:52:56Z,"I don’t understand why they didn’t just drop the port and add MagSafe to the bottom, and offer a $100 mouse pad with MagSafe. Big L Apple"
 2025-02-24T17:51:59Z,A $180 Magic Mouse with MagSafe charging? Who is buying that?
 2025-02-24T19:50:13Z,"*Apple Consumers*. Besides it’s not like you need the mousepad, you can use any MagSafe charger. We’re talking about the same company selling mediocre folding keyboards for iPads for $300+ that sell like hotcakes."
+2025-02-24T22:12:46Z,Apple consumers are not spending $180 on a computer accessory as simple as a mouse. Particularly one overengineered with MagSafe charging.
 2025-02-24T14:39:40Z,"Butterfly keyboards. Magic Mouse. iPhone 6. 
 
 But especially the fucking keyboards."
@@ -793,12 +795,12 @@ This is why I don’t take comments on this site seriously, ever"
 
 I know that most of the media is just glorified propaganda (same as it ever was, although it's all out in the open now), but they at least used to be able to put some shine on it and write in a way that flows decently well to the reader. Do editors not even bother proof-reading anything anymore? SMH"
 2025-02-24T19:23:37Z,"No, it's all bots and AI now. They just have a jr journalist typing in the prompts. Not even proofreading."
-2025-02-24T15:35:03Z,WWSJD
 2025-02-24T16:51:12Z,Would Jobs have wanted to keep the iPhone mini alive? I read somewhere he wasn't a fan of phablet phones
-2025-02-24T18:24:16Z,"Long ago, when Samsung released 4"" phones (that looked gigantic at the time), good guy Steve asked why you would need a phone with a screen bigger than 3.5"". LOL."
+2025-02-24T18:24:16Z,"Long ago, when Samsung released 4"" phones (that looked gigantic at the time), good guy Steve asked why you would ever need a phone with a screen bigger than 3.5"". LOL."
 2025-02-24T18:46:23Z,"Yes, so long as the product was enhanced by being smaller and lighter, SJ, always highlighted portability. The wedge design Macbook Air inside the envelope moment. The internet ""in your pocket"". Trouser pocket, he meant. (Try putting one of these monstrosities in your pocket.)"
 2025-02-24T15:03:35Z,Maybe Apple’s products wouldn’t feel so stagnant if they actually followed the idea “what would Steve do?” The only thing I hated that he demanded was the single button mouse
 2025-02-24T16:30:28Z,"It’s not like they’ve done away with absurd pet hates, like their hate for Power buttons, read: AirPods Max, the new Mac mini, or all the recent MacBooks that you can’t keep switched off"
+2025-02-24T15:35:03Z,WWSJD
 2025-02-24T15:28:42Z,"I would argue that if Steve was here, he'd be asking them not to as well."
 2025-02-24T14:56:15Z,"Jonny Ive almost single handedly destroyed MacBook series with his obsession of being “thin”. Butterfly keyboard, removing ports…"
 2025-02-24T15:09:28Z,"He also “almost single handedly” created the modern notebook.
@@ -821,7 +823,6 @@ His input on the more entry level products really made them statement pieces tha
 2025-02-24T17:33:56Z,"At this point it's probably better to consider ""Steve Jobs"" as a hypothetical persona who is bringing a certain perspective to bear on the problem at hand.
 
 What the _actual_ Steve Jobs would have done is less relevant than having that name as a shorthand for a boss who is highly opinionated, has refined but specific tastes in the arts and design, is well-traveled, is laser-focused on the user at the expense of your sanity, and is utterly demanding until things meet their incredibly, _incredibly_ high standards."
-2025-02-24T21:24:53Z,HIS Incredibly incredibly high standards.
 2025-02-24T20:33:34Z,"Apple needs to sacrifice a goat on the altar or whatever it takes to get this man back in the build, or contract his new company to design Apple devices again."
 2025-02-24T14:15:21Z,"From the article: Apple plans to launch a second-generation AirTag in May or June this year, according to a post today from a leaker known as [Kosutami](https://x.com/Kosutami_Ito/status/1893941895761444872).
 
@@ -841,7 +842,10 @@ In another post today, Kosutami seems to be once again implying that new AirPods
 2025-02-24T16:23:39Z,"Improved range will be nice. When I use them for luggage tracking, they usually can’t connect until the luggage arrives on the carousel. Would be nice to get the alert a little sooner."
 2025-02-24T19:41:02Z,How would getting an alert sooner in that scenario be beneficial?
 2025-02-24T19:44:31Z,"To know that it's actually arriving imminently and I can safely order an Uber, tell my ride I'm almost ready, etc. Just more heads up."
+2025-02-24T21:53:06Z,"But in that scenario, the improved range will show you it’s on it’s way to be put on the carousel without you knowing how much is left for it to reach you, no?"
 2025-02-24T21:44:11Z,it also doesn't let you use the arrow pointing finding feature if it's moving too
+2025-02-24T21:54:47Z,This may also be due to the conveyor structure acting as a faraday cage
+2025-02-24T21:57:53Z,Often have bags being pulled in a trailer and it’ll be nice to have everyone in the bus stop getting notifications that my bags are following them or that I’ve left my bags behind
 2025-02-24T14:42:05Z,Thank you. I wish this sub had a mandatory TLDR
 2025-02-24T15:05:41Z,"&gt; I wish this sub had a mandatory TLDR
 
@@ -858,7 +862,6 @@ That's not a TLDR though. That's the entire article, word by word."
 https://preview.redd.it/ye0alrsvb4le1.jpeg?width=1320&amp;format=pjpg&amp;auto=webp&amp;s=4f693cce81a73ec5832f2b66a87190f7fba44b57
 
 It can be just you phone or across all Apple devices with your ID"
-2025-02-24T17:18:37Z,"Ok-  thanks .  Have that turned on, was thrown off by the wording of pre-loading all websites  and was looking for that specifically in the reader settings.  Thanks !"
 2025-02-24T19:34:32Z,"Assuming you’re on iOS given the subreddit, you can open it and use reader view. 
 
 Or set up nextdns on your network and remove the vast majority of ads anyway!"
@@ -903,8 +906,6 @@ I do wish they had more variety in AirTag shapes and sizes."
 2025-02-24T16:28:02Z,"Agreed. The third party options that you can find online work well enough, but most if not all of them that aren't just torn down AirTags don't support precision finding."
 2025-02-24T17:03:47Z,"Nomad has one, very good, rechargeable too on magsafe"
 2025-02-24T17:59:28Z,"Agreed. This is key. I know the 2032 battery wont fit, but make it a rechargeable flat battery or something. The tech is there. It won't be as flat as a credit card, but it could be 2-3 cards thick"
-2025-02-24T16:14:12Z,"I have a 3rd party one and it doesn’t do precision tracking but that’s not exactly how I “lose” my wallet. For me, I just like knowing that if I somehow leave it behind somewhere… I’m going to get a notification and then I realize it happened. One day when they add precision finding I’ll upgrade but this has given me serious peace of mind considering how annoying it is to lose a wallet."
-2025-02-24T16:52:25Z,"I'm the opposite, I need precision tracking to find my wallet when it's in the same room as me lol"
 2025-02-24T14:55:28Z,We need a new chirp sound. It's so hard to triangulate.
 2025-02-24T18:59:14Z,"Absolutely hate the chirp - Who in their right might decided to add an artificial echo to a sound you’re supposed to use to localize the position of something.
 
@@ -928,6 +929,7 @@ You’re not tracking a person. You’re checking a distance."
 2025-02-24T21:17:34Z,I wish it could integrate with the parking location detection and suppress warnings when I leave my stuff in the car.
 2025-02-24T15:17:23Z,Improved distance is all I need. I feel like an idiot walking around my house waiting for it to find a signal.
 2025-02-24T20:45:48Z,Look at this guy in his god damn castle /s
+2025-02-24T16:10:34Z,They’ll make a new everything except the AirPod maxes
 2025-02-24T14:29:33Z,"I know it won't happen, but I want full cross-compatibility with these trackers between Android and Apple.
 
 Otherwise you go to an ""iPhone country"" and your Android tracker doesn't have good coverage. Or you go to an ""Android country"" and your AirTag doesn't get good coverage.
@@ -954,17 +956,6 @@ So all you need to do to make it more likely to not be discovered, is use a diff
 
 I'm sure there are apps or ways to ""scan"" to see if there are any bluetooth devices around you or something. But it's not something that everyone has by default."
 2025-02-24T20:31:10Z,"It does make more sense, but probably not on Apple’s mind. They’ve been against opening protocols for years for ""security concerns"""
-2025-02-24T15:19:26Z,I am 100% with you on that. I feel like Apple has locked it down to tightly behind their system that it will never happen. I can see google much more willing to just have an open standard that anyone can tie into and then have the info shared across platforms.
-2025-02-24T16:10:34Z,They’ll make a new everything except the AirPod maxes
-2025-02-24T14:26:03Z,"I have a feeling they will severely nerf the ability to track an object after it’s been taken from you. The best use for these imo. 
-They seem to now target these as a key ring finder."
-2025-02-24T14:34:38Z,"It’s been marketed for lost, not stolen, items repeatedly. Never once, ever, have they said it’s for stolen items."
-2025-02-24T18:54:10Z,People are definitely still going to use them for stolen items though.
-2025-02-24T16:53:08Z,They've never targeted them as an ant-theft device
-2025-02-24T18:17:55Z,I hate it when my ants get stolen! 😤
-2025-02-24T19:29:12Z,"No, the ants steal your device"
-2025-02-24T19:10:12Z,I never said otherwise.
-2025-02-24T14:47:33Z,Umm never been marketed that way. It was always marketed as a way to fund your misplaced things.
 2025-02-24T14:33:07Z,"Most people are using these to track items in case they get stolen, which obviously isn’t their intended purpose but that’s the market they appeal to. 
 
 I know very few people that are using these things for their intended purpose."
@@ -979,13 +970,22 @@ Everyone putting them on their keychain is using them for that purpose.  The oth
 Another big one is I tossed one in my kids backpack when we go places. Mostly for the case when it gets dropped I can go find it more easily. Lastly when my family has gone to Disney land we toss a tag in the stroller. Mostly because it does get moved by the staff or moved in stroller parker so the tag makes it easier to find it.
 
 Again all correct uses of the tag."
-2025-02-24T16:54:08Z,Just give me a wallet-friendly version
 2025-02-24T16:55:12Z,Just make it smaller and thinner. Nobody cares about extra features
+2025-02-24T14:26:03Z,"I have a feeling they will severely nerf the ability to track an object after it’s been taken from you. The best use for these imo. 
+They seem to now target these as a key ring finder."
+2025-02-24T14:34:38Z,"It’s been marketed for lost, not stolen, items repeatedly. Never once, ever, have they said it’s for stolen items."
+2025-02-24T18:54:10Z,People are definitely still going to use them for stolen items though.
+2025-02-24T14:47:33Z,Umm never been marketed that way. It was always marketed as a way to fund your misplaced things.
+2025-02-24T16:53:08Z,They've never targeted them as an ant-theft device
+2025-02-24T18:17:55Z,I hate it when my ants get stolen! 😤
+2025-02-24T19:29:12Z,"No, the ants steal your device"
+2025-02-24T19:10:12Z,I never said otherwise.
 2025-02-24T15:38:18Z,"&gt; The new AirTag's built-in speaker is expected to be more difficult to remove or tamper with, as an anti-stalking safety measure.
 
 I hope they've figured out the unnecessary beeping then, because otherwise the value of Gen1 is going to rise
 
 All of the other touted improvements are a 1 on my scale of importance when when compared with how annoying the speaker is. I leave an AirTag in my car and the beeping when I was driving was driving (no pun intended) me crazy."
+2025-02-24T16:54:08Z,Just give me a wallet-friendly version
 2025-02-24T16:37:28Z,I'd like to see them smaller in diameter. So I can place them in expensive instruments that have a way of walking off. I don't care if people know they are attached. It's just a cumbersome size.
 2025-02-24T16:41:46Z,"Finally, the killer feature I have been waiting for - Apple Vision Pro integration.  Now if they could just make the speaker loud enough so that you can hear it if your item is in a bag…"
 2025-02-24T16:48:04Z,I’m interested in what the find my integration will look like with the Apple Vision Pro. It would be cool if the near by feature showed the location of the AirTag in your real space.
@@ -1002,6 +1002,7 @@ So maybe get one of those for your luggage? No clue if it works internationally 
 2025-02-24T18:49:06Z,"I got an AirTag for Christmas 2023, I love it. Granted, I haven’t needed to use it once but it’s cute to have. I got my closest friend one for this past Christmas. I have a 13 Pro Max so I’m doubtful the new model’s features will be of use to me, at least all of them. Time will tell"
 2025-02-24T20:17:42Z,Hope they finally fix the bug with different AirTag locations showing on different devices.
 2025-02-24T21:37:16Z,How about a wallet version with all the features and the ability to change the battery or charge.
+2025-02-24T22:22:56Z,Just buy this: https://nomadgoods.com/products/tracking-card
 2025-02-24T20:22:41Z,"It’s eerily similar to what they released in 2021. Maybe we’ll see it again in 2029!
 
 https://www.apple.com/newsroom/2021/04/apple-commits-430-billion-in-us-investments-over-five-years/"
@@ -1012,23 +1013,60 @@ https://www.apple.com/newsroom/2021/04/apple-commits-430-billion-in-us-investmen
 apparently this is just the standard press release they roll out at the beginning of every new presidency"
 2025-02-24T20:38:21Z,I wonder if they used ChatGPT or Apple Intelligence to rewrite this press release.
 2025-02-24T21:26:46Z,That's as lot of added compute power for what could be an automated e-mail task they set up decades ago.
+2025-02-24T21:51:41Z,"For the 2018 announcement, Apple actually did invest in Austin Texas, but it was not clear how many new jobs were created. As for the 2021 announcement, they paused the establishment of a new campus in North Carolina, seeking to extend the construction by 4 years. 
+
+So this announcement is mostly PR/marketing and is overhyped. Although, they will eventually follow through with some of their commitments."
+2025-02-24T22:14:57Z,"yeah, not saying they don't follow through on the promised investments.  but it's definitely misleading to announce it as an ""acceleration"" when they're investing at about the same rate they have for the past 8 years."
+2025-02-24T22:05:40Z,👏👏👏 gj pointing that out. Someone get this man some eggs. He deserves those bejmanins.
 2025-02-24T20:28:23Z,"Quick, what's 430 after you factor in inflation!"
 2025-02-24T20:20:53Z,I guess those tax breaks come in handy
 2025-02-24T20:26:28Z,The generational conditioning that things made outside of the US is to be cheaper for consumers inside the US is criminal. It was only a good thing for big business to exploit lower wages in other countries.
 2025-02-24T21:03:31Z,"I have not been a fan of either Trump presidency but one good thing that his arrival on the political landscape has done is make voters agree that globalization only ended up benefiting people who were already incredibly rich both at home and overseas. He hasn't done much himself to do anything about that, but through Reagan to Obama we were told it was a good thing we all need to support and vote for."
+2025-02-24T20:51:25Z,"They're primarily talking about their existing operating expenses lmfao.  They will spend $500 billion over the next four years, to make $400 billion profit."
+2025-02-24T21:10:36Z,No they wont
 2025-02-24T20:19:21Z,"How many of those billions of dollars will land in the pockets of regular workers like the one in the thumbnail vs the same old oligarchs, I wonder?"
 2025-02-24T20:28:22Z,They expect crediting 20.000 jobs.
 2025-02-24T21:10:55Z,"That’s about 1,000 bodies using the technology that we were told was going to make work easier to do 20,000 jobs!"
-2025-02-24T20:51:25Z,"They're primarily talking about their existing operating expenses lmfao.  They will spend $500 billion over the next four years, to make $400 billion profit."
+2025-02-24T21:45:50Z,Great PR statement. I will believe this when actual products are coming out of actual facilities.
 2025-02-24T20:25:04Z,Unless they’re making iPhones in the US it doesn’t mean shit. This is just to shut Dorito Mussolini up for a while
 2025-02-24T20:32:06Z,"There's a lot of infrastructure stuff that can happen in the US that would ""mean shit."" Server warehouses, support and repair work or engineering services are very real jobs and investments that can be made.
 
 Is there a reason why you're so fixated on iPhone manufacturing?"
-2025-02-24T21:10:36Z,No they wont
-2025-02-24T21:45:50Z,Great PR statement. I will believe this when actual products are coming out of actual facilities.
-2025-02-24T20:32:47Z,They are expected to hire 20k jobs.
+2025-02-24T22:13:26Z,"Trump is the one fixated on it because he said he was going to bring manufacturing back to the US, like he could do that overnight. Apple is just trying to appease his ego and get him off their backs."
+2025-02-24T22:14:42Z,"Ok, but there's a lot of manufacturing that isn't just putting together iPhones that could be included."
+2025-02-24T22:14:17Z,Good everybody will eat IPhones for the next 4 years! 😂 Glad we could find something to replace eggs!
+2025-02-24T22:21:23Z,And how much will Apple give to the Trump “inaugural fund”?
+2025-02-24T22:22:39Z,Pretty sure this is just a shift in their commitment to Raleigh NC offices.
 2025-02-24T21:02:08Z,I can make plans all day doesn’t mean I’ll do them. This sounds like a way to cozy up with trump so he can claim this victory that hasn’t even happened yet. What is Apple getting in return for this propaganda is the question?
 2025-02-24T21:17:49Z,Tariff exemptions most likely
+2025-02-24T20:32:47Z,They are expected to hire 20k jobs.
+2025-02-24T22:11:59Z,"Expected != Will hire
+
+
+https://edition.cnn.com/2025/02/24/tech/apple-investment-united-states/index.html
+
+
+&gt; In 2021, weeks after Biden’s inauguration, Apple said it would invest $430 billion in the United States over five years and create 20,000 new jobs, including construction of a new campus in North Carolina, which has reportedly been paused. And in January 2018, Apple said it would invest $350 billion in the United States over five years and create 20,000 jobs, including by growing US data center capacity.
+
+
+&gt; Apple did not immediately respond to a question about whether any of the promised investment dollars or new jobs announced Monday had also been included in prior announcements.
+
+
+It's mostly BS numbers to placate Trump so that he can jerk off on his shitty social media site.
+
+
+&gt; Trump thanked Cook and Apple for the announcement in an all-caps post on Truth Social early Monday, in which he took credit for the decision.
+
+&gt; “The reason, faith in what we are doing, without witch (sic), they wouldn’t be investing ten cents,” he said.
+
+
+&gt; White House trade counselor Peter Navarro wouldn’t rule out a tariff exemption for Apple on iPhone and other electronics imports from China, when asked by CNN on Monday.
+
+
+&gt; “That’s always President Trump’s decision,” he said in an appearance on CNN News Central. Asked if he would support such an exemption, he refused to voice an opinion.
+
+
+&gt; “I always let the boss do his thing,” he said."
 2025-02-24T04:04:09Z,Hasn't it already for 99% of people? It's only really hobbyist now
 2025-02-24T04:23:01Z,"Even as someone with a good ""real"" camera I don't have it on me the majority of the time. That's why I find value in a high end phone; if I'm carrying something with me all the time I'd like it to have the best camera available"
 2025-02-24T04:44:05Z,"And the other thing is if you know you need a ""real"" camera, you know you need a real camera. Smartphones have made leaps &amp; bounds but no amount of computation or binning will beat the physics, low light performance, and dynamic range of a larger sensor"
@@ -1063,7 +1101,6 @@ https://preview.redd.it/rwip41v2v0le1.jpeg?width=4032&amp;format=pjpg&amp;auto=w
 2025-02-24T05:37:47Z,It’s come to a point where I’ll get looks whenever I take my mirrorless camera out. It’s a compact one too (Fujifilm X100VI). I purposely bought the black version so it doesn’t stand out as much and it helps but people still stare. No one looks once let alone twice if you pull out a smartphone to take a photo.
 2025-02-24T07:11:22Z,They’re looking because you bought a camera with intentionally visually striking looks.
 2025-02-24T05:42:18Z,Apple had a whole ad campaign about shooting high quality professional video with an iPhone . Their commercials were shot with one .
-2025-02-24T06:37:40Z,"I mean, the top youtubers are all using professional cameras for their recording. It does work better and its more consistent performance in different environments and lighting. Its also way more flexible in editing and such. And has higher resolution which makes a difference even when compressed down."
 2025-02-24T04:11:07Z,Apple themselves shoot their presentation videos using iPhone. The title is clickbait.
 2025-02-24T04:22:14Z,"They sponsor music videos too. Selena Gomez, Lady Gaga, The Weeknd."
 2025-02-24T04:40:12Z,"Sean Baker filmed his acclaimed film, *Tangerine* on 3 iPhone 5s. 10 years ago!"
@@ -1073,7 +1110,6 @@ https://preview.redd.it/rwip41v2v0le1.jpeg?width=4032&amp;format=pjpg&amp;auto=w
 
 (Edit: actually a huge Sean Baker fan, initially BECAUSE he ""did a film on an iPhone."" Very happy that Anora is up for an Oscar this year, and it's a real Sean Baker film through and through.)"
 2025-02-24T05:53:21Z,But not everyone is professional photographers and even with same camera would not be able to achieve same results not to mention that after editing is huge part of the process 
-2025-02-24T05:06:17Z,Since I got 16 pro I’m still trying to sell my Fujifilm camera with lenses. At this point it’s too much hussle for me to carry it around and transferring photos to the phone. 16 pro is more than enough for photo and video recording.
 2025-02-24T04:25:12Z,"Next they’re gonna want it to replace my texting machine and land line.  Heck, might as well make it play mobile games while we’re at it…"
 2025-02-24T05:29:58Z,As long as we can keep the beepers safe 🙏
 2025-02-24T16:19:51Z,"Yeah, but I’ve heard the beeper’s market is blowing up."
@@ -1169,6 +1205,8 @@ However, if I'm serious about the video, I'm recording external to SSD, which al
 2025-02-24T05:00:44Z,I use samsung instead. 😅
 2025-02-24T04:44:50Z,"I need more storage to shoot 4k 60fps 10-bit prores. What is it, like 13.2gb per minute of video recording?"
 2025-02-24T05:03:32Z,"now if only Apple can improve their crappy photo AI, maybe the iphone can replace my camera for photos too."
+2025-02-24T05:22:32Z,Idiots need to first increase base storage. You ain’t replacing anything with shitty 128 gb.
+2025-02-24T07:09:40Z,Apple really are stretching now to find reasons to upgrade to their latest phone. Time to switch to two or even three year cycles and stuff in an S if really needed in between.
 2025-02-24T04:02:43Z,"I’ve found iPhone Audio being an impediment not the video quality.
 
 Not quality, but how iOS handles it and lets me monitor it.
@@ -1176,23 +1214,11 @@ Not quality, but how iOS handles it and lets me monitor it.
 And as far as I know still can’t record Bluetooth + every single mic. Must choose one."
 2025-02-24T04:28:13Z,What’s a “camera”
 2025-02-24T04:43:54Z,"Are you filming me? No, I'm taking a *Live Video*™ of you."
-2025-02-24T05:22:32Z,Idiots need to first increase base storage. You ain’t replacing anything with shitty 128 gb.
-2025-02-24T07:09:40Z,Apple really are stretching now to find reasons to upgrade to their latest phone. Time to switch to two or even three year cycles and stuff in an S if really needed in between.
-2025-02-24T05:45:35Z,I sold my Nikon DSLR and lenses a few years back that I bought new when I was super into photography in high school and college. iPhone cameras have gotten “good enough” that I didn’t feel the need to lug my gear around when on adventures and doing things I’d typically bring the camera for. Having a decent phone camera available in your pocket is a game changer.
 2025-02-24T06:27:37Z,get rid of ai smoothing and i'll consider it
 2025-02-24T11:01:31Z,The lenses need to get A LOT better. The insane amount of hard light ghosting reflections makes it instantly clockable
+2025-02-24T05:45:35Z,I sold my Nikon DSLR and lenses a few years back that I bought new when I was super into photography in high school and college. iPhone cameras have gotten “good enough” that I didn’t feel the need to lug my gear around when on adventures and doing things I’d typically bring the camera for. Having a decent phone camera available in your pocket is a game changer.
 2025-02-24T05:50:26Z,Maybe for outdoors in bright sunlight. The sensor is just not big enough to be able to replace a video camera for the people left who still use them.
-2025-02-24T03:58:33Z,"Let iPhones take better videos so you will need even more memory on your phone and cloud, plus an even better MacBook to edit them. Sounds like a no brainer."
-2025-02-24T06:44:30Z,"I didn't see any mention of increased resolution.
-
-4K is realistically the maximum anyone will need for the foreseeable future.
-
-Some Android phones do 8K, but that's a gimmick.
-
-Unless we all will have an IMAX-sized movie theater at our house, you're not seeing any difference between 4K and 8K on a 65"" TV from several feet away lol"
-2025-02-24T07:07:55Z,If only Apple solve a device to view content like this
 2025-02-24T05:13:10Z,They’re managing expectations for the September reveal where the only innovation is better cameras (for the seventh year in a row). That being said my 14PM screen is cracked and battery is dog water so I’ll be buying one.
-2025-02-24T04:03:36Z,So Apple wants nothing? Because that is already the reality we live in.
 2025-02-24T04:26:15Z,(They mean your iPhone 16 Pro)
 2025-02-24T05:03:14Z,"Fix the lens flare and we’ll talk, imo"
 2025-02-24T05:34:43Z,How about fixing the over processing in photos instead
@@ -1202,13 +1228,31 @@ Unless we all will have an IMAX-sized movie theater at our house, you're not see
 2025-02-24T13:47:01Z,"What’s with this camera obsession? My pictures look fine. Come up with something else. 
 
 Jesus H."
+2025-02-24T03:58:33Z,"Let iPhones take better videos so you will need even more memory on your phone and cloud, plus an even better MacBook to edit them. Sounds like a no brainer."
+2025-02-24T06:44:30Z,"I didn't see any mention of increased resolution.
+
+4K is realistically the maximum anyone will need for the foreseeable future.
+
+Some Android phones do 8K, but that's a gimmick.
+
+Unless we all will have an IMAX-sized movie theater at our house, you're not seeing any difference between 4K and 8K on a 65"" TV from several feet away lol"
+2025-02-24T07:07:55Z,If only Apple solve a device to view content like this
+2025-02-24T04:03:36Z,So Apple wants nothing? Because that is already the reality we live in.
+2025-02-24T05:03:41Z,"Apple seem clueless here.
+
+  
+Until Apple include inbuilt ND filters so you can control the shutter for video, its going to always look like cheap fast-shutter consumer video. No matter how many pixels and software tricks they want throw at it. There's a reason why video from an actual camera, controlled by someone who knows what they're doing, looks the way it looks."
+2025-02-24T04:10:28Z,"Jokes on them, all video recording has been replaced by my iPhones since, uh, the iPhone 5 lol"
+2025-02-24T04:24:15Z,I felt I read this article 10 years ago.
+2025-02-24T05:12:00Z,"Apple might want a lot of things, but until they improve their camera app, this isn’t going to happen for serious photographers/video people. "
+2025-02-24T06:45:13Z,Until the iPhone 18 Pro
+2025-02-24T07:33:35Z,Can someone explain why they want that ugly ass camera ? What’s all that black space do ?
+2025-02-24T10:24:19Z,"So more camera upgrades? Woah, color me shocked."
 2025-02-24T03:56:19Z,Really hoping this means higher resolution video recording (8k??)
 2025-02-24T03:59:11Z,"Im assuming better quality 4k. Which is what people should want. No one needs 8k from that tiny sensor. 
 I would rather have bigger sensor for better dynamic range and lowlight.
 
 This is coming from someone who owns an Android that can do 8k. I cant even share it properly. You barely can with 4k"
-2025-02-24T04:10:01Z,6k would be nice so that you can crop in post and not go below 4k
-2025-02-24T04:12:27Z,The iPhone is more than capable of doing 6k 60fps open gate I assume
 2025-02-24T03:57:47Z,8k recording with 128gb. 5 min video?
 2025-02-24T04:00:42Z,iOS will definitely choose a lower res by default like it already does for a lot of modes (most people are not using the camera system to the max). For the pros it would be great to have 8K as an option even if it means storage would be an issue. There's enough USB-C storage capabilities thanks to the new port. 1TB is cheap and easy to get.
 2025-02-24T04:11:46Z,Doesn't the current ProRES format of 4K require external storage? I thought I saw a disclaimer when I enabled it one time.
@@ -1220,18 +1264,13 @@ This is coming from someone who owns an Android that can do 8k. I cant even shar
 A fixed iris is the single great weakness the iPhone has as a video camera."
 2025-02-24T04:00:35Z,8K by itself won’t help with anything. On that tiny of a sensor it’s all gonna be crunched through image processing anyway. Waste of storage and bandwidth at this point in time. 
 2025-02-24T04:33:57Z,"We need 10bit 422, better low light, more dynamic range, higher quality video with less compression artifacts etc."
-2025-02-24T05:03:41Z,"Apple seem clueless here.
-
-  
-Until Apple include inbuilt ND filters so you can control the shutter for video, its going to always look like cheap fast-shutter consumer video. No matter how many pixels and software tricks they want throw at it. There's a reason why video from an actual camera, controlled by someone who knows what they're doing, looks the way it looks."
-2025-02-24T04:04:37Z,"Demographic that still owns a camera for video recording is not relevant, headline is worded like it’s 2005."
 2025-02-24T13:35:27Z,Time to eat some dried fruits to honor him today.
 2025-02-24T13:41:16Z,"then walk around in the office later with no socks or shoes on, and then dip my feet into the commode"
+2025-02-24T15:38:34Z,It's always weird to me when people wish a dead person happy birthday.
+2025-02-24T15:46:49Z,Same lol
 2025-02-24T13:09:28Z,I don’t think he’s checking Reddit
 2025-02-24T15:29:49Z,Deddit
 2025-02-24T14:42:30Z,"Yeah, someone needs to tag him"
-2025-02-24T15:38:34Z,It's always weird to me when people wish a dead person happy birthday.
-2025-02-24T15:46:49Z,Same lol
 2025-02-24T15:32:44Z,Ded ppl dont bday
 2025-02-24T15:44:19Z,Thinking about this dude still being here if he just took some modern medicine still pisses me off
 2025-02-24T15:11:34Z,"RIP to the most entertaining apple executive! 
@@ -1258,14 +1297,18 @@ He was the best in interviews. Fantastic public speaker."
 2025-02-24T18:56:39Z,Sure MAGA you run with that
 2025-02-24T13:35:47Z,Thanks for this. I always remember Steve’s birthday 
 2025-02-24T16:33:36Z,Why?
+2025-02-24T15:42:16Z,Fuck Steve
+2025-02-24T16:55:18Z,Lmfao do you feel better? Rude as hell. 
 2025-02-24T14:28:05Z,"If he was alive, he wouldn't donate a penny to the felon."
 2025-02-24T15:03:58Z,"He definitily would, because he was a businessman at end of the day, and not exactly an ethical one"
 2025-02-24T18:56:18Z,TDS
-2025-02-24T15:42:16Z,Fuck Steve
-2025-02-24T16:55:18Z,Lmfao do you feel better? Rude as hell. 
 2025-02-24T14:11:33Z,"He never invented anything. He was in the right place at the right time, incredibly twice, to take credit for other people's work, while he obsessed over the shape of the cases and the design of the logos. The original ideas he did have were so incredibly wrong, we don't talk about it today (no third party apps on the Mac or the iPhone. And he was a truly awful person in his personal life. When he found out he had cancer he delayed his cancer treatment by 9 months to try to cure himself with alternative medicine."
 2025-02-24T13:30:40Z,Deathday
 2025-02-24T13:46:08Z,Nah that's October 5th
+2025-02-24T22:15:00Z,"Happy birthday, MacRumors! Their writer Joe (@rsgnl) is especially great."
+2025-02-24T22:17:18Z,Comments are entertaining. A lot of people complaining about Apple there haha..
+2025-02-24T22:18:36Z,"Still a daily visit. Shame that they (now) let the trolls run the forums, they used to be solid."
+2025-02-24T22:20:12Z,"What an accomplishment, not just surviving that long but retaining independence and arguably the hardest possible thing of all for a website to do:  no shitty redesigns!  Happy birthday!"
 2025-02-24T12:01:51Z,"Is this regulatory approval or is it now enabled on the iPhone by Apple in the UK? Regulatory approval was obtained in Australia several months ago, but Apple still hasn't made the feature available there."
 2025-02-24T12:07:41Z,"&gt; As previously reported in January, the AirPods Pro 2 can now be used as hearing aids in the United Kingdom, having now received government approval for over-the-counter hearing aid devices.
 
@@ -1284,8 +1327,9 @@ _Edit: added some clarity._"
 2025-02-24T20:48:42Z,"The feature is absolutely fantastic for listening to music with adapted profiles. But as actual hearing aids, sadly really useless compared to a proper high end model (admittedly at 10x the cost and more). 
 
 I’m now wearing HAs and the AirPods were my first experience. But comparing them to my Phonak Spheres also made incredibly clear that Apple is only at the beginning of a journey. Looking forward to what’s available in another 5 years from now."
-2025-02-24T18:07:55Z,Hope it comes to the EU soon... I would really like to try the noise protection function. 
+2025-02-24T21:53:18Z,Wonder if the UK government only allowed this so they can listen in on everyone's conversations?
 2025-02-24T16:37:21Z,yeah cool but give me back my ADP
+2025-02-24T18:07:55Z,Hope it comes to the EU soon... I would really like to try the noise protection function. 
 2025-02-24T19:33:23Z,So I can get AirPods by prescription now?  🩺
 2025-02-24T13:09:34Z,"For anyone reading this with hearing issues, try out a pair of bone conduction headphones. They don’t work in all cases, but I’ve had three different friends / family try them out, and they’ve been life changing for two of them."
 2025-02-24T15:08:40Z,"The bone conduction headphones can work for an outer or middle ear issue, and can be brilliant for those who it works for, but to my knowledge not as a hearing aid, but simply a pair of headphones."
@@ -1437,8 +1481,8 @@ https://www.reddit.com/r/Android/s/HRiVqFPf9u"
 2025-02-24T13:57:44Z,"And after only a few weeks/months, it'll be just fine. I thought Airpods were hideous when they were released (""they just took regular earbuds and cut the cable"", which TBF was probably the intent), and now I still don't love them but... I'm just used to them"
 2025-02-24T13:59:18Z,"I forgot about the AirPod backlash lol. There were so many memes and shitposts on Reddit when they came out. People thought they looked ridiculous and that nobody would ever wear them. I thought they looked silly too, and now I’ve owned multiple pairs lol."
 2025-02-24T14:20:59Z,I think the 6P has one of the most aesthetically pleasing cameras on any phone
-2025-02-24T15:13:49Z,Damn I miss metal phones. I do love wireless charging but also miss the cold metal and solid built feeling.
 2025-02-24T18:08:08Z,One of my faves of all time. Until the bootloops.
+2025-02-24T15:13:49Z,Damn I miss metal phones. I do love wireless charging but also miss the cold metal and solid built feeling.
 2025-02-24T16:48:08Z,Yeah but the pixels looks waaay better 💀
 2025-02-24T17:47:34Z,"It looks more like the dynamic island than like Google’s design.
 
@@ -1458,19 +1502,10 @@ The Apple battery cases with the bump were pretty panned when they released, eve
 2025-02-24T12:08:21Z,Happens every year!
 2025-02-24T16:44:17Z,"I mean let’s be honest, the tri-camera setup is still ugly af"
 2025-02-24T12:50:55Z,"If they fix the rocking back and forward when it's on a desk, that is all i care about. It's so annoying."
-2025-02-24T20:16:45Z,Who really cares?
 2025-02-24T11:46:47Z,I’m convinced the only reason the camera bump changes from year to year is to sell more cases.
 2025-02-24T13:12:32Z,"It's so that everyone will know you have ""The Best iPhone we've ever made**™ ""**"
 2025-02-24T14:41:34Z,They also move the buttons a little every year
-2025-02-24T17:25:36Z,People whine when the design doesn’t change. People whine when the design changes. Y’all are pretty insufferable lmfao
-2025-02-24T17:38:21Z,Does it really count as a design change when the chassis is the exact same but the camera bump is a millimeter bigger and the volume rocker got pushed a millimeter down?
-2025-02-24T20:10:25Z,A design millichange.
 2025-02-24T13:51:32Z,"Well, larger sensors means shallower depth of field and better low light capabilities ie photos look more professional and video appears more cinematic. But this means larger lenses to focus the light on the sensor. Means bigger camera bump."
-2025-02-24T18:09:58Z,"I love this take. 
-
-Mostly because its for people with enough disposable income to buy a new phone each year being annoyed they can’t reuse their case"
-2025-02-24T18:23:49Z,I mean who can afford to get a new phone every year but somehow draw the line at buying a new case? I mean you can get great clear cases on amazing for like $7.
-2025-02-24T19:20:36Z,"Yeah, if your case is outliving your phone then you’re doing it wrong"
 2025-02-24T15:45:13Z,"This isn’t a rhetorical question, have they ever kept designs consistent enough that you could keep a case when moving to the next iPhone?
 
 I don’t remember ever doing that, but I haven’t bought every iPhone"
@@ -1492,12 +1527,20 @@ I don’t remember ever doing that, but I haven’t bought every iPhone"
 * iphone 13 and iphone 14
 
 so basically last time, it was in 2022 with the iPhone 14"
-2025-02-24T18:59:15Z,"I didn’t realize that the 13 and 14 were the same! 
-
-Would certainly be nice if they did this every now and than again.."
 2025-02-24T19:57:48Z,"The 13 and 14 are a mixed bag. Most 14 cases will fit on a 13 with a slightly looser fit around the camera bump, and while a good number of 13 cases were updated to have larger camera holes to fit the 14, cases for the 13 that have tighter tolerances around the camera bump [will not fit](https://cdn.pickr.com.au/wp-content/uploads/2022/09/iphone-14-in-iphone-13-case.jpg) the 14. Apple's cases for the 13 don't fit the 14 because of this.
 
 The 15 is also a weird instance, since some case makers eventually just made the same case for the 13, 14, and 15, but YMMV. To a similar extent, there exist cases that fit for the 6, 6s, 7, 8, SE 2, and SE 3, with camera cutouts large enough to support all 6 phones and the bottom being cut out to support the headphone jack. The XR and 11 are mostly the same dimensionally, so most 11 cases can actually go on the XR, albeit with a lot of exposed glass."
+2025-02-24T18:59:15Z,"I didn’t realize that the 13 and 14 were the same! 
+
+Would certainly be nice if they did this every now and than again.."
+2025-02-24T18:09:58Z,"I love this take. 
+
+Mostly because its for people with enough disposable income to buy a new phone each year being annoyed they can’t reuse their case"
+2025-02-24T18:23:49Z,I mean who can afford to get a new phone every year but somehow draw the line at buying a new case? I mean you can get great clear cases on amazing for like $7.
+2025-02-24T19:20:36Z,"Yeah, if your case is outliving your phone then you’re doing it wrong"
+2025-02-24T17:25:36Z,People whine when the design doesn’t change. People whine when the design changes. Y’all are pretty insufferable lmfao
+2025-02-24T17:38:21Z,Does it really count as a design change when the chassis is the exact same but the camera bump is a millimeter bigger and the volume rocker got pushed a millimeter down?
+2025-02-24T20:10:25Z,A design millichange.
 2025-02-24T12:11:09Z,"Is this suggesting that the body of the 17 Pro will feature metal wrapping around the back, with a glass panel (in red) for connectivity? That would be a super interesting design and a nice departure from the glass-sandwich, which has become a bit stale imo."
 2025-02-24T11:52:49Z,It's fine but the 17's alleged design sticks out like a sore thumb in that line-up. It's the only one without a horizontal bar.
 2025-02-24T12:41:37Z,"The lenses have to stay in that position because of the spatial video capabilities, I agree though."
@@ -1522,6 +1565,7 @@ I’m all for functional design changes if they make sense. Hopefully the camera
 2025-02-24T11:51:34Z,Talk about ✨consistent design language ✨
 2025-02-24T11:08:37Z,"&gt;The leaker Majin Bu has had some hits in the past, but some of his information has been wrong, including a rumor about an iPad 11 being imminent in 2023. What's different in this particular case is that Weibo-based leakers Fixed Focus Digital, Ice Universe, and Digital Chat Station have all backed the accuracy of the CAD image, based on their own information from Apple's supply chain in China. ""The appearance is basically like this,"" commented Digital Chat Station in reference to the image. It might just be time to get used to this new look."
 2025-02-24T11:31:51Z,So the 17 air is more like an enlarged 16e as opposed to an enlarged 17? Who is going to want to sacrifice camera quality for a slightly larger screen?
+2025-02-24T12:20:00Z,[deleted]
 2025-02-24T12:08:49Z,These all look weird. Then again so did the current design sketches at first. Leave it to Apple to deliver a polished product.
 2025-02-24T12:41:46Z,"Okay, pulling the plug on the 16 Pro, this bump is insane"
 2025-02-24T12:51:50Z,They are unofficial leaks... i would not base anything on them.
@@ -1651,6 +1695,7 @@ Did Bono get on his hands and knees and say ""Please Lord Jobs, bless us with Ap
 Or did U2 start contract negotiations with stock options?"
 2025-02-24T01:52:10Z,Fairly certain U2's popularity died the moment that album hit our iTunes.  If it didn't I know I didn't think about them seriously ever again.
 2025-02-24T10:42:51Z,"Yes, wildly unpopular. Which is why one couldn't get a ticket for their Las Vegas residency at The Sphere, which was the fourth highest grossing residency of all time. And of course there was the sold out Joshua Tree Tour that spanned 2017-2019 before that. Nobody likes them anymore. 🙄"
+2025-02-24T20:11:13Z,"this ""steve jobs"" sounds like a real piece of work"
 2025-02-24T00:39:51Z,"If they wanted stock so much, they should’ve called a stock broker like the rest of us. 
 
 If Jobs got them to do their work for nothing, I don’t think they were underpaid."
@@ -1661,7 +1706,6 @@ But if you’re a millionaire complaining to the press about a publicly traded c
 2025-02-24T10:31:36Z,Maybe he was cheap
 2025-02-24T14:42:12Z,I don't like U2 but this was a bad thing that Steve Jobs did lol
 2025-02-24T15:54:20Z,Couldn’t Jobs pay them cash and then just put that into stock? What would be the difference?
-2025-02-24T20:11:13Z,"this ""steve jobs"" sounds like a real piece of work"
 2025-02-24T13:53:30Z,U2 is one of the cringiest bands on the planet
 2025-02-23T13:16:12Z,They did good with the m4 Mac mini
 2025-02-23T13:27:18Z,"Best product they’ve released in years. Yes, even with the pitiful base storage and insane upgrade cost elephants in the room."
@@ -2171,6 +2215,7 @@ You are just ignorant and misinformed. But why educate yourself when your Nazi l
 2025-02-24T20:48:40Z,"US tech companies have been ripping us off left and right over the past few years (tech is no longer optional). Ridiculous prices for planned obsolescence with very few upgrades/new features and shttier user experience. At least someone is trying to do something about this (I think the EU is kind of overdoing it, but that's still better than doing nothing)."
 2025-02-24T21:17:19Z,You can literally buy a solid Android for $200. What are you talking about
 2025-02-24T21:29:38Z,"Yeah, an Android that lasts you 2 years. Some of them are barely usable, so you really need to pay attention to what you're getting. Androids that last you longer are expensive (used to be a lot cheaper). Also, Apple knows people are locked into their ecosystem or don't like Android and they're taking advantage of it."
+2025-02-24T22:13:44Z,"You really need to start to read and think! Think! I know that you now have a king, but you can stop just repeating the agenda, you aren't contributing anything, you may as well just not exist."
 2025-02-23T22:16:48Z,“Demands”. PMSL
 2025-02-23T18:58:55Z,It’s being rebuilt since the original wasn’t really meant to be a permanent installation
 2025-02-23T23:36:09Z,that rainbow has nothing to do with lgbtq. its Apple's original colors
@@ -2417,6 +2462,7 @@ Edit: now realizing the Top Tier badge is missing lol. The filter does work thou
 2025-02-24T13:18:15Z,Yeah it’s about a 10 min drive away. I’d say I’m seeing about 1/2 maybe of the gas stations I probably should be. I’ll try again then can send an email.
 2025-02-24T17:14:32Z,"I’ve had this thought for a while and looking at your app and CarPlay I want to ask. With CarPlay and the cluster screen that has multiple apps (maps, direction, music and sometimes the fourth tile is a calendar event) could you take that calendar tile and instead show nearest gas stations and prices update within every 5 miles or so?"
 2025-02-24T17:20:08Z,I’m not sure if that’s something I can feed info into but I’ll definitely take a look! I think that would be pretty neat.
+2025-02-24T22:12:53Z,Can you make the app work in portugal? I can testflight the app if tou want
 2025-02-23T19:16:40Z,Didn’t you post this last week?
 2025-02-23T19:18:20Z,I did but it was taken down by mods quickly as I didn't talk much in r/apple. Couple thousand upvotes and over 6M views on the last post later...im back hahaha
 2025-02-23T12:20:23Z,Finally! Hopefully Roborock brings this to older models instead of just adding to new ones
@@ -3165,6 +3211,7 @@ Why do you need sideloaded apps? Why not use the phone browser for things that d
 I don’t care if they lower pricing, they probably should, that’s not what this topic is about. This topic is about a uniform App Store that has checks for privacy, spyware, malware, etc. I don’t care if Apple makes 30% or 3%. 
 
 It wouldn’t happen right away that a 3rd party store would do that, but once it got more market share, it could. The more likely scenario is a company forcing people to download from its own mobile website, like an Epic Games."
+2025-02-24T22:04:05Z,"IT people in companies use MDMs to manage their computers, and if they’re not large enough for an MDM they’re not IT people but likely a one wo/man-show."
 2025-02-24T08:25:28Z,"Just like the Mac? Which is an Apple product? In the Apple ecosystem?
 
 No one is forcing you to buy an app that isn’t available in the App Store. Apple (and you) are forcing me to buy from the App Store."
@@ -3479,6 +3526,8 @@ Not better than an actual memory upgrade, but I’ll be rocking this for the nex
 2025-02-24T15:43:04Z,"It depends. How important is the data on the computer?
 
 Because if you don’t care about the data on the computer, and they didn’t put a password on the boot loader (which is not common), you could boot it into recovery mode, erase and re-create the main partition, and then reinstall the OS."
+2025-02-24T22:02:46Z,Not important at all
+2025-02-24T22:04:03Z,Then nuke it. [Here](https://support.apple.com/guide/mac-help/intro-to-macos-recovery-mchl46d531d6/mac) is how to put the Mac into recovery mode.
 2025-02-23T22:09:40Z,"Hi guys.  I have a Family Sharing question.  I have Apple TV+, and I realized that my mom and dad were also paying for their own.  I thought maybe I could loop them into me, so I sent them both an invite to Family Sharing, which they accepted.
 
 They seem to have no indication in Apple TV+ about this.  My dad tries signing in with his Apple ID and gets a page asking him to start a free trial.  Something is not connecting.  I thought once connected via family, they sign in with THEIR Apple ID, not mine, correct?
@@ -3690,14 +3739,6 @@ https://apps.apple.com/us/app/mela-recipe-manager/id1548466041"
 2025-02-21T18:45:53Z,"Cool, but it would be even better if included step by step video like Creme."
 2025-02-21T19:08:09Z,Can we smell the food through our phones?
 2025-02-21T19:17:08Z,Woah so this is the end result of those rumors a few years back that Apple was looking into nutrition and food services in some way. I find it weird this is a News+ subscription thing though and not part of the Health App… I guess it’s tied to articles in Apple News but yeah I feel like this odd placement will result in it being more ignored than used.
-2025-02-23T22:48:07Z,"Nice design, did you make those app preview screenshots yourself? Really well done"
-2025-02-23T22:50:38Z,Thank you for the kind words! I collaborated with a mobile designer for the UI designs and the App Store assets.
-2025-02-23T14:28:56Z,"Looks like Sign in with Apple has broken the app. Downloaded, continued with apple as a sign in option and the app freezes and eventually crashes. Upon reopening the app stalls on the splash screen and then eventually crashes."
-2025-02-23T14:32:16Z,Really? I will take a look because I haven’t encountered this before. Can you try a reinstall?
-2025-02-23T14:32:35Z,Already tried. Same issue.
-2025-02-23T14:33:42Z,Ok thanks for reporting. I just tried with my account and it worked but I am going to take a look.
-2025-02-24T06:28:10Z,"The UI is not my taste in general, but for this kind of app it fits perfectly. Well done. Also cool Appname/appicon"
-2025-02-24T12:45:16Z,"Thank you for the nice words, really appreciate it!"
 2025-02-21T15:10:55Z,So embarrassing. I am so annoyed with the recent UK governments being so anti tech. This is dangerous.
 2025-02-21T15:54:12Z,"An important point is that it’s not clear that even this will be enough to comply with the law.
 
@@ -3987,6 +4028,14 @@ And it doesn't strictly breach the DPA as the UK Government doesn't act as a dat
 Either way, we won't know whether the new Online Safety Act would take precedence until someone tries it in court.  
 
 I agree with you and I'm disguisted by our government and Apple's move, but it's important to provide extra context where it's necesary."
+2025-02-23T22:48:07Z,"Nice design, did you make those app preview screenshots yourself? Really well done"
+2025-02-23T22:50:38Z,Thank you for the kind words! I collaborated with a mobile designer for the UI designs and the App Store assets.
+2025-02-23T14:28:56Z,"Looks like Sign in with Apple has broken the app. Downloaded, continued with apple as a sign in option and the app freezes and eventually crashes. Upon reopening the app stalls on the splash screen and then eventually crashes."
+2025-02-23T14:32:16Z,Really? I will take a look because I haven’t encountered this before. Can you try a reinstall?
+2025-02-23T14:32:35Z,Already tried. Same issue.
+2025-02-23T14:33:42Z,Ok thanks for reporting. I just tried with my account and it worked but I am going to take a look.
+2025-02-24T06:28:10Z,"The UI is not my taste in general, but for this kind of app it fits perfectly. Well done. Also cool Appname/appicon"
+2025-02-24T12:45:16Z,"Thank you for the nice words, really appreciate it!"
 2025-02-21T15:17:51Z,I imagine the people that buy this phone arn’t the type to preorder. They are more likely to walk in the store and buy one.
 2025-02-21T15:20:56Z,"Plus, the price isn’t great"
 2025-02-21T15:29:33Z,"The price range going from 599 to 899 is wild, I thought it was like 399 until I manually checked. You can get an older flagship for much less."
@@ -4493,6 +4542,9 @@ What they’re doing now in 2025 is somewhat similar to what they did back in 20
 2025-02-24T14:41:02Z,[https://www.apple.com/newsroom/2025/02/apple-will-spend-more-than-500-billion-usd-in-the-us-over-the-next-four-years/](https://www.apple.com/newsroom/2025/02/apple-will-spend-more-than-500-billion-usd-in-the-us-over-the-next-four-years/)
 2025-02-21T18:08:44Z,We've been here before. News media can't keep falling for this. https://www.theverge.com/2019/11/20/20974999/trump-is-lying-about-the-new-apple-factory
 2025-02-21T18:38:56Z,"Pardon me, but the news media can keep falling for whatever the hell makes them all the clicks that turns into money. They have no obligation to tell us the truth, and I’m not defending them at all, I’m just pointing out what they’re gonna do because it’s all about the bottom dollar to these scumbags."
+2025-02-24T22:20:43Z,"Really? I guess Apple isn't spending half a trillion dollars yo build manufacturing plants in the US over the next four years then.
+
+https://www.apple.com/newsroom/2025/02/apple-will-spend-more-than-500-billion-usd-in-the-us-over-the-next-four-years/"
 2025-02-21T18:03:51Z,Didn't Foxconn buy space in Wisconsin a while back? Just use that space
 2025-02-21T20:23:39Z,I think that was going to be used for display panels or TVs or something. I don't think Apple has anything to do with the Wisconsin Foxcon plant.
 2025-02-21T20:31:43Z,Apple has nothing to do with [that scam](https://www.theverge.com/c/21507966/foxconn-empty-factories-wisconsin-jobs-loophole-trump).
@@ -4585,7 +4637,6 @@ And I stopped reading the article."
 
 Apple brought Mac Pro production to the US in 2013"
 2025-02-21T22:36:11Z,"It’s no coincidence that they make their most expensive, lowest-volume product here. They *start* at $7000."
-2025-02-21T22:37:30Z,"Yes, and ideally with tariffs Apple will move more production to the US"
 2025-02-23T16:39:43Z,"Hey. Looks great. 
 
 1) Finma is the SEC authority of Switzerland 
@@ -4958,7 +5009,6 @@ That criples ""Spatial Computing"" to be ""just an iPhone VR headset"" and worse
 2025-02-22T06:40:07Z,If I remember correctly there’s an AirPlay receiver toggle you need to turn on in Settings &gt; General somewhere.
 2025-02-21T22:08:47Z,"Yeah, because it has an established use. It has killer features as a wearable - namely all the health tracking features. The AVP doesn’t."
 2025-02-22T17:37:38Z,"At launch the Apple Watch suffered from the same apps issue as the AVP. There were only a handful and apps ran on the phone, not the watch and they didn't do anything more than what the iPhone already did. Beyond telling time there wasn't much functional use for several years. Then health metrics were introduced and suddenly it found a footing. Like the watch, the AVP needs to find its footing, killer application."
-2025-02-22T03:16:20Z,"The AVP does though, it’s essentially a personal home theater. And has productivity functions too."
 2025-02-21T22:25:43Z,"It’s also relatively affordable for people who want a smart watch.
 
 I’d love a vr headset, though can’t convince my wallet to do so."
@@ -5054,6 +5104,7 @@ Though I hear Sony is working with Apple on the controller front"
 2025-02-24T02:36:31Z,"The Vision Pro is just proof of concept for their “vision” of tech in the future.  
 
 Do people actually think this thing will always be the size it is now?"
+2025-02-24T22:06:37Z,"Spend a decade fighting, suing and making things as hard as possible for the developers of your platforms’ apps and then they decide they don’t want to work with you in a new platform. Astonishing."
 2025-02-21T21:49:48Z,That's not the reason why it hasn't been selling
 2025-02-22T00:10:46Z,"Chicken and the egg. Need tons of killer apps to get people to buy the hardware, but can’t get devs because there’s not currently a large enough hardware base to buy the software if they made it."
 2025-02-22T09:51:36Z,"Get it down to £1500, remove the stupid battery pack and give it a type c port on the device itself, get rid of the silly eyesight screen, and release a usb c / hdmi box so I can wirelessly beam non Apple devices to use it as a display (ie my gaming pc and work windows laptop) and it’d serve as a nice replacement for my older LG OLED, as well as an awesome desk setup in my WFH office.
@@ -11799,405 +11850,3 @@ LOL."
 2025-02-16T05:55:48Z,Too bad there's nowhere to park downtown.
 2025-02-15T06:29:11Z,Oof
 2025-02-15T19:16:16Z,"Apple is doing so well, they’re going to have a pile of MORE money to give to Trump and his “destroy America” agenda!"
-2025-02-14T20:08:39Z,"With Apple Intelligence taking up 7GB, only growing in size? No way."
-2025-02-14T20:27:03Z,Mine taking 5.5gb
-2025-02-14T22:02:32Z,its possible to delete it?
-2025-02-14T22:22:25Z,Probably by disabling AI all along
-2025-02-15T01:35:08Z,Don’t threaten me with a good time.
-2025-02-15T12:11:47Z," [Yes](https://www.macrumors.com/how-to/save-up-to-21gb-storage-disable-apple-intelligence/), but [apparently you have to keep doing it after every update](https://www.macworld.com/article/2605075/psa-apples-latest-updates-turn-on-apple-intelligence-even-if-you-had-switched-it-off.html)."
-2025-02-15T07:50:13Z,And they haven't even mentioned battery size. It better be a decent size this time :(
-2025-02-15T08:10:33Z,"That would be a welcome change. With all the technologies constantly improving, I feel like battery innovation really lacks behind"
-2025-02-15T08:11:48Z,"Yeah, there are some Chinese phones with denser batteries with a 6,000 mAh capacity and things like that. Hopefully Apple improves that too."
-2025-02-15T08:19:08Z,"We can only hope. Apple is mostly design over function, and they’ll only want to make it slimmer and lighter when possible if they get the chance. We’ll see"
-2025-02-14T22:13:50Z,Really hoping they leave that as opt in. I don’t want that garbage nor do I want it to waste space.
-2025-02-14T20:23:42Z,"Current iPhone SE is $429 and upgrading to 128gb storage is $50 putting it at $479. I remember when I got my iPhone 12 mini it was $50 to upgrade to 128gb as well. If the SE 4 costs $499 and if it comes with 64gb base storage I would expect it to cost $50 to upgrade to 128 as well, not $100. Otherwise it would be the exact same cost as iPhone 14 which has a base storage of 128 as well. That doesn’t make it impossible they would do that but I think it’s exceedingly unlikely."
-2025-02-15T03:57:02Z,"Yeah my guess is that they’ll do a $50 step up knowing that most people would want more than 64gb and that’ll make the realistic usable base price more like $549. They don’t really want to cannibalize too many iPhone 16 sales either so it makes sense to get the prices close enough to make you reconsider the cheapest option.
-
-But hopefully we see some decent deals, I feel like there are always a lot of SE deals in general since the customers are more price conscious"
-2025-02-15T10:56:30Z,"Problem is most people that buy the SE will just go for 64gb and complain that they have no storage. The SE is the price conscious end of the market, no way they are upgrading storage."
-2025-02-15T19:43:03Z,with 64gb in 2025 you'll either be forced to get cloud storage or delete pictures and videos on a monthly basis
-2025-02-17T17:58:45Z,"I have SE 2020 64 GB and I am deleting things not-stop, with most apps uninstalled. I can’t even install the latest updates because an update last year blocked a lot of space permanently, so that my phone is just screwed totally.
-
-64 GB is not viable anymore in 2025."
-2025-02-16T03:20:01Z,I wouldn’t buy a 64GB and I don’t think they should ship it with 64 either but it’s really not THAT bad.. it’s at least usable and for many people would be MORE than enough. I know people who can’t even use a whole 64GB. Some of you haven’t lived with 16GB and it shows lol
-2025-02-16T15:10:34Z,I’ve got the SE3 with 64GB and I’ve still got 29GB free.
-2025-02-16T04:24:06Z,"I know what's like to live with 5MB of storage on a Razr V3, but that's a dumb comparison, a single picture of a modern iphone takes 2-5MB, take itnto video and just at 1080p, 64GB are full in 2-6 hours, so like I said, the people buying a 64GB smartphone in 2025 WILL have to delete data on a constant basis or get cloud storage."
-2025-02-14T21:12:32Z,"Me reading the headline: Wait, like 512GB? 
-
-After reading the article: Ohhhhh, that kind of ridiculous."
-2025-02-16T03:33:11Z,512GB is good but not ridiculous. 2TB would be though lol. In all seriousness they need to have three storage tiers 128/256/512GB
-2025-02-16T10:14:46Z,the article mentions base storage so 512Gb is ridiciuous. but we know thats not gonna happen right now.
-2025-02-14T20:12:31Z,"&gt;In that case, expect the 128GB iPhone SE 4 to be $599, and the 256GB model to go for $699, which is just funny. 
-
-I've commented this exact strategy several times in the past couple weeks. It's the only thing that makes sense for a phone with specs that are so close to the iPhone 16. By not having a 128GB version, the price of the 256GB version puts you close enough to the price of the 16 that you have to consider it. This is a classic pull through pricing strategy. They did the exact same thing with the iPad Air vs iPad Pro a couple years ago. They do the same thing with the base iPad vs the Air today.
-
-https://preview.redd.it/nhkgt2mcx5je1.png?width=1328&amp;format=png&amp;auto=webp&amp;s=742a387cae46d068a2a16f990e2b7069e88bb752"
-2025-02-14T20:48:10Z,It's the pricing ladder and Apple is very good at it.
-2025-02-14T22:50:11Z,Whats a price ladder? Is it something like i want ipad - 256gigs for me -  but then it costs the same as a ipad pro - but 256gb is needed on that aswell so the price keeps growing?
-2025-02-14T23:03:24Z,Exactly.
-2025-02-15T04:24:19Z,"Step one: is base model you would be ok with but lacking one thing. ~ 50 dollars 
-
-Step two: is base model upgraded ~100 dollars 
-
-Step three: is better model unupgraded ~125 dollars. 
-
-Step four: upgraded and better model ~175 dollars. 
-
-You mentally start climbing the latter till they get you where they want."
-2025-02-15T12:51:26Z,"[https://www.youtube.com/shorts/NiNYOZZLOyg](https://www.youtube.com/shorts/NiNYOZZLOyg)
-
-This video is a pretty good explanation."
-2025-02-14T21:30:49Z,"the lack of a 128GB SKU on the ipad air is so hilariously intentional that i laughed irl when i saw it. whoever they've got on pricing is a monster, big respect"
-2025-02-14T21:45:46Z,"It worked on me though, because 64GB wasn't enough and at the 256GB price point, there was no reason not to spend a little more for the 128GB M1 Pro. I'm still using that iPad today."
-2025-02-15T02:11:38Z,Nvidia should hire them next 
-2025-02-15T04:36:43Z,"No need, they’re already doing the same thing"
-2025-02-15T06:55:57Z,"Nvidia doesn't need a ladder, they just price everything at one kidney and the daily rate determines the price of that year's flagship"
-2025-02-14T20:35:59Z,"64 gb starting storage, saved you a click"
-2025-02-14T21:00:08Z,"It will start at 128GB. Apple has phased 64 out and it would be more expensive for them to do it. They’ll just price it accordingly.
-
-The AW Ultra has a 64GB chip, but I doubt that’ll have any effect on the SE."
-2025-02-14T21:26:16Z,"base ipad still comes with 64gb. Apple is here to make profits, $100 for extra 64gb will be the case for the new SE"
-2025-02-14T21:29:16Z,"base ipad is almost 3 years old. if they're going to maintain that kind of cycle, 64GB is extremely unlikely"
-2025-02-14T22:12:21Z,"No, base iPad *came* with 64GB of storage, *in 2022.*
-
-Apple already has suppliers for 128GB chips, given the volumes of those they get, it'll be cheaper for them to make the base that and bump the price up accordingly, than to source 64GB in much smaller volumes.
-
-Also if I'm not mistaken, the upgrade to 128GB has been $50 for years now. They'll be adjusting the pricing for inflation, they'll easily make it work."
-2025-02-16T03:26:45Z,They should have phased out 64GB with the SE3 and at the same time introduced a 512GB SE.
-2025-02-14T21:03:07Z,"Thank you. I didn't know if they meant ridiculously good or ridiculously bad. In hindsight, I should have known, but I'm optomistic by nature."
-2025-02-14T22:06:39Z,Ridiculous in 2010 maybe.
-2025-02-15T02:36:21Z,It’s ridiculous in the opposite direction in 2025.
-2025-02-15T12:28:49Z,My XR has 128GB. 5 years ago that seemed like a sensible minimum.
-2025-02-14T21:58:04Z,"64GB has seemed to be fine for most of my users, just need a way around the iCloud free storage to back them up.
-
-Why are people downvoting my personal experience managing hundreds of SEs? Lol"
-2025-02-14T20:10:49Z,All we can do is 32 GB. take it or leave it.
-2025-02-14T21:06:10Z,"nice, 32 gigs of ram 😀"
-2025-02-14T20:55:19Z,"And that just killed any major hype for the device, if true, imo. 64GB is UNACCEPTABLE in 2025. Just like 8GB of RAM (in Macs)."
-2025-02-14T21:36:26Z,"It’s a $500, decently spec’d iPhone. It was always going to have a catch."
-2025-02-15T02:52:10Z,"It’s an SE, the catch is you get an outdated camera and no ProMotion. There doesn’t need to be any more catches."
-2025-02-15T00:15:01Z,"It was never going to be a $500 phone, that's just wishful thinking."
-2025-02-14T22:13:55Z,8GB RAM is not enough in a phone – what are you doing on your phone dude xD
-2025-02-14T22:17:49Z,I was referring to in Macs.
-2025-02-15T13:03:51Z,"Actually, anything under 256gb is unacceptable. And considering it cost less than 2 coffees for Apple to upgrade, no one should buy this POS if it's 64gb. It's not 2008."
-2025-02-14T20:03:03Z,64 GB in 2025. 👍🏼 Apple
-2025-02-15T00:06:54Z,Wrong finger 
-2025-02-14T20:13:07Z,"... surprised nobody, storage pricing is their most egregious way of maintaining margin on their products"
-2025-02-14T20:55:59Z,"This is literally the exact same tactic that Apple uses to differentiate between the iPad Air and Pro pricing, it’s called a pricing ladder."
-2025-02-15T02:31:17Z,IPad Air starts at 128 GB tho
-2025-02-15T04:58:40Z,iPad Air isn’t the entry level iPad
-2025-02-14T22:28:32Z,This subreddit is basically r/applerumors
-2025-02-15T17:09:26Z,What else is there to talk about anymore?
-2025-02-17T00:38:21Z,"Generally I agree with you, there's a lot more to talk about when it comes to rumors because release windows are few and far between, but I guess to spitball on some ideas...
-
-* Coverage/reviews of third party apps (MacOS, iOS, iPadOS all included)
-* Coverage/reviews/comparison breakdowns of non-Apple products specifically seeking to compete with Apple
-* Coverage/reviews/comparison between Apple ecosystem *versions* of apps versus their Windows/Android counterparts, e.g. breakdowns on what new or different features are available on one side of the equation but not others
-* Reviews of third party accessories and projects like cases, watch bands, custom mounts, keyboards and mice, etc. 
-* ""Battlestation""/set-up pics
-* How-to guides on power user features
-* History/anniversary discussions
-
-I generally see the anniversary posts but none of the rest of this stuff. Maybe it's against sub rules, I'd have to double check, but this stuff seems like the obvious gap."
-2025-02-17T00:48:00Z,"Talking about apps is only really allowed on sundays because of the no self promotion rule, even if it’s not your app how are you meant to prove you’re not the developers alt account self promoting.
-
-A lot of the “apple vs alternative” type posts are done within a week or two of a product launching, after that you’d just be rehashing the same topic and repeating what’s already been said, and that goes for hardware and software.
-
-You do see reviews of third party products occasionally, but unfortunately there’s just not much launching that’s particularly worth discussing. There’s only so many posts you can make about phone cases and magsafe stands.
-
-You’re definitely right about the lack of battlestation pics, those would be a nice addition"
-2025-02-15T00:14:14Z,64gb starting is so greedy of them
-2025-02-15T05:18:37Z,I’m at 53/64 on my SE. My music and photos are all in the cloud. Some apps take up a lot of storage on the phone. I’d want at least 128 on my next phone.
-2025-02-14T22:22:34Z,"I just want them to bring a “mini” model back man… I’m so tired of only having objectively large options, especially having to carry a work and personal phone on me at all times."
-2025-02-15T11:01:57Z,"128gb
-
-This is the most storage for a base model iphone we have ever providided!!!
-
--tim
-
-*applause*"
-2025-02-14T23:03:42Z,"At first I thought ridiculous as in big, but of course it's gonna be ridiculously small.😂
-
-This is going to be a laughing stock of the industry. They're doing their brand a disservice and treat their customers as stupid, if this is true."
-2025-02-14T20:24:14Z,"Ain't no way it comes with 64 GB of base storage.
-
-Mark my words. 
-
-Zero chance."
-2025-02-15T00:27:17Z,"Am I in 2015 again, sweet. That was a great year"
-2025-02-14T21:01:47Z,I don’t know why I thought „ridiculous” like a lot - starting from 256 with tiers being 256/512/1T 😂
-2025-02-15T04:20:04Z,"It should be 128GB standard as the base minimum storage by now. But knowing Apple, it would take another five years before this become the bare minimum storage - meanwhile you must pay the storage tax!"
-2025-02-15T06:13:49Z,"64GB is absurd. I paid £98 for my Samsung A15, which has 128GB of storage"
-2025-02-15T01:22:25Z,And still comes with 5GB iCloud storage 🤡
-2025-02-15T05:25:32Z,"that’s actually unrelated to your device, that’s per apple id… lmao"
-2025-02-15T09:23:07Z,"Yeah, unrelated..I am looking forward to all the “technical support” calls from my aunts and uncles asking why their brand-new iPhone SE storage is out of space 🤡"
-2025-02-14T20:18:04Z,"I sincerely enjoy watching Apple's hubris around memory and storage upgrades blow up in their face.  Hopefully we're about to move past this as a strategic tool to pad their profits.
-
-I can't tell what would be more iconic, a 64GB storage iPhone in 2025 when handheld PCs not much bigger than that are packing 64GB of RAM, or the refurb Mac Mini with 16GB *Default* being cheaper than the refurb M2 Mac Mini with 16GB *Upgrade*, \**chefs kiss*\*."
-2025-02-15T00:39:16Z,"64 ain’t nothing.couple big games,some pictures,and that shits gone😆"
-2025-02-15T13:34:35Z,Yeah that’s normally how it goes
-2025-02-15T02:34:25Z,"The longer Apple continues to think they can over price storage, the more their position will worsen.  It's been a running job for far too long.  Not funny anymore, Apple."
-2025-02-14T21:26:39Z,"It’s hard to imagine what they even gain on that. The prices should be so low regardless 64 or 128 GB today. I wonder if it has more to do with forcing people into other models if they have anything but the most basic needs, rather than too bad profit margins…"
-2025-02-14T21:29:23Z,Thought it was gonna be 512gb base with that title... Nope
-2025-02-14T23:55:35Z,"I don’t doubt it. Just means that Samsung and others are making them squirm.  
-
-I’m an iPhone user and want to see Apple face more competition. "
-2025-02-15T02:38:35Z,"Will it be called the 16E?  It looks to be a huge leap from the SE 2.  If that's their logic, this thing may come in higher than $499.  Not worth it beyond that price."
-2025-02-16T03:21:45Z,I hope they introduce a 512GB model. Was disappointed that the SE3 didn’t have a 512GB
-2025-02-20T02:01:45Z,Well. Lol
-2025-02-14T21:45:45Z,"People here are being outraged by it even though they were not going to buy it anyway and also they are not the target demographic. 
-It’s an iPhone for people who want the cheapest iPhone but don’t need it for anything else"
-2025-02-15T09:47:13Z,"I was really intending to buy this device when it comes out, and that was despite 60 Hz and single camera. In an era where 256 should be the bare minimum, if this thing gets released with 64, it's over for me. Fuck the corporate greed so hard.
-
-
-Edit: Looks like we have an Apple employee who's downvoting all comments of criticism furiously. Welcome you too, iSheep, don't think we didn't notice you :)"
-2025-02-14T21:34:45Z,“The budget phone comes with budget specs. News at 11”
-2025-02-14T20:33:25Z,"Why would I choose the 128gb SE 4  over a regular 14 or 15? 
-
-I’m missing something."
-2025-02-14T20:38:07Z,"A18 chip with 8 GB of RAM vs A15/A16 with 6 GB.
-
-iPhone 14 series doesn't have USB-C either."
-2025-02-14T20:39:39Z,"Faster processor, more RAM"
-2025-02-14T22:03:13Z,14 isn’t available in europe.
-2025-02-14T20:23:57Z,I don't know why anyone would expect any different. They want you to buy this phone for your mom and sign her up for an icloud subscription.
-2025-02-15T00:10:47Z,"My usage is around 70gb / 50gb (on android / iPhone), but I always buy 256gb model just in case. 
-
-Can't imagine how someone can get by with 64gb, seems totally impossible."
-2025-02-15T05:01:05Z,"You literally described yourself as someone who can probably get by on 64GB lol
-
-Store your photos in the cloud and stream all your music. 
-
-After that unless you’re storing files locally on your phone what do you expect the average user to do with 256gb of storage?"
-2025-02-15T05:50:56Z,"&gt; You literally described yourself as someone who can probably get by on 64GB lol
-
-You're forgetting that iOS and system data, as well as Apple Intelligence, takes up a significant amount on their own.
-
-&gt; Store your photos in the cloud and stream all your music.
-
-Consumers shouldn't need to adjust their behaviour to cater to a company being cheap.
-
-&gt; After that unless you’re storing files locally on your phone what do you expect the average user to do with 256gb of storage?
-
-Not need to continually manage their storage? I don't even understand how anyone can argue in favour of Apple in this scenario."
-2025-02-15T04:08:51Z,"Oh a ridiculous amount, is it? I thought it was going to be a ginormous amount, so I am disappointed"
-2025-02-16T13:47:30Z,It’s an iPhone SE. Not sure what everyone is expecting here. It’s for people who use or want to use an iPhone but don’t need all the extras.
-2025-02-14T22:21:58Z,I bet you they show the new device running it next week
-2025-02-15T00:03:28Z,"Chances are it is just a Preview Mode users must register followed by the full ""2.0"" release in 6 months lol"
-2025-02-14T22:37:45Z,I bet you they don’t
-2025-02-14T22:40:28Z,"I bet you they do and it’s disappointing. 
-
-These all seem like easy options."
-2025-02-14T22:42:12Z,"This one most likely
-
-If they allow it where ChatGPT can access your phone context then it’ll be interesting"
-2025-02-15T02:14:32Z,They should just allow us to let ChatGPT do all the thinking they want to do themselves
-2025-02-16T00:43:12Z,There is nothing to “disappoint” they’ve already shown off the features at WWDC the problem is actually shipping it lol.
-2025-02-15T03:14:33Z,Come on they’re obviously gonna hype up the new se as running AI
-2025-02-14T22:56:46Z,Everybody relax! Apple Intelligence is going to be delived right on time... for the launch of iPhone 17 Pro!
-2025-02-15T01:15:58Z,Maaaybe with a few languages missing. No biggie.
-2025-02-15T16:50:50Z,"On the one hand: I'm okay with them taking the time to get things right.
-
-On the other hand, if it's buggy and not working well because of reasons fundamental to LLMs (even OpenAI has struggled with the Operator, it seems), then I don't think it'll be properly ready for the next few years.   
-  
-The caveat being that the new Siri features are supposed to work with Intents from developers and their own apps - and start with just their own apps. It should be an easier lift than actually clicking on a browser the way Operator does, and Claude's Computer Use framework, etc. So if we're at this stage and it's still not working, ooof, that just does not bode well."
-2025-02-15T03:15:32Z,Good. Don’t release half baked shit
-2025-02-15T20:22:20Z,Too late
-2025-02-15T20:35:20Z,"None of this app intents stuff has rolled out yet. 
-
-The features that are out are largely underwhelming but they do seem largely finished 
-
-(Notable exception of notification summaries which are horrific)"
-2025-02-17T21:22:38Z,"Image playground looks horrible compared to any other image generator, like stuff you’d see near the start of the AI boom."
-2025-02-17T21:50:25Z,"It still works to generate images as advertised. 
-
-The originally demoed images look just as horrible as the ones we can generate ourselves now"
-2025-02-17T22:56:39Z,Working and working well are two different things.
-2025-02-18T00:41:36Z,It works as originally advertised though no?
-2025-02-18T01:29:08Z,"Apple charges a premium and touts quality, I expect premium quality software not the bare minimum.
-
-They were also using these features as a huge selling point then delayed them to “get them right” and we get them and they’re almost 4-5 years behind the competition. 
-
-You may just have low standards."
-2025-02-18T01:45:25Z,"Image playground looks like shit. 
-
-But it’s the same looking shit they showed off at WWDC. 
-
-They have delivered the promised software. 
-
-If you had different expectations then that’s on you. 
-
-Image playground was delayed???"
-2025-02-18T14:45:36Z,"Everything was delayed what are you even trying to get at? Image playground was released in December to everyone. Four months after the launch. 
-
-Literally nothing AI related was ready at launch."
-2025-02-18T13:36:00Z,That’s because Image Playground is entirely on device and any other image generator is sending your data to the cloud. That’s an extremely important difference.
-2025-02-15T21:26:22Z,They already did—see iPhone 16–it’s a half baked phone with promise of Apple AI.
-2025-02-15T21:29:48Z,"The hardware itself is fully baked
-
-Heck, the camera control is so baked it’s burnt. They way overthought that and not in a good way."
-2025-02-15T21:31:06Z,But the software isn’t…I’d excuse it if it wasn’t such a big selling point when they released the phone.
-2025-02-15T22:56:58Z,Don’t buy things based on future features.
-2025-02-15T17:17:59Z,"Been saying this from day one, iOS 18 wasn’t the AI release from Apple, it was always intended to be iOS 19, but the market forced them to accelerate the timeline. Everything we’ve got so far – other than the privacy stuff – has been table stakes for AI features. 
-
-Intents and Personal Context are the interesting differentiators and when they finally launch they’ll be closer WWDC 2025 and quite possibly the iPhone 17 than the iPhone 16 which will be six months old in under a month."
-2025-02-15T21:32:00Z,"Everyone’s been saying this since day one. 
-
-The part where Apple intelligence was iPhone 15 pro only was the clearest sign we’ve ever had that apple was caught flat footed and rushing to catch up."
-2025-02-16T22:32:56Z,“The market” you mean the marketing department 🤣
-2025-02-14T22:23:34Z,"Mark Gurman also claimed Apple was going to announce something today. Guess what didn’t happen? 
-
-Here’s a tip:
-
-Stop listening to Mark Gurman. He and Bloomberg are literally paid to manipulate the stock market. 
-
-https://daringfireball.net/2023/07/apple_gpt_bloomberg"
-2025-02-14T22:41:16Z,He claimed they were going to announce something soon and then the day after they put out a teaser for next week.
-2025-02-15T00:00:21Z,"He didn't say that Apple would announce something on Friday, but that Apple would share something with the press in advance."
-2025-02-17T14:12:15Z,"I am so fucking tired of Mark Gurman posts. I’d filter him out, but then I’d never know which of the rumours flying around are actually his manipulative headlines."
-2025-02-17T14:13:42Z,SAME
-2025-02-14T22:31:14Z,"Even if he’s right a majority of the time, why have so many started believing everything he says, all the time?"
-2025-02-15T04:39:51Z,"Because he’s right the majority of the time. 
-
-You answered your own question"
-2025-02-14T22:33:00Z,"Agreed, and That’s the thing: he isn’t even right a majority of the time. People just forget the times he’s wrong and no one says anything about it and he sure as hell never says he’s wrong lol"
-2025-02-14T23:14:06Z,"&gt;That’s the thing: he isn’t even right a majority of the time.
-
-No, he is actually correct most of the time, as shown by AppleTrack's [leaderboard](https://appletrack.com/leaderboard/).
-
-Gurman's accuracy was 86.5% from 2020–2022, the tracker doesn't give partial credit, and I have little reason to believe that he's gotten much worse since then.
-
-Those who incorrectly believe that sources like Gurman, Kuo, Young, and MacRumors's own sources are unreliable *always* make one or more of the following mistakes:
-
-1. Cherry-picking
-2. Misremembering rumors
-3. Not keeping track of the rumor's source
-
-Regarding Apple analysts: The more information—even if imperfect—that we have about future Apple products, the less analysis we need. I believe that's why analysts like John Gruber and Neil Cybart constantly try to bring down the Apple community's opinion on the rumor mill. If they convince people that rumor sites X, Y, and Z are not to be trusted, then those people will spend more time reading/following *them* instead."
-2025-02-19T21:16:20Z,"The way this sub hates leakers is baffling. It’s the only reason we have an idea of what’s in the pipeline. Apple would prefer us to be 100% in the dark. Then Apple’s keynotes are met with a “yawn” in here because folks have already known Apple’s plans for years, that info doesn’t come out of thin air lol"
-2025-02-15T03:15:27Z,"To test this theory, last year i put down every claim he made on his newsletter in a notion page and checked those claims off when watching WWDC.
-
-He was pretty accurate.
-
-https://preview.redd.it/lvkzl0b608je1.jpeg?width=2556&amp;format=pjpg&amp;auto=webp&amp;s=f69eb24bf183f94369bfddd03d922bac099d731b"
-2025-02-15T03:20:43Z,"Respectfully, this is meaningless. I don’t know what you wrote down, don’t know what qualifies as “accurate” or not, etc 
-
-I’ve seen him literally claim something wouldn’t happen that another source said would happen, then it happened, then he pretended all along that he said it. 
-
-Your “chart” also doesn’t account for the latter half of my comment, where his “coverage” is influenced by Bloomberg’s constant pressure to create “market moving news,” which incentivizes dramatizing positive and negative news. It also doesn’t account for the fact that he constantly mixes in his own personal feelings about topics and presents them as actual facts in his articles"
-2025-02-15T03:26:47Z,"https://preview.redd.it/7kkv78tt18je1.jpeg?width=1179&amp;format=pjpg&amp;auto=webp&amp;s=a22d08115cb5e70c67997882047f9a8f6bafb938
-
-I’ll DM you the link if you want for this, lol. They are time stamped with links to his newsletter claims, and if they occurred during WWDC, I checked them off.
-
-As for the second part, yeah, I mean I guess that’s true, but it does not really matter for me, personally. The articles are pretty sensationalist some times but I’ll read the articles if it has something to do with the new OS’s, and if not, then I won’t read them."
-2025-02-15T03:28:38Z,"It matters, period. It makes no sense to claim he’s accurate then say that he does do what I said in the second half of my comment and then say it doesn’t matter to you really. Doesn’t make any logical sense to me. 
-
-Again, as for your note taking on it, it’s still meaningless to me. When were the claims made? Was it what he said a day before the event? 3 weeks before? Does it take into account stuff he said about rumors he didn’t push out but others did, what he said regarding that, etc?
-All of this is overly simplistic to me. 
-
-And I don’t defend rumor mongers, especially ones that manipulate stuff with their articles"
-2025-02-15T03:29:46Z,"If he says iOS 18 will have a hearing aid function 4 months before release, is that not accurate? Just read past the sensational stuff, it’s not as if you can spin that. 
-
-https://www.bloomberg.com/news/newsletters/2024-03-10/what-did-the-apple-car-look-like-inside-apple-s-planned-self-driving-vehicle-ltlic8vt
-
-https://www.macrumors.com/2024/03/11/airpods-pro-to-gain-hearing-aid-mode-ios-18/"
-2025-02-15T03:34:07Z,"You’re linking to single rumors, and I never once have claimed he’s never been right on something. He has. I claimed he’s wrong often, he never admits when he is wrong leading to a perception distortion, and he manipulates narratives, and constantly presents his opinion as fact. "
-2025-02-15T03:47:39Z,"You realize everyone can see iMacmatician and Coolpop52 proving you wrong, right?!
-
-edit: jesus bro project harder"
-2025-02-14T22:38:49Z,"As an investor, it doesn’t matter if he’s right. What matters is how the market reacts to what he says."
-2025-02-15T10:20:58Z,Siri never left beta for so many years and now Apple needs more time for it? Just scrap Siri and bring us something new.
-2025-02-16T00:12:57Z,"Isn’t that what they’re most likely doing? The whole damn thing is being rewritten from the ground up. “Siri” is a brand even if it is dog shit. The amount of people around the world with active devices know the word “Siri” just like they know the word “Google”. No way they’re going to nix the branding even if the new Siri is a completely different product. 
-
-And Siri’s been getting worse because they’re prob not working on the engine beneath the one that’s available currently. 
-
-I could be wrong, but let’s hope Apple can walk &amp; chew gum at the same time with their billions in cash flow. Its success depends on whether senior level executives designate their priorities &amp; funds appropriately, and I agree — I’m not hopeful. But the moniker Siri is probably never going away."
-2025-02-14T23:42:58Z,Actually witnessing the unstoppable force (Siri being dogshit) vs immovable object (working examples shown at wwdc) playing out in real time.
-2025-02-15T04:43:37Z,"Have they actually done a real life demo of this stuff at all?
-
-The stuff they showed during the wwdc keynote was not an actual demo. It was like a proof of concept video with real UI and graphics. But obviously none of the work under the hood was anywhere close to finished"
-2025-02-15T04:44:52Z,"Yeah no it was not real time or show outside the keynote at all, it’s just because it’s fucking Apple showing tangible, cut out, repeatable scenarios at WWDC that I thought it would be unheard of for them to not deliver (immovable object)."
-2025-02-15T20:20:28Z,This happened with visionOS too. Some features were removed from the final release and some UI elements were completely redesigned before the final release. The removed features were edited out of the original video and the redesigned ones remain inaccurately displayed 
-2025-02-14T22:23:45Z,"So would you rather hear people complaining that it's delayed, or would you rather hearing them complain that it's disappointing and doesn't work as advertised? Those are the options. Either way, get ready for the complaining."
-2025-02-14T22:53:45Z,I would already be happy if Siri wouldn‘t get incrementally worse.
-2025-02-14T22:44:00Z,I’ve been in or partly in the Apple ecosystem for nearly 20 years. The complaining never ever ends.
-2025-02-15T14:09:55Z,And Siri has been the longest lasting in that cycle.
-2025-02-15T00:05:13Z,"Reddit: Apple intelligence sucks; Apple should have waited 
-
-Apple: okay we’ll wait
-
-Reddit: how dare Apple delay the release?!?!?"
-2025-02-18T17:55:25Z,"The problem is it's both.
-
-Everything they've been doing lately is both shit AND late."
-2025-02-15T15:48:34Z,Then Apple should release things when they are ready.
-2025-02-15T04:40:58Z,"lol, we all know it’s gonna be both in the end. 
-
-I’m excited for the app intents upgrade but also have no doubt at all it’s gonna be somewhere between buggy and non functional."
-2025-02-18T17:55:42Z,Exactly.
-2025-02-15T19:12:02Z,"I don't even think those are two different options at this point. It's going to end up being both late and disappointing. 
-
-Apple are too far behind at this point to likely ever catch up, and their company philosophy around user data will ensure this."
-2025-02-18T03:36:02Z,It's Apple's fault for announcing a feature that's not ready yet.
-2025-02-15T15:47:02Z,"Shocking! 
-
-Who in their right mind didn't see this inevitability on the horizon? You don't need Gurman or a crystal ball to see this. Judge over the 13 years how well Apple understands AI. (For 11 years they didn't care. Now they care but haven't got a clue where to start.)"
-2025-02-16T00:17:14Z,Apples been a pioneer in machine learning before it was ever re-dubbed “AI”. Hell even AI isn’t true AI. What they were ignorant of was developing LLMs perhaps using their machine learning knowledge. Now they’re racing to put together an UI ready LLM because somehow they didn’t see OpenAI coming.
-2025-02-16T07:45:04Z,"&gt; What they were ignorant of was developing LLMs perhaps using their machine learning knowledge. Now they’re racing to put together an UI ready LLM because somehow they didn’t see OpenAI coming.
-
-We wholeheartedly agree on this."
-2025-02-18T03:37:19Z,"Prime example of ""resting on their laurels"""
-2025-02-14T22:30:01Z,"""Looks at source of article\*
-
-\*Doesn't bother clicking the link.\*"
-2025-02-15T02:54:07Z,Gurman had a 97% accurate WWDC record last year.
-2025-02-15T00:03:53Z,"First was crypto, then nft, now ai. Sell it to softbank, but i am fed up!"
-2025-02-15T21:25:56Z,Apple is saving it for iPhone 17 selling point (I’m such a sucker for buying the 16).
-2025-02-16T07:21:45Z,"iPhone 17: We have actual Apple Intelligence, and we think you gonna love it"
-2025-02-17T23:36:19Z,"I love how it’s a Siri overhaul but it’s only for new phones, so essentially they’ll never actually *fix* Siri."
-2025-02-14T22:22:31Z,Thank you for the gift
-2025-02-14T23:20:40Z,"Shocker. Who didn’t see this coming?
-
-So happy I bought the first phone built for Apple Intelligence. It’s junk."
-2025-02-14T23:49:38Z,"I have an ip13pro and I almost fell for the ai 16pro bull, glad I didn’t "
-2025-02-15T15:59:08Z,Siri was probably telling people to hurt themselves.
-2025-02-18T03:33:41Z,So the fix itself has bugs?
-2025-02-18T03:47:14Z,"Don’t overhaul Siri with AI, she’s bad enough already."
-2025-02-19T19:19:57Z,"I hate reading these comments
-
-If apple released it half baked, and unfinished, the common complaint would be ""This is garbage, they should have spent more time fixing it before releasing a half baked product, I miss the OLD apple"" 
-
-And now with the delays you have people basically saying shit like ""This is so annoying, I wish they would just release it half baked so that we can test it and it can get better over time, instead of delaying it JUST IN TIME FOR THE NEXT IPHONE, GREEDY BASTARDS!!!"" 
-
-What do you people want?"
-2025-02-15T01:37:12Z,It’s crazy how bad Siri is. Apple is viewed as an elite brand and Siri is such dog water I’d be embarrassed if I put a product out that bad. Perfect example the other day I was looking at a website with calendar info on it. I ask Siri to add the calendar event to my phone and it doesn’t know what to do.…
-2025-02-14T23:16:55Z,"I don't like the new siri UI. I feel like you used to be able to see past siri requests, but now you can't. It also feels easier to accidentally dismiss."
-2025-02-15T00:00:52Z,You’ve never been able to do that.
-2025-02-15T02:57:08Z,You could until iOS 15.
-2025-02-15T00:44:10Z,"Pretty sure you’ve been able to scroll up and see past requests before, yeah. I’m not saying complete history, but at least from the past day. 
-
-Maybe I truly don’t use Siri enough to notice how long ago they got rid of it, but it would’ve been nice to still see the siri request from seconds ago that I accidentally dismissed."
-2025-02-15T02:58:01Z,You're right. iOS 14 and earlier allowed you to view Siri history.
-2025-02-15T04:44:02Z,What? Where?
-2025-02-15T13:18:03Z,"When Siri was open, you could pull down from the top of the screen to see the history."
-2025-02-15T01:24:45Z,Siri is just rubbish.
-2025-02-15T04:44:53Z,"If you can’t use Siri to basic things like set timers, send texts pause music etc etc. 
-
-That’s might be more a you problem than a Siri problem"
-2025-02-15T22:55:16Z,"I get that people want some sort of supercomputer to do their bidding, and I don’t really care about using my voice that much - but Siri does work fine for me. I don’t think Alexa or Google Home much better, the biggest problem I have is that it’s useless for non-Apple home stuff. But I could fix that if I put some effort in"
-2025-02-18T17:50:56Z,"Me: Siri, set a timer for 15 minutes. 
-Siri: —(long pause)
-Siri: Sorry, I’m having problems. 
-Siri: —(long pause)
-Siri: Try again later. 
-
-Me: Siri, what’s the temperature?
-Siri: Sorry, I need to know your location first. 
-Me: Siri, what’s the temperature?
-Siri: it’s 6 degrees out. 
-
-Me: Siri, what’s my battery percentage?
-Siri: Sorry, I don’t have access to that. 
-
-Simple requests? Yeah, thanks for the dumbass comment."
-2025-02-14T22:37:20Z,Beyond a joke this now. I’m so fed up with Apple and feel like a fucking mug buying their shite every year;(
