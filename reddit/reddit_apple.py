@@ -3,6 +3,7 @@ import pandas as pd
 from dotenv import load_dotenv
 import os
 from tabulate import tabulate
+from tqdm import tqdm  # For progress bars
 
 load_dotenv()
 
@@ -16,6 +17,7 @@ user_agent = 'Test/0.0.1'
 auth = requests.auth.HTTPBasicAuth(client_id, client_secret)
 data = {"grant_type": "password", "username": username, "password": password}
 headers = {"User-Agent": user_agent}
+
 # Request the access token
 response = requests.post(
     "https://www.reddit.com/api/v1/access_token", auth=auth, data=data, headers=headers
@@ -25,21 +27,33 @@ token = response.json()["access_token"]
 headers.update({"Authorization": f"bearer {token}"})
 
 """
-Get the first 100 posts from hot posts on Apple subreddit!
+Get the first 100 posts from hot posts on the Apple subreddit.
 """
 res = requests.get(
-    "https://oauth.reddit.com/r/apple/hot", headers=headers, params={"limit": 100}
+    "https://oauth.reddit.com/r/apple/hot",
+    headers=headers,
+    params={"limit": 100},  # You can adjust this limit as needed.
 )
 
 rows = []
-for post in res.json()["data"]["children"]:
+# Wrap posts extraction loop with a tqdm progress bar.
+for post in tqdm(res.json()["data"]["children"], desc="Extracting posts"):
     data_post = post["data"]
     rows.append(
         {
             "id": data_post["id"],
             "subreddit": data_post["subreddit"],
-            "title": data_post["title"],
-            "selftext": data_post["selftext"],
+            # Immediately fix text encoding in title and selftext:
+            "title": (
+                data_post["title"].replace("â€™", "'")
+                if data_post["title"]
+                else data_post["title"]
+            ),
+            "selftext": (
+                data_post["selftext"].replace("â€™", "'")
+                if data_post["selftext"]
+                else data_post["selftext"]
+            ),
             "upvote_ratio": data_post["upvote_ratio"],
             "ups": data_post["ups"],
             "downs": data_post["downs"],
@@ -60,10 +74,13 @@ df["created_time"] = pd.to_datetime(df["created_utc"], unit="s", utc=True).dt.st
 )
 print("Posts DataFrame:")
 print(df)
-# print(tabulate(df, headers='keys', tablefmt='psql')) # This doesn't work well right now because of weird post formatting.
-print("\n" + "="*50 + "\n")
+print("\n" + "=" * 50 + "\n")
+
 
 def extract_comments(comments_list, post_id, depth=0):
+    """
+    Recursively extract comment data from a list of comments.
+    """
     extracted = []
     for comment in comments_list:
         # Skip non-comment objects (e.g., "more" objects)
@@ -76,7 +93,12 @@ def extract_comments(comments_list, post_id, depth=0):
                 "comment_id": data.get("id"),
                 "parent_id": data.get("parent_id"),
                 "author": data.get("author"),
-                "body": data.get("body"),
+                # Fix text encoding in comment body:
+                "body": (
+                    data.get("body").replace("â€™", "'")
+                    if data.get("body")
+                    else data.get("body")
+                ),
                 "ups": data.get("ups"),
                 "downs": data.get("downs"),
                 "score": data.get("score"),
@@ -95,10 +117,18 @@ def extract_comments(comments_list, post_id, depth=0):
             extracted.extend(child_comments)
     return extracted
 
+
 all_comments = []
 
-# Only process the first 10 posts to save compute.
-for idx, row in df.head(10).iterrows():
+# Process a subset of posts (here using first 100 posts) to extract comments.
+posts_subset = df.head(100)
+print("Extracting comments from posts...")
+# Wrap the loop with a tqdm progress bar.
+for idx, row in tqdm(
+    posts_subset.iterrows(),
+    total=len(posts_subset),
+    desc="Processing posts for comments",
+):
     post_id = row["id"]
     comments_url = f"https://oauth.reddit.com/comments/{post_id}"
     response = requests.get(comments_url, headers=headers, params={"limit": 100})
@@ -114,11 +144,11 @@ comments_df = pd.DataFrame(all_comments)
 comments_df["created_time"] = pd.to_datetime(
     comments_df["created_utc"], unit="s", utc=True
 ).dt.strftime("%Y-%m-%dT%H:%M:%SZ")
-print("Combined Comments DataFrame (from first 10 posts):")
+print("Combined Comments DataFrame (from first 100 posts):")
 print(comments_df.head())
-print("\n" + "="*50 + "\n")
+print("\n" + "=" * 50 + "\n")
 
-# Create separate DataFrames for each post (if needed)
+# (Optional) Create separate DataFrames for each post if needed.
 dfs_by_post = {}
 for post_id in comments_df["post_id"].unique():
     dfs_by_post[post_id] = comments_df[comments_df["post_id"] == post_id]
@@ -126,7 +156,7 @@ for post_id in comments_df["post_id"].unique():
 for post_id, post_comments_df in dfs_by_post.items():
     print(f"Comments for post {post_id}:")
     print(post_comments_df)
-    print("\n" + "-"*40 + "\n")
+    print("\n" + "-" * 40 + "\n")
 
 # --------------------------------------------------
 # Save the posts and comments DataFrames to CSV files
@@ -151,10 +181,8 @@ text_rows = []
 
 # Process posts: include title and selftext as separate data points.
 for idx, row in df.iterrows():
-    # If title is non-empty, add it.
     if row["title"] and str(row["title"]).strip():
         text_rows.append({"created_time": row["created_time"], "text": row["title"]})
-    # If selftext is non-empty, add it.
     if row["selftext"] and str(row["selftext"]).strip():
         text_rows.append({"created_time": row["created_time"], "text": row["selftext"]})
 
