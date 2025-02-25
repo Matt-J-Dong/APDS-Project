@@ -2,11 +2,12 @@ import requests
 import pandas as pd
 from datetime import datetime, timezone, timedelta
 
+
 # Define function to get the Unix timestamp for the first and last second of a given week
-def get_week_timestamps(year, week):
-    start_date = datetime(year, 1, 1, tzinfo=timezone.utc) + timedelta(weeks=week - 1)
+def get_week_timestamps(start_date):
     end_date = start_date + timedelta(days=6, hours=23, minutes=59, seconds=59)
     return int(start_date.timestamp()), int(end_date.timestamp())
+
 
 # Initialize an empty list to store the formatted data
 formatted_data = []
@@ -14,12 +15,13 @@ formatted_data = []
 # Define the subreddit to fetch data from
 subreddit = "apple"
 
-# Set the target year
-current_year = 2024
+# Set the start date (January 1, 2024) and today's date
+start_date = datetime(2024, 1, 1, tzinfo=timezone.utc)
+today = datetime.now(timezone.utc)
 
-# Loop through each week of the year (52 weeks)
-for week in range(1, 53):
-    since, until = get_week_timestamps(current_year, week)
+# Loop through each week from January 1, 2024, until today
+while start_date < today:
+    since, until = get_week_timestamps(start_date)
 
     # Define the API URL with dynamic timestamps
     url = f"https://api.pullpush.io/reddit/submission/search?html_decode=True&subreddit={subreddit}&since={since}&until={until}&size=100"
@@ -45,16 +47,23 @@ for week in range(1, 53):
 
             formatted_data.append({"Time Data": time_data, "Headline": title})
 
-        print(f"Fetched {len(submissions)} submissions for Week {week} of {current_year}")
+        print(
+            f"Fetched {len(submissions)} submissions for the week starting {start_date.strftime('%Y-%m-%d')}"
+        )
 
     else:
-        print(f"Error fetching data for Week {week} of {current_year}: {response.status_code}, {response.text}")
+        print(
+            f"Error fetching data for the week starting {start_date.strftime('%Y-%m-%d')}: {response.status_code}, {response.text}"
+        )
+
+    # Move to the next week
+    start_date += timedelta(weeks=1)
 
 # Create a DataFrame
 df = pd.DataFrame(formatted_data)
 
 # Save to CSV
-csv_filename = "reddit_submissions_weekly.csv"
+csv_filename = "reddit_posts_weekly.csv"
 df.to_csv(csv_filename, index=False)
 
 print(f"All data saved to {csv_filename}")

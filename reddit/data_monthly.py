@@ -18,12 +18,14 @@ formatted_data = []
 # Define the subreddit to fetch data from
 subreddit = "apple"
 
-# Get the current year dynamically
-current_year = 2024
+# Set the start date (January 2024) and today's date
+start_date = datetime(2024, 1, 1, tzinfo=timezone.utc)
+today = datetime.now(timezone.utc)
 
-# Loop through each month of the year
-for month in range(1, 13):
-    since, until = get_month_timestamps(current_year, month)
+# Loop through each month from January 2024 until today
+while start_date < today:
+    year, month = start_date.year, start_date.month
+    since, until = get_month_timestamps(year, month)
 
     # Define the API URL with dynamic timestamps
     url = f"https://api.pullpush.io/reddit/submission/search?html_decode=True&subreddit={subreddit}&since={since}&until={until}&size=100"
@@ -49,16 +51,24 @@ for month in range(1, 13):
 
             formatted_data.append({"Time Data": time_data, "Headline": title})
 
-        print(f"Fetched {len(submissions)} submissions for {current_year}-{month:02d}")
+        print(f"Fetched {len(submissions)} submissions for {year}-{month:02d}")
 
     else:
-        print(f"Error fetching data for {current_year}-{month:02d}: {response.status_code}, {response.text}")
+        print(
+            f"Error fetching data for {year}-{month:02d}: {response.status_code}, {response.text}"
+        )
+
+    # Move to the next month
+    if month == 12:
+        start_date = datetime(year + 1, 1, 1, tzinfo=timezone.utc)
+    else:
+        start_date = datetime(year, month + 1, 1, tzinfo=timezone.utc)
 
 # Create a DataFrame
 df = pd.DataFrame(formatted_data)
 
 # Save to CSV
-csv_filename = "reddit_submissions_yearly.csv"
+csv_filename = "reddit_posts_monthly.csv"
 df.to_csv(csv_filename, index=False)
 
 print(f"All data saved to {csv_filename}")
