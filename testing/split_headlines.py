@@ -6,49 +6,57 @@ from collections import defaultdict
 headlines_file = 'headlines.csv'
 availability_file = 'is_available.csv'
 
-# Load availability data into a dictionary
+# Load availability data
 availability = defaultdict(set)
-
-with open(availability_file, 'r', encoding='utf-8') as f:
-    reader = csv.DictReader(f)
+with open(availability_file, "r", encoding="utf-8") as af:
+    reader = csv.DictReader(af)
     for row in reader:
         date = row['Date']
-        for publication, available in row.items():
-            if publication != 'Date' and available.lower() == 'true':
-                availability[publication].add(date)
+        for pub, is_available in row.items():
+            if pub != "Date" and is_available.lower() == "true":
+                availability[pub].add(date)
 
-# Prepare writers for each publication
+# Writers and file handles for each publication
 writers = {}
 files = {}
 
-# Read and split headlines
-with open(headlines_file, 'r', encoding='utf-8') as infile:
-    reader = csv.DictReader(infile)
+# Read and filter headlines
+with open(headlines_file, "r", encoding="utf-8") as hf:
+    reader = csv.DictReader(hf)
+
+    # Remove URL from fieldnames
+    output_fields = [f for f in reader.fieldnames if f != "URL"]
+
     for row in reader:
         pub = row['Publication']
         raw_date = row['Date']
 
-        # Check if article is available for this publisher and date
-        if raw_date in availability.get(pub, set()):
-            # Convert date to UTC Zulu time (midnight)
-            try:
-                dt = datetime.strptime(raw_date, "%Y%m%d")
-                row['Date'] = dt.strftime("%Y-%m-%dT00:00:00Z")
-            except ValueError:
-                continue  # skip bad date format
+        # Skip if article isn't available
+        if raw_date not in availability.get(pub, set()):
+            continue
 
-            # Open output file and writer if not already open
-            if pub not in writers:
-                outfile = open(f'{pub.replace(" ", "_")}_headlines.csv', 'w', encoding='utf-8', newline='')
-                writer = csv.DictWriter(outfile, fieldnames=reader.fieldnames)
-                writer.writeheader()
-                writers[pub] = writer
-                files[pub] = outfile
+        # Convert Date to Zulu time
+        try:
+            dt = datetime.strptime(raw_date, "%Y%m%d")
+            row["Date"] = dt.strftime("%Y-%m-%dT00:00:00Z")
+        except ValueError:
+            continue  # Skip if date is invalid
 
-            writers[pub].writerow(row)
+        # Prepare writer if not yet open
+        if pub not in writers:
+            out_filename = f"{pub.replace(' ', '_')}_headlines.csv"
+            f = open(out_filename, "w", encoding="utf-8", newline="")
+            writer = csv.DictWriter(f, fieldnames=output_fields)
+            writer.writeheader()
+            writers[pub] = writer
+            files[pub] = f
 
-# Close all open files
+        # Write row without URL
+        filtered_row = {k: v for k, v in row.items() if k in output_fields}
+        writers[pub].writerow(filtered_row)
+
+# Close all output files
 for f in files.values():
     f.close()
 
-print("✅ Headlines split by publisher with Zulu time formatting and availability filtering.")
+print("✅ Files split by publication, URL removed, dates converted to UTC Zulu time.")
