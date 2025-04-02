@@ -4,6 +4,7 @@ from datetime import datetime
 from dateutil import parser as date_parser
 from collections import defaultdict
 import pytz
+import glob
 
 # Keyword to filter
 keyword = "samsung"
@@ -25,6 +26,7 @@ publishers = [
 google_news_folder = "Google_News_Data"
 publishers_folder = "Publishers_Data"
 base_data_folder = "Older_Data"
+analyst_data_folder = "Analyst_Data"
 
 # Define publisher file naming
 def publisher_filename(pub_name):
@@ -61,11 +63,11 @@ for pub in publishers:
         "headline_field": "Headline",
     }
 
-# Add headlines.csv base file (also now in Publishers_Data)
-file_configs[os.path.join(publishers_folder, "headlines.csv")] = {
-    "date_field": "Date",
-    "headline_field": "Headline",
-}
+# # Add headlines.csv base file (also now in Publishers_Data)
+# file_configs[os.path.join(publishers_folder, "headlines.csv")] = {
+#     "date_field": "Date",
+#     "headline_field": "Headline",
+# }
 
 # Add Google News monthly files
 for fname in os.listdir(google_news_folder):
@@ -75,6 +77,23 @@ for fname in os.listdir(google_news_folder):
             "headline_field": "Title",
         }
 
+# Add analyst data files
+for analyst_file in glob.glob(
+    os.path.join(analyst_data_folder, "analyst_ratings_processed_cleaned_*.csv")
+):
+    file_configs[analyst_file] = {
+        "date_field": "date",
+        "headline_field": "title",
+    }
+
+for partner_file in glob.glob(
+    os.path.join(analyst_data_folder, "partner_headlines_cleaned_*.csv")
+):
+    file_configs[partner_file] = {
+        "date_field": "date",
+        "headline_field": "headline",
+    }
+
 # Timezone handling
 eastern = pytz.timezone("US/Eastern")
 utc = pytz.utc
@@ -83,6 +102,8 @@ tzinfos = {"ET": eastern}
 # Store results and monthly counts
 results = []
 monthly_counter = defaultdict(int)
+seen = set()  # To remove duplicates (Zulu time + headline)
+seen_monthly_titles = defaultdict(set)  # To remove title dupes per month
 
 # Convert to UTC
 def convert_to_utc(date_str, source_file):
@@ -110,22 +131,38 @@ for file_name, config in file_configs.items():
                 if not dt_obj:
                     continue
 
+                year_month = (dt_obj.year, dt_obj.month)
+
                 if isinstance(config["headline_field"], list):
                     for field in config["headline_field"]:
                         headline = row.get(field, "").strip()
                         if not headline or headline == last_headline:
                             continue
-                        if keyword.lower() in headline.lower():
+                        dedup_key = (utc_str, headline)
+                        if (
+                            keyword.lower() in headline.lower()
+                            and dedup_key not in seen
+                            and headline not in seen_monthly_titles[year_month]
+                        ):
                             results.append({"Time Data": utc_str, "Headline": headline})
-                            monthly_counter[(dt_obj.year, dt_obj.month)] += 1
+                            monthly_counter[year_month] += 1
+                            seen.add(dedup_key)
+                            seen_monthly_titles[year_month].add(headline)
                         last_headline = headline
                 else:
                     headline = row.get(config["headline_field"], "").strip()
                     if not headline or headline == last_headline:
                         continue
-                    if keyword.lower() in headline.lower():
+                    dedup_key = (utc_str, headline)
+                    if (
+                        keyword.lower() in headline.lower()
+                        and dedup_key not in seen
+                        and headline not in seen_monthly_titles[year_month]
+                    ):
                         results.append({"Time Data": utc_str, "Headline": headline})
-                        monthly_counter[(dt_obj.year, dt_obj.month)] += 1
+                        monthly_counter[year_month] += 1
+                        seen.add(dedup_key)
+                        seen_monthly_titles[year_month].add(headline)
                     last_headline = headline
     except FileNotFoundError:
         print(f"⚠️ File not found: {file_name}")
