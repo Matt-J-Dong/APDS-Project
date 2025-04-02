@@ -18,7 +18,6 @@ publishers = [
     "Washington Post",
     "USA Today",
     "Daily Mail",
-    "CNBC",
     "The Guardian",
 ]
 
