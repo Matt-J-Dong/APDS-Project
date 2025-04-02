@@ -1,9 +1,28 @@
 import csv
-import re
 from datetime import datetime
 from dateutil import parser as date_parser
 
-# Files and field configuration
+# Custom publisher files
+publishers = [
+    "New York Times",
+    "CNN",
+    "FOX",
+    "New York Post",
+    "BBC",
+    "Washington Post",
+    "USA Today",
+    "Daily Mail",
+    "CNBC",
+    "The Guardian",
+]
+
+
+# File format: e.g., CNN_headlines.csv
+def publisher_filename(pub_name):
+    return f"{pub_name.replace(' ', '_')}_headlines.csv"
+
+
+# Add base files with special formatting
 file_configs = {
     "abcnews-date-text.csv": {
         "date_field": "publish_date",
@@ -21,9 +40,16 @@ file_configs = {
     },
 }
 
-keyword = 'samsung'
-results = []
+# Add publisher files dynamically
+for pub in publishers:
+    file_configs[publisher_filename(pub)] = {
+        "date_field": "Date",
+        "headline_field": "Headline",
+    }
 
+# Keyword to search
+keyword = "samsung"
+results = []
 
 def convert_to_utc(date_str, source_file):
     try:
@@ -35,30 +61,40 @@ def convert_to_utc(date_str, source_file):
     except Exception:
         return f"InvalidDate({date_str})"
 
-
-# Processing files
+# Search files
 for file_name, config in file_configs.items():
     print(f"\n🔍 Searching in {file_name}...\n")
-    with open(file_name, newline='', encoding='utf-8') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            raw_date = row.get(config["date_field"], "").strip()
-            utc_time = convert_to_utc(raw_date, file_name)
+    last_headline = None  # Reset for each file
+    try:
+        with open(file_name, newline="", encoding="utf-8") as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                raw_date = row.get(config["date_field"], "").strip()
+                utc_time = convert_to_utc(raw_date, file_name)
 
-            # If headline_field is a list (like in WorldNewsData.csv)
-            if isinstance(config["headline_field"], list):
-                for field in config["headline_field"]:
-                    headline = row.get(field, "")
+                if isinstance(config["headline_field"], list):
+                    for field in config["headline_field"]:
+                        headline = row.get(field, "").strip()
+                        if not headline or headline == last_headline:
+                            continue
+                        if keyword.lower() in headline.lower():
+                            # print(f"{utc_time}: {headline}")
+                            results.append(
+                                {"Time Data": utc_time, "Headline": headline}
+                            )
+                        last_headline = headline
+                else:
+                    headline = row.get(config["headline_field"], "").strip()
+                    if not headline or headline == last_headline:
+                        continue
                     if keyword.lower() in headline.lower():
-                        print(f"{utc_time}: {headline}")
+                        # print(f"{utc_time}: {headline}")
                         results.append({"Time Data": utc_time, "Headline": headline})
-            else:
-                headline = row.get(config["headline_field"], "")
-                if keyword.lower() in headline.lower():
-                    print(f"{utc_time}: {headline}")
-                    results.append({"Time Data": utc_time, "Headline": headline})
+                    last_headline = headline
+    except FileNotFoundError:
+        print(f"⚠️ File not found: {file_name}")
 
-# Save aggregated results
+# Save results
 output_file = f"{keyword.lower()}_data_aggregated.csv"
 with open(output_file, "w", encoding="utf-8", newline="") as outfile:
     writer = csv.DictWriter(outfile, fieldnames=["Time Data", "Headline"])
