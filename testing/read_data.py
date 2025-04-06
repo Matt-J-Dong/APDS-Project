@@ -18,15 +18,35 @@ import calendar  # --- Added: Import calendar to compute month end dates.
 
 load_dotenv()  # Load environment variables (e.g., NYT_API_KEY)
 
-# --- Added: New keyword groups mapping to include multiple search terms (ticker symbols, aliases, etc.).
+# --- Added: New keyword groups mapping for companies and tickers.
 keyword_groups = {
-    "samsung": ["samsung", "ssnlf"],  # For Samsung, include ticker "SSNLF"
-    # "google": [
-    #     "google",
-    #     "alphabet",
-    #     "goog",
-    #     "googl",
-    # ],  # For Google, include multiple related terms
+    "apple": ["apple", "aapl"],
+    "microsoft": ["microsoft", "msft"],
+    "nvidia": ["nvidia", "nvda"],
+    "amazon": ["amazon", "amzn"],
+    "google": ["alphabet", "google", "goog", "googl"],
+    "meta": ["meta", "facebook", "meta platforms", "meta platforms (facebook)"],
+    "tesla": ["tesla", "tsla"],
+    "broadcom": ["broadcom", "avgo"],
+    "netflix": ["netflix", "nflx"],
+    "oracle": ["oracle", "orcl"],
+    "salesforce": ["salesforce", "crm"],
+    "cisco": ["cisco", "csco"],
+    "ibm": ["ibm"],
+    "palantir": ["palantir", "pltr"],
+    "intuit": ["intuit", "intu"],
+    "servicenow": ["servicenow", "now"],
+    "adobe": ["adobe", "adbe"],
+    "qualcomm": ["qualcomm", "qcom"],
+    "amd": ["amd"],
+    "texas_instruments": ["texas instruments", "txn"],
+    "uber": ["uber"],
+    "booking": ["booking", "bkng", "booking.com"],
+    "adp": ["automatic data processing", "adp"],
+    "fiserv": ["fiserv", "fi"],
+    "applied_materials": ["applied materials", "amat"],
+    "palo_alto": ["palo alto networks", "panw"],
+    "intel": ["intel", "intc"],
 }
 
 # Publishers
@@ -132,7 +152,6 @@ def convert_to_utc(date_str, source_file):
     except Exception:
         return f"InvalidDate({date_str})", None
 
-
 # --- Added: Function to fetch NYT articles for a given keyword group starting from January 2020.
 def fetch_nyt_articles(group, search_terms, start_year=2020, start_month=1):
     """
@@ -207,7 +226,6 @@ def fetch_nyt_articles(group, search_terms, start_year=2020, start_month=1):
         nyt_results.append({"Time Data": time_data, "Headline": headline})
 
     return nyt_results
-
 
 # --- Changed: Iterate over each keyword group to create individual file groups.
 for group, search_terms in keyword_groups.items():
@@ -307,18 +325,18 @@ for group, search_terms in keyword_groups.items():
                         seen_monthly_titles[year_month].add(title_text)
 
     # --- Added: Optionally fetch NYT articles for current group from January 2020.
-    # Due to the API rate limits, uncomment the following lines when you are ready to fetch NYT data.
-    nyt_results = fetch_nyt_articles(
-        group, search_terms, start_year=2020, start_month=1
-    )
-    results.extend(nyt_results)
-    for article in nyt_results:
-        try:
-            dt = datetime.strptime(article["Time Data"], "%Y-%m-%dT%H:%M:%SZ")
-            year_month = (dt.year, dt.month)
-            monthly_counter[year_month] += 1
-        except Exception:
-            continue
+    # Due to the API rate limits, you can uncomment the following lines when you are ready to fetch NYT data.
+    # nyt_results = fetch_nyt_articles(
+    #     group, search_terms, start_year=2020, start_month=1
+    # )
+    # results.extend(nyt_results)
+    # for article in nyt_results:
+    #     try:
+    #         dt = datetime.strptime(article["Time Data"], "%Y-%m-%dT%H:%M:%SZ")
+    #         year_month = (dt.year, dt.month)
+    #         monthly_counter[year_month] += 1
+    #     except Exception:
+    #         continue
 
     # Sort results by time for current group
     results.sort(key=lambda x: x["Time Data"])
