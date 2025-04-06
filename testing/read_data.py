@@ -3,30 +3,51 @@ import os
 from datetime import (
     datetime,
     timedelta,
-)  # --- Changed: Added timedelta import for missing dates analysis.
+    timezone,
+)  # --- Changed: Added timedelta and timezone imports for missing dates analysis and NYT date conversion.
 from dateutil import parser as date_parser
 from collections import defaultdict
 import pytz
 import glob
+import requests  # --- Added: Import requests for NYT API calls.
+from dotenv import (
+    load_dotenv,
+)  # --- Added: Import dotenv to load environment variables.
+import time  # --- Added: Import time for rate limit handling.
+import calendar  # --- Added: Import calendar to compute month end dates.
 
-# Keyword to filter
-# --- Changed: Removed the old single keyword variable.
-# keyword = "samsung"
+load_dotenv()  # Load environment variables (e.g., NYT_API_KEY)
 
-# --- Added: New keyword groups mapping to include multiple search terms (ticker symbols, aliases, etc.).
+# --- Added: New keyword groups mapping for companies and tickers.
 keyword_groups = {
-    "samsung": ["samsung", "ssnlf"],  # For Samsung, include ticker "SSNLF"
-    "google": [
-        "google",
-        "alphabet",
-        "goog",
-        "googl",
-    ],  # For Google, include multiple related terms
+    "apple": ["apple", "aapl"],
+    "microsoft": ["microsoft", "msft"],
+    "nvidia": ["nvidia", "nvda"],
+    "amazon": ["amazon", "amzn"],
+    "google": ["alphabet", "google", "goog", "googl"],
+    "meta": ["meta", "facebook", "meta platforms", "meta platforms (facebook)"],
+    "tesla": ["tesla", "tsla"],
+    "broadcom": ["broadcom", "avgo"],
+    "netflix": ["netflix", "nflx"],
+    "oracle": ["oracle", "orcl"],
+    "salesforce": ["salesforce", "crm"],
+    "cisco": ["cisco", "csco"],
+    "ibm": ["ibm"],
+    "palantir": ["palantir", "pltr"],
+    "intuit": ["intuit", "intu"],
+    "servicenow": ["servicenow", "now"],
+    "adobe": ["adobe", "adbe"],
+    "qualcomm": ["qualcomm", "qcom"],
+    "amd": ["amd"],
+    "texas_instruments": ["texas instruments", "txn"],
+    "uber": ["uber"],
+    "booking": ["booking", "bkng", "booking.com"],
+    "adp": ["automatic data processing", "adp"],
+    "fiserv": ["fiserv", "fi"],
+    "applied_materials": ["applied materials", "amat"],
+    "palo_alto": ["palo alto networks", "panw"],
+    "intel": ["intel", "intc"],
 }
-
-# --- Removed selected_group and search_terms variables since we now iterate over each group.
-# selected_group = "samsung"  # Change to desired group (e.g., "samsung" or "google")
-# search_terms = keyword_groups[selected_group]
 
 # Publishers
 publishers = [
@@ -118,7 +139,7 @@ eastern = pytz.timezone("US/Eastern")
 utc = pytz.utc
 tzinfos = {"ET": eastern}
 
-# Convert to UTC
+# --- Existing function: Convert to UTC.
 def convert_to_utc(date_str, source_file):
     try:
         if source_file.endswith("abcnews-date-text.csv"):
@@ -131,12 +152,84 @@ def convert_to_utc(date_str, source_file):
     except Exception:
         return f"InvalidDate({date_str})", None
 
+# --- Added: Function to fetch NYT articles for a given keyword group starting from January 2020.
+def fetch_nyt_articles(group, search_terms, start_year=2020, start_month=1):
+    """
+    Fetch New York Times articles for a given keyword group from January 2020 to the current month.
+    Returns a list of dictionaries with keys "Time Data" and "Headline".
+    """
+    API_KEY = os.environ.get("NYT_API_KEY")
+    BASE_URL = "https://api.nytimes.com/svc/search/v2/articlesearch.json"
+    articles = []
+    now = datetime.utcnow()
+    current_year = now.year
+    current_month = now.month
+
+    year = start_year
+    month = start_month
+    # Prepare the search filter query by joining search terms with OR operator.
+    joined_terms = " OR ".join(search_terms)
+
+    while (year < current_year) or (year == current_year and month <= current_month):
+        begin_date = f"{year:04d}{month:02d}01"
+        last_day = calendar.monthrange(year, month)[1]
+        end_date = f"{year:04d}{month:02d}{last_day:02d}"
+
+        params = {
+            "fq": f"headline:({joined_terms})",  # Filter to only include articles with the search terms in the headline
+            "sort": "newest",  # Sort articles by newest first
+            "page": 0,  # Get the first page (up to 10 articles)
+            "api-key": API_KEY,
+            "begin_date": begin_date,
+            "end_date": end_date,
+        }
+
+        print(
+            f"Fetching NYT articles for {year}-{month:02d} (from {begin_date} to {end_date}) for group '{group}'..."
+        )
+        response = requests.get(BASE_URL, params=params)
+
+        if response.status_code == 200:
+            data = response.json()
+            docs = data.get("response", {}).get("docs", [])
+            articles.extend(docs)
+        else:
+            print(
+                f"Error fetching NYT articles for {year}-{month:02d}: {response.status_code}"
+            )
+
+        if month == 12:
+            month = 1
+            year += 1
+        else:
+            month += 1
+
+        if (year < current_year) or (year == current_year and month <= current_month):
+            time.sleep(12)  # Respect rate limits
+
+    print(f"Retrieved {len(articles)} NYT articles for group '{group}'.")
+
+    # Convert the NYT articles to the common format with "Time Data" and "Headline"
+    nyt_results = []
+    for article in articles:
+        pub_date_str = article.get("pub_date")
+        if pub_date_str:
+            try:
+                dt = datetime.strptime(pub_date_str, "%Y-%m-%dT%H:%M:%S%z")
+                time_data = dt.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+            except Exception as e:
+                print(f"Error parsing date {pub_date_str}: {e}")
+                time_data = "Invalid Date"
+        else:
+            time_data = "No Date"
+        headline = article.get("headline", {}).get("main", "No Headline")
+        nyt_results.append({"Time Data": time_data, "Headline": headline})
+
+    return nyt_results
 
 # --- Changed: Iterate over each keyword group to create individual file groups.
 for group, search_terms in keyword_groups.items():
-    print(
-        f"\n===== Processing group: {group} =====\n"
-    )  # --- Added: Display current group being processed.
+    print(f"\n===== Processing group: {group} =====\n")
 
     # Store results and monthly counts for current group
     results = []
@@ -146,9 +239,7 @@ for group, search_terms in keyword_groups.items():
 
     # Process all configured files for current group
     for file_name, config in file_configs.items():
-        print(
-            f"\n🔍 Searching in {file_name} for group '{group}'...\n"
-        )  # --- Added: Indicate group in search message.
+        print(f"\n🔍 Searching in {file_name} for group '{group}'...\n")
         last_headline = None
         try:
             with open(file_name, newline="", encoding="utf-8") as csvfile:
@@ -172,7 +263,7 @@ for group, search_terms in keyword_groups.items():
                                 any(
                                     term.lower() in headline.lower()
                                     for term in search_terms
-                                )  # Check multiple search terms
+                                )
                                 and dedup_key not in seen
                                 and headline not in seen_monthly_titles[year_month]
                             ):
@@ -188,12 +279,11 @@ for group, search_terms in keyword_groups.items():
                         if not headline or headline == last_headline:
                             continue
                         dedup_key = (utc_str, headline)
-                        # --- Changed: Use any() with search_terms list instead of a single keyword check.
                         if (
                             any(
                                 term.lower() in headline.lower()
                                 for term in search_terms
-                            )  # Check multiple search terms
+                            )
                             and dedup_key not in seen
                             and headline not in seen_monthly_titles[year_month]
                         ):
@@ -204,6 +294,49 @@ for group, search_terms in keyword_groups.items():
                         last_headline = headline
         except FileNotFoundError:
             print(f"⚠️ File not found: {file_name}")
+
+    # --- Added: Process filtered_news_hugging_face.csv data.
+    filtered_news_file = "filtered_news_hugging_face.csv"
+    if os.path.exists(filtered_news_file):
+        print(f"\n🔍 Searching in {filtered_news_file} for group '{group}'...\n")
+        with open(filtered_news_file, newline="", encoding="utf-8") as fnf:
+            reader = csv.DictReader(fnf)
+            for row in reader:
+                title_text = row.get("title", "").strip()
+                published_at = row.get("published_at", "").strip()
+                if not title_text or not published_at:
+                    continue
+                if any(term.lower() in title_text.lower() for term in search_terms):
+                    dedup_key = (published_at, title_text)
+                    try:
+                        dt = datetime.strptime(published_at, "%Y-%m-%dT%H:%M:%SZ")
+                    except Exception:
+                        continue
+                    year_month = (dt.year, dt.month)
+                    if (
+                        dedup_key not in seen
+                        and title_text not in seen_monthly_titles[year_month]
+                    ):
+                        results.append(
+                            {"Time Data": published_at, "Headline": title_text}
+                        )
+                        monthly_counter[year_month] += 1
+                        seen.add(dedup_key)
+                        seen_monthly_titles[year_month].add(title_text)
+
+    # --- Added: Optionally fetch NYT articles for current group from January 2020.
+    # Due to the API rate limits, you can uncomment the following lines when you are ready to fetch NYT data.
+    # nyt_results = fetch_nyt_articles(
+    #     group, search_terms, start_year=2020, start_month=1
+    # )
+    # results.extend(nyt_results)
+    # for article in nyt_results:
+    #     try:
+    #         dt = datetime.strptime(article["Time Data"], "%Y-%m-%dT%H:%M:%SZ")
+    #         year_month = (dt.year, dt.month)
+    #         monthly_counter[year_month] += 1
+    #     except Exception:
+    #         continue
 
     # Sort results by time for current group
     results.sort(key=lambda x: x["Time Data"])
