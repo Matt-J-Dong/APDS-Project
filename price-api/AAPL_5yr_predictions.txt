@@ -1,0 +1,159 @@
+Price Prediction Without Price Features for AAPL
+Using 5 years of historical data
+======================================================================
+
+Current Price (as of 2025-04-07): $181.46
+
+FEATURE SET COMPARISON (WITHOUT PRICE DATA)
+----------------------------------------------------------------------
+
+Horizon: 1 Days
+--------------------------------------------------
+Best feature set: Technicals And Sentiment
+
+RMSE ($):
+  #1 Technicals And Sentiment: 14.6522
+  #2 Technicals Only: 14.9076 (+1.74% worse)
+  #3 Sentiment Only: 44.8664 (+206.21% worse)
+
+MAE ($):
+  #1 Technicals And Sentiment: 11.3731
+  #2 Technicals Only: 12.4830 (+9.76% worse)
+  #3 Sentiment Only: 39.0278 (+243.16% worse)
+
+MAPE (%):
+  #1 Technicals And Sentiment: 5.2464
+  #2 Technicals Only: 5.7699 (+9.98% worse)
+  #3 Sentiment Only: 17.3917 (+231.49% worse)
+
+R² Score:
+  #1 Technicals And Sentiment: 0.6539
+  #2 Technicals Only: 0.6417 (1.86% worse)
+  #3 Sentiment Only: -2.2452 (443.37% worse)
+
+Direction Accuracy:
+  #1 Technicals Only: 0.5420
+  #2 Technicals And Sentiment: 0.5378 (0.78% worse)
+  #3 Sentiment Only: 0.4958 (8.53% worse)
+
+
+Horizon: 10 Days
+--------------------------------------------------
+Best feature set: Technicals And Sentiment
+
+RMSE ($):
+  #1 Technicals And Sentiment: 17.2077
+  #2 Technicals Only: 18.4532 (+7.24% worse)
+  #3 Sentiment Only: 42.9345 (+149.51% worse)
+
+MAE ($):
+  #1 Technicals And Sentiment: 13.9219
+  #2 Technicals Only: 15.0035 (+7.77% worse)
+  #3 Sentiment Only: 36.9074 (+165.10% worse)
+
+MAPE (%):
+  #1 Technicals And Sentiment: 6.3558
+  #2 Technicals Only: 6.7986 (+6.97% worse)
+  #3 Sentiment Only: 16.5784 (+160.84% worse)
+
+R² Score:
+  #1 Technicals And Sentiment: 0.4773
+  #2 Technicals Only: 0.3989 (16.43% worse)
+  #3 Sentiment Only: -2.2542 (572.33% worse)
+
+Direction Accuracy:
+  #1 Technicals And Sentiment: 0.5462
+  #2 Technicals Only: 0.4958 (9.23% worse)
+  #3 Sentiment Only: 0.4790 (12.31% worse)
+
+
+Horizon: 20 Days
+--------------------------------------------------
+Best feature set: Technicals Only
+
+RMSE ($):
+  #1 Technicals Only: 22.8479
+  #2 Technicals And Sentiment: 23.2125 (+1.60% worse)
+  #3 Sentiment Only: 43.5183 (+90.47% worse)
+
+MAE ($):
+  #1 Technicals Only: 18.1694
+  #2 Technicals And Sentiment: 19.6496 (+8.15% worse)
+  #3 Sentiment Only: 36.9319 (+103.26% worse)
+
+MAPE (%):
+  #1 Technicals Only: 8.1142
+  #2 Technicals And Sentiment: 8.8264 (+8.78% worse)
+  #3 Sentiment Only: 16.2505 (+100.27% worse)
+
+R² Score:
+  #1 Technicals Only: -0.1209
+  #2 Technicals And Sentiment: -0.1569 (-29.83% worse)
+  #3 Sentiment Only: -3.0664 (-2436.72% worse)
+
+Direction Accuracy:
+  #1 Technicals And Sentiment: 0.5210
+  #2 Sentiment Only: 0.5042 (3.23% worse)
+  #3 Technicals Only: 0.4874 (6.45% worse)
+
+
+Horizon: 30 Days
+--------------------------------------------------
+Best feature set: Technicals Only
+
+RMSE ($):
+  #1 Technicals Only: 23.3875
+  #2 Technicals And Sentiment: 27.0192 (+15.53% worse)
+  #3 Sentiment Only: 44.7499 (+91.34% worse)
+
+MAE ($):
+  #1 Technicals Only: 19.7943
+  #2 Technicals And Sentiment: 21.3452 (+7.83% worse)
+  #3 Sentiment Only: 39.0254 (+97.15% worse)
+
+MAPE (%):
+  #1 Technicals Only: 8.7985
+  #2 Technicals And Sentiment: 9.6694 (+9.90% worse)
+  #3 Sentiment Only: 16.9935 (+93.14% worse)
+
+R² Score:
+  #1 Technicals Only: -0.5219
+  #2 Technicals And Sentiment: -1.0312 (-97.60% worse)
+  #3 Sentiment Only: -4.5718 (-776.02% worse)
+
+Direction Accuracy:
+  #1 Technicals And Sentiment: 0.5756
+  #2 Technicals Only: 0.5714 (0.73% worse)
+  #3 Sentiment Only: 0.5252 (8.76% worse)
+
+
+FUTURE PREDICTIONS
+----------------------------------------------------------------------
+
+1-Day Horizon (2025-04-08):
+  Technicals Only: $215.93 (18.99%, UP)
+  Sentiment Only: $151.45 (-16.54%, DOWN)
+  Technicals And Sentiment: $217.48 (19.85%, UP)
+
+10-Day Horizon (2025-04-17):
+  Technicals Only: $210.36 (15.93%, UP)
+  Sentiment Only: $152.42 (-16.00%, DOWN)
+  Technicals And Sentiment: $210.06 (15.76%, UP)
+
+20-Day Horizon (2025-04-27):
+  Technicals Only: $206.99 (14.07%, UP)
+  Sentiment Only: $152.61 (-15.90%, DOWN)
+  Technicals And Sentiment: $181.84 (0.21%, UP)
+
+30-Day Horizon (2025-05-07):
+  Technicals Only: $202.48 (11.58%, UP)
+  Sentiment Only: $150.52 (-17.05%, DOWN)
+  Technicals And Sentiment: $160.29 (-11.67%, DOWN)
+
+
+DATASET INFORMATION
+----------------------------------------------------------------------
+Data range: 2020-04-13 to 2025-04-07
+Total data points: 1254
+Training data: 1003 points (80%)
+Testing data: 251 points (20%)
