@@ -1,6 +1,6 @@
-# Enhanced Multi-Horizon LSTM Stock Price Prediction
-# This script allows configuring the amount of historical data used (5 or 10 years)
-# and compares predictions using different feature sets
+# Price Level Prediction Without Price Data
+# This script predicts stock prices using only technical indicators and sentiment data,
+# without relying on previous closing prices as features
 
 import pandas as pd
 import numpy as np
@@ -10,33 +10,36 @@ from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from keras.models import Sequential
 from keras.layers import Dense, LSTM, Dropout
-from keras.callbacks import EarlyStopping, ReduceLROnPlateau, TensorBoard
+from keras.callbacks import EarlyStopping
 import tensorflow as tf
 from datetime import datetime, timedelta
 import os
 import math
+import xgboost as xgb
+from sklearn.multioutput import MultiOutputRegressor
+import pickle
 
 # Configuration
 TICKER = 'AAPL'
 DATA_FILE = f'{TICKER}_with_sentiment.csv'
 YEARS_OF_DATA = 5  # Set to either 5 or 10 years
 SEQUENCE_LENGTH = 30  # Number of previous days to use
-PREDICTION_HORIZONS = [1, 7]  # Days to predict into the future
+PREDICTION_HORIZONS = [1,7]  # Days to predict into the future
 RANDOM_SEED = 42
 NUM_EPOCHS = 100
 BATCH_SIZE = 32
-PATIENCE = 10  # Early stopping patience
+PATIENCE = 15  # Early stopping patience
 
 # Set random seeds for reproducibility
 np.random.seed(RANDOM_SEED)
 tf.random.set_seed(RANDOM_SEED)
 
-# Define the three feature sets we'll compare
+# Define the feature sets without closing price
 FEATURE_SETS = {
-    'price_only': ['close_x'],
-    'with_technicals': ['close_x', 'RSI', 'MACD', 'ADX', 'OBV', '+DI', '-DI', 'EMA_12', 'EMA_26'],
-    'with_sentiment': ['close_x', 'RSI', 'MACD', 'ADX', 'OBV', '+DI', '-DI', 'EMA_12', 'EMA_26', 
-                      'positive', 'negative', 'neutral', 'score']
+    'technicals_only': ['close','RSI', 'MACD', 'ADX', 'OBV', '+DI', '-DI', 'EMA_12', 'EMA_26'],
+    'sentiment_only': ['positive', 'neutral', 'negative','score'],
+    'technicals_and_sentiment': ['close', 'RSI', 'MACD', 'ADX', 'OBV', '+DI', '-DI', 'EMA_12', 'EMA_26',
+                                'positive', 'neutral', 'negative','score']
 }
 
 def load_data(file_path, years=YEARS_OF_DATA):
@@ -72,7 +75,7 @@ def prepare_multi_horizon_data(df, features, horizons=PREDICTION_HORIZONS, seq_l
     # Extract features
     feature_data = df[features].values
     
-    # Target is always closing price
+    # Target is always closing price (even though we're not using it as a feature)
     close_prices = df['close_x'].values.reshape(-1, 1)
     
     # Scale the feature data
@@ -127,22 +130,28 @@ def build_multi_output_model(input_shape, num_outputs):
     """Build an LSTM model with multiple outputs for different horizons."""
     model = Sequential()
     
-    # LSTM layers
-    model.add(LSTM(units=100, return_sequences=True, input_shape=input_shape))
-    model.add(Dropout(0.2))
+    # LSTM layers - making it deeper to compensate for not having price data
+    model.add(LSTM(units=128, return_sequences=True, input_shape=input_shape))
+    model.add(Dropout(0.3))
     
-    model.add(LSTM(units=50, return_sequences=False))
-    model.add(Dropout(0.2))
+    model.add(LSTM(units=64, return_sequences=True))
+    model.add(Dropout(0.3))
+    
+    model.add(LSTM(units=32, return_sequences=False))
+    model.add(Dropout(0.3))
     
     # Dense layers
-    model.add(Dense(units=50, activation='relu'))
-    model.add(Dropout(0.2))
+    model.add(Dense(units=64, activation='relu'))
+    model.add(Dropout(0.3))
+    
+    model.add(Dense(units=32, activation='relu'))
+    model.add(Dropout(0.3))
     
     # Output layer with multiple outputs (one for each horizon)
     model.add(Dense(units=num_outputs))
     
     # Compile
-    model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mae'])
+    model.compile(optimizer='adam', loss='mean_squared_error')
     
     model.summary()
     return model
@@ -152,21 +161,20 @@ def train_model(model, X_train, Y_train, X_test, Y_test, epochs=NUM_EPOCHS, batc
     # Combine Y_train values into a single array for multi-output training
     y_train_combined = np.column_stack([Y_train[horizon] for horizon in sorted(Y_train.keys())])
     y_test_combined = np.column_stack([Y_test[horizon] for horizon in sorted(Y_test.keys())])
-
-    log_dir = f"logs/{TICKER}_{datetime.datetime.now().strftime('%Y%m%d-%H%M%S')}"
-
-    callbacks = [
-        EarlyStopping(monitor='val_loss', patience=patience, restore_best_weights=True, verbose=1),
-        ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=5, min_lr=1e-6, verbose=1),
-        TensorBoard(log_dir=log_dir, histogram_freq=1)
-    ]
-
+    
+    early_stopping = EarlyStopping(
+        monitor='val_loss',
+        patience=patience,
+        restore_best_weights=True,
+        verbose=1
+    )
+    
     history = model.fit(
         X_train, y_train_combined,
         epochs=epochs,
         batch_size=batch_size,
         validation_data=(X_test, y_test_combined),
-        callbacks=callbacks,
+        callbacks=[early_stopping],
         verbose=1
     )
     
@@ -193,102 +201,57 @@ def evaluate_model(model, X_test, Y_test, price_scaler, test_prices, horizons):
         # Get actual prices for this horizon
         actual_prices = test_prices[horizon].values
         
-        # Calculate metrics
-        mse = mean_squared_error(actual_prices, horizon_pred)
-        rmse = math.sqrt(mse)
-        mae = mean_absolute_error(actual_prices, horizon_pred)
-        r2 = r2_score(actual_prices, horizon_pred)
-        mape = np.mean(np.abs((actual_prices - horizon_pred) / actual_prices)) * 100
-        
+        # Store results including the predictions
         results[horizon] = {
-            'rmse': rmse,
-            'mae': mae,
-            'mape': mape,
-            'r2': r2,
-            'predictions': horizon_pred
+            'predictions': horizon_pred,
+            'rmse': np.sqrt(mean_squared_error(actual_prices, horizon_pred)),
+            'mae': mean_absolute_error(actual_prices, horizon_pred),
+            'mape': np.mean(np.abs((actual_prices - horizon_pred) / actual_prices)) * 100,
+            'r2': r2_score(actual_prices, horizon_pred),
+            'direction_accuracy': np.mean(np.sign(np.diff(actual_prices)) == np.sign(np.diff(horizon_pred))) * 100
         }
     
     return results
 
 def plot_comparison_results(horizons, all_results, test_dates, test_prices):
-    """Plot performance comparison between feature sets."""
-    # Create comparison bar charts for each metric and horizon
-    metrics = ['rmse', 'mae', 'mape', 'r2']
-    metric_names = ['RMSE ($)', 'MAE ($)', 'MAPE (%)', 'R² Score']
+    """Plot comparison of predictions from different feature sets."""
+    num_horizons = len(horizons)
+    fig, axes = plt.subplots(num_horizons, 1, figsize=(15, 5*num_horizons))
+    if num_horizons == 1:
+        axes = [axes]
     
-    # For each horizon
-    for horizon in sorted(horizons):
-        # Create a figure with subplots for each metric
-        fig, axes = plt.subplots(2, 2, figsize=(16, 12))
-        axes = axes.flatten()
-        
-        for i, (metric, name) in enumerate(zip(metrics, metric_names)):
-            # Extract metric values for each feature set
-            metric_values = []
-            
-            for feature_set in FEATURE_SETS.keys():
-                # For R², higher is better, so we'll negate the improvement calculation
-                if metric == 'r2':
-                    metric_values.append(all_results[feature_set][horizon][metric])
-                else:
-                    metric_values.append(all_results[feature_set][horizon][metric])
-            
-            # Create DataFrame for plotting
-            df_plot = pd.DataFrame({
-                'Feature Set': list(FEATURE_SETS.keys()),
-                name: metric_values
-            })
-            
-            # Plot
-            sns.barplot(x='Feature Set', y=name, data=df_plot, ax=axes[i])
-            axes[i].set_title(f'{name} for {horizon}-Day Horizon')
-            axes[i].grid(True, axis='y')
-            
-            # Add percentage improvement labels for RMSE, MAE, MAPE (lower is better)
-            if metric != 'r2':
-                baseline = metric_values[0]  # price_only is the baseline
-                for j, value in enumerate(metric_values):
-                    if j > 0:  # Skip baseline
-                        improvement = ((baseline - value) / baseline) * 100
-                        axes[i].text(j, value, f"{improvement:.1f}%", ha='center', va='bottom')
-            else:  # For R², higher is better
-                baseline = metric_values[0]  # price_only is the baseline
-                for j, value in enumerate(metric_values):
-                    if j > 0:  # Skip baseline
-                        improvement = ((value - baseline) / abs(baseline)) * 100
-                        axes[i].text(j, value, f"+{improvement:.1f}%", ha='center', va='bottom')
-        
-        plt.tight_layout()
-        plt.savefig(f'{TICKER}_{YEARS_OF_DATA}yr_{horizon}day_metric_comparison.png')
-        plt.close()
+    colors = plt.cm.Set3(np.linspace(0, 1, len(FEATURE_SETS)))
+    markers = ['o', 's', '^', 'D', 'v']
     
-    # Plot predictions for each horizon and feature set
-    for horizon in sorted(horizons):
-        plt.figure(figsize=(16, 8))
+    for i, horizon in enumerate(sorted(horizons)):
+        ax = axes[i]
         
         # Plot actual prices
-        plt.plot(test_dates[horizon], test_prices[horizon], label='Actual Price', color='blue', linewidth=2)
+        ax.plot(test_dates[horizon], test_prices[horizon], 
+                label='Actual', color='black', linewidth=2)
         
         # Plot predictions for each feature set
-        colors = ['red', 'green', 'purple']
-        linestyles = ['--', '-.', ':']
+        for (feature_set, results), color, marker in zip(all_results.items(), colors, markers):
+            if 'predictions' in results[horizon]:
+                ax.plot(test_dates[horizon], results[horizon]['predictions'], 
+                       label=f'{feature_set.replace("_", " ").title()}',
+                       color=color, marker=marker, markersize=4, alpha=0.7)
+            else:
+                print(f"Warning: No predictions found for {feature_set} at horizon {horizon}")
         
-        for i, (feature_set, color, linestyle) in enumerate(zip(FEATURE_SETS.keys(), colors, linestyles)):
-            plt.plot(test_dates[horizon], all_results[feature_set][horizon]['predictions'], 
-                     label=f'{feature_set.replace("_", " ").title()}', color=color, linestyle=linestyle)
-        
-        plt.title(f'{TICKER} Stock Price Prediction Comparison ({horizon}-Day Horizon, {YEARS_OF_DATA}-Year Data)')
-        plt.xlabel('Date')
-        plt.ylabel('Price ($)')
-        plt.legend()
-        plt.grid(True)
+        ax.set_title(f'{horizon}-Day Horizon Predictions')
+        ax.set_xlabel('Date')
+        ax.set_ylabel('Price ($)')
+        ax.legend()
+        ax.grid(True)
         plt.xticks(rotation=45)
-        plt.tight_layout()
-        plt.savefig(f'{TICKER}_{YEARS_OF_DATA}yr_{horizon}day_prediction_comparison.png')
-        plt.close()
+    
+    plt.tight_layout()
+    plt.savefig(f'{TICKER}_{YEARS_OF_DATA}yr_no_price_comparison.png')
+    plt.close()
 
 def predict_future_with_all_models(df, models, feature_scalers, price_scaler, horizons):
-    """Predict future prices using all three models and compare."""
+    """Predict future prices using all models."""
     print("\nPredicting future prices with all models...")
     
     future_predictions = {}
@@ -394,30 +357,52 @@ def plot_future_comparison(df, future_predictions, horizons):
                     ha='center',
                     color=colors[i])
     
-    plt.title(f'{TICKER} Future Price Predictions ({YEARS_OF_DATA}-Year Training Data)')
+    plt.title(f'{TICKER} Future Price Predictions (No Price Features)')
     plt.xlabel('Date')
     plt.ylabel('Price ($)')
     plt.legend()
     plt.grid(True)
     plt.xticks(rotation=45)
     plt.tight_layout()
-    plt.savefig(f'{TICKER}_{YEARS_OF_DATA}yr_future_predictions.png')
+    plt.savefig(f'{TICKER}_{YEARS_OF_DATA}yr_no_price_future_predictions.png')
     plt.close()
 
+def build_xgboost_model():
+    """Build an XGBoost model for price prediction."""
+    xgb_model = xgb.XGBRegressor(
+        n_estimators=100,
+        learning_rate=0.1,
+        max_depth=5,
+        min_child_weight=1,
+        subsample=0.8,
+        colsample_bytree=0.8,
+        random_state=RANDOM_SEED
+    )
+    # Wrap the model in MultiOutputRegressor for multiple horizon predictions
+    return MultiOutputRegressor(xgb_model)
+
+def prepare_xgboost_data(X_train, X_test):
+    """Prepare data for XGBoost by flattening the sequences."""
+    # Flatten the 3D LSTM sequences into 2D for XGBoost
+    X_train_2d = X_train.reshape(X_train.shape[0], -1)
+    X_test_2d = X_test.reshape(X_test.shape[0], -1)
+    return X_train_2d, X_test_2d
+
 def main():
-    """Main function to run the enhanced multi-horizon LSTM prediction pipeline."""
-    print(f"Running enhanced multi-horizon LSTM price prediction for {TICKER} using {YEARS_OF_DATA} years of data...")
+    """Main function to run the enhanced multi-horizon LSTM and XGBoost prediction pipeline."""
+    print(f"Running price prediction without price features for {TICKER} using {YEARS_OF_DATA} years of data...")
     
     # Load data with specified years
     df = load_data(DATA_FILE, years=YEARS_OF_DATA)
     
     # Initialize dictionaries to store results
     models = {}
+    xgb_models = {}  # New dictionary for XGBoost models
     histories = {}
     all_results = {}
     feature_scalers = {}
     
-    # For each feature set, train and evaluate a separate model
+    # For each feature set, train and evaluate both LSTM and XGBoost models
     for feature_set, features in FEATURE_SETS.items():
         print(f"\n{'='*50}")
         print(f"Processing feature set: {feature_set}")
@@ -432,31 +417,66 @@ def main():
         # Save scalers
         feature_scalers[feature_set] = feature_scaler
         
-        # Build model
+        # Prepare XGBoost data
+        X_train_xgb, X_test_xgb = prepare_xgboost_data(X_train, X_test)
+        y_train_combined = np.column_stack([Y_train[horizon] for horizon in sorted(Y_train.keys())])
+        y_test_combined = np.column_stack([Y_test[horizon] for horizon in sorted(Y_test.keys())])
+        
+        # Train XGBoost model
+        print("Training XGBoost model...")
+        xgb_model = build_xgboost_model()
+        xgb_model.fit(X_train_xgb, y_train_combined)
+        xgb_models[feature_set] = xgb_model
+        
+        # Build and train LSTM model
         model = build_multi_output_model((SEQUENCE_LENGTH, len(features)), len(PREDICTION_HORIZONS))
+        model, history = train_model(
+            model, X_train, Y_train, X_test, Y_test, 
+            epochs=NUM_EPOCHS*2,
+            batch_size=BATCH_SIZE, 
+            patience=PATIENCE
+        )
         
-        # Train model
-        model, history = train_model(model, X_train, Y_train, X_test, Y_test, patience=PATIENCE)
+        # Make predictions with both models
+        lstm_pred = model.predict(X_test)
+        xgb_pred = xgb_model.predict(X_test_xgb)
         
-        # Evaluate model
-        results = evaluate_model(model, X_test, Y_test, price_scaler, test_prices, PREDICTION_HORIZONS)
+        # Ensemble predictions (simple average)
+        ensemble_pred = (lstm_pred + xgb_pred) / 2
+        
+        # Evaluate ensemble predictions
+        results = {}
+        for i, horizon in enumerate(sorted(PREDICTION_HORIZONS)):
+            # Extract predictions for this horizon
+            horizon_pred_scaled = ensemble_pred[:, i].reshape(-1, 1)
+            
+            # Inverse transform to get actual prices
+            horizon_pred_reshaped = np.zeros((len(horizon_pred_scaled), 1))
+            horizon_pred_reshaped[:, 0] = horizon_pred_scaled.flatten()
+            horizon_pred = price_scaler.inverse_transform(horizon_pred_reshaped).flatten()
+            
+            # Get actual prices for this horizon
+            actual_prices = test_prices[horizon].values
+            
+            # Calculate metrics
+            results[horizon] = {
+                'rmse': np.sqrt(mean_squared_error(actual_prices, horizon_pred)),
+                'mae': mean_absolute_error(actual_prices, horizon_pred),
+                'mape': np.mean(np.abs((actual_prices - horizon_pred) / actual_prices)) * 100,
+                'r2': r2_score(actual_prices, horizon_pred),
+                'direction_accuracy': np.mean(np.sign(np.diff(actual_prices)) == np.sign(np.diff(horizon_pred))) * 100
+            }
         
         # Store results
         models[feature_set] = model
         histories[feature_set] = history
         all_results[feature_set] = results
         
-        # Print summary of results
-        print(f"\nResults summary for {feature_set}:")
-        for horizon in sorted(PREDICTION_HORIZONS):
-            print(f"{horizon}-Day Horizon:")
-            print(f"  RMSE: ${results[horizon]['rmse']:.2f}")
-            print(f"  MAE: ${results[horizon]['mae']:.2f}")
-            print(f"  MAPE: {results[horizon]['mape']:.2f}%")
-            print(f"  R²: {results[horizon]['r2']:.4f}")
-        
-        # Save individual model
-        model.save(f'{TICKER}_{YEARS_OF_DATA}yr_{feature_set}_model.h5')
+        # Save models
+        model.save(f'{TICKER}_{YEARS_OF_DATA}yr_no_price_{feature_set}_lstm_model.h5')
+        # Save XGBoost model
+        with open(f'{TICKER}_{YEARS_OF_DATA}yr_no_price_{feature_set}_xgb_model.pkl', 'wb') as f:
+            pickle.dump(xgb_model, f)
     
     # Plot comparison results
     plot_comparison_results(PREDICTION_HORIZONS, all_results, test_dates, test_prices)
@@ -468,8 +488,8 @@ def main():
     plot_future_comparison(df, future_predictions, PREDICTION_HORIZONS)
     
     # Save comprehensive results
-    with open(f'{TICKER}_{YEARS_OF_DATA}yr_enhanced_predictions.txt', 'w') as f:
-        f.write(f"Enhanced Multi-Horizon LSTM Stock Price Prediction for {TICKER}\n")
+    with open(f'{TICKER}_{YEARS_OF_DATA}yr_predictions.txt', 'w') as f:
+        f.write(f"Price Prediction Without Price Features for {TICKER}\n")
         f.write(f"Using {YEARS_OF_DATA} years of historical data\n")
         f.write("="*70 + "\n\n")
         
@@ -479,7 +499,7 @@ def main():
         f.write(f"Current Price (as of {current_date.strftime('%Y-%m-%d')}): ${current_price:.2f}\n\n")
         
         # Feature set comparison
-        f.write("FEATURE SET COMPARISON\n")
+        f.write("FEATURE SET COMPARISON (WITHOUT PRICE DATA)\n")
         f.write("-"*70 + "\n\n")
         
         # Write comparison table for each horizon
@@ -487,25 +507,49 @@ def main():
             f.write(f"Horizon: {horizon} Days\n")
             f.write("-"*50 + "\n")
             
+            # Identify best feature set for this horizon (by RMSE)
+            best_feature_set = min(FEATURE_SETS.keys(), key=lambda x: all_results[x][horizon]['rmse'])
+            
+            f.write(f"Best feature set: {best_feature_set.replace('_', ' ').title()}\n\n")
+            
             # Create a comparison table
-            for metric in ['rmse', 'mae', 'mape', 'r2']:
-                metric_name = {'rmse': 'RMSE ($)', 'mae': 'MAE ($)', 'mape': 'MAPE (%)', 'r2': 'R² Score'}[metric]
-                baseline = all_results['price_only'][horizon][metric]
+            for metric in ['rmse', 'mae', 'mape', 'r2', 'direction_accuracy']:
+                metric_name = {
+                    'rmse': 'RMSE ($)',
+                    'mae': 'MAE ($)',
+                    'mape': 'MAPE (%)',
+                    'r2': 'R² Score',
+                    'direction_accuracy': 'Direction Accuracy'
+                }[metric]
                 
                 f.write(f"{metric_name}:\n")
                 
-                for feature_set in FEATURE_SETS.keys():
+                # Sort feature sets by performance on this metric
+                sorted_feature_sets = sorted(
+                    FEATURE_SETS.keys(), 
+                    key=lambda x: all_results[x][horizon][metric],
+                    reverse=(metric in ['r2', 'direction_accuracy'])  # Higher is better for these
+                )
+                
+                for i, feature_set in enumerate(sorted_feature_sets):
                     value = all_results[feature_set][horizon][metric]
                     
-                    if feature_set == 'price_only':
-                        f.write(f"  {feature_set.replace('_', ' ').title()}: {value:.4f}\n")
-                    else:
-                        if metric != 'r2':  # For RMSE, MAE, MAPE lower is better
-                            improvement = ((baseline - value) / baseline) * 100
-                            f.write(f"  {feature_set.replace('_', ' ').title()}: {value:.4f} ({improvement:.2f}% improvement)\n")
-                        else:  # For R², higher is better
-                            improvement = ((value - baseline) / abs(baseline)) * 100
-                            f.write(f"  {feature_set.replace('_', ' ').title()}: {value:.4f} ({improvement:.2f}% improvement)\n")
+                    # Add a ranking indicator
+                    rank = f"#{i+1} "
+                    
+                    f.write(f"  {rank}{feature_set.replace('_', ' ').title()}: {value:.4f}")
+                    
+                    # Add comparison to best if not the best
+                    if i > 0:
+                        best_value = all_results[sorted_feature_sets[0]][horizon][metric]
+                        if metric not in ['r2', 'direction_accuracy']:  # Lower is better
+                            diff_pct = ((value - best_value) / best_value) * 100
+                            f.write(f" (+{diff_pct:.2f}% worse)")
+                        else:  # Higher is better
+                            diff_pct = ((best_value - value) / best_value) * 100
+                            f.write(f" ({diff_pct:.2f}% worse)")
+                    
+                    f.write("\n")
                 
                 f.write("\n")
             
@@ -516,7 +560,7 @@ def main():
         f.write("-"*70 + "\n\n")
         
         for horizon in sorted(PREDICTION_HORIZONS):
-            f.write(f"{horizon}-Day Horizon ({future_predictions['price_only'][horizon]['prediction_date'].strftime('%Y-%m-%d')}):\n")
+            f.write(f"{horizon}-Day Horizon ({future_predictions['technicals_only'][horizon]['prediction_date'].strftime('%Y-%m-%d')}):\n")
             
             for feature_set in FEATURE_SETS.keys():
                 pred = future_predictions[feature_set][horizon]
@@ -532,7 +576,7 @@ def main():
         f.write(f"Training data: {int(len(df)*0.8)} points ({80}%)\n")
         f.write(f"Testing data: {len(df) - int(len(df)*0.8)} points ({20}%)\n")
     
-    print(f"\nEnhanced prediction complete! Results saved to {TICKER}_{YEARS_OF_DATA}yr_enhanced_predictions.txt")
+    print(f"\nPrediction without price features complete! Results saved to {TICKER}_{YEARS_OF_DATA}yr_predictions.txt")
     
     return future_predictions, all_results
 
