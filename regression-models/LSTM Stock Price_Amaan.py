@@ -9,8 +9,8 @@ import seaborn as sns
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 from keras.models import Sequential
-from keras.layers import Dense, LSTM, Dropout
-from keras.callbacks import EarlyStopping
+from keras.layers import Dense, LSTM, Dropout, BatchNormalization
+from keras.callbacks import EarlyStopping, ReduceLROnPlateau, TensorBoard
 import tensorflow as tf
 from datetime import datetime, timedelta
 import os
@@ -21,7 +21,7 @@ TICKER = 'AAPL'
 DATA_FILE = f'{TICKER}_with_sentiment.csv'
 YEARS_OF_DATA = 5  # Set to either 5 or 10 years
 SEQUENCE_LENGTH = 30  # Number of previous days to use
-PREDICTION_HORIZONS = [1, 10, 20, 30]  # Days to predict into the future
+PREDICTION_HORIZONS = [1, 7]  # Days to predict into the future
 RANDOM_SEED = 42
 NUM_EPOCHS = 100
 BATCH_SIZE = 32
@@ -128,11 +128,11 @@ def build_multi_output_model(input_shape, num_outputs):
     model = Sequential()
     
     # LSTM layers
-    model.add(LSTM(units=100, return_sequences=True, input_shape=input_shape))
-    model.add(Dropout(0.2))
+    model.add(LSTM(units=64, return_sequences=True, input_shape=input_shape))
+    model.add(Dropout(0.3))
     
-    model.add(LSTM(units=50, return_sequences=False))
-    model.add(Dropout(0.2))
+    model.add(LSTM(units=32, return_sequences=False))
+    model.add(Dropout(0.3))
     
     # Dense layers
     model.add(Dense(units=50, activation='relu'))
@@ -142,7 +142,7 @@ def build_multi_output_model(input_shape, num_outputs):
     model.add(Dense(units=num_outputs))
     
     # Compile
-    model.compile(optimizer='adam', loss='mean_squared_error')
+    model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mae'])
     
     model.summary()
     return model
@@ -152,62 +152,83 @@ def train_model(model, X_train, Y_train, X_test, Y_test, epochs=NUM_EPOCHS, batc
     # Combine Y_train values into a single array for multi-output training
     y_train_combined = np.column_stack([Y_train[horizon] for horizon in sorted(Y_train.keys())])
     y_test_combined = np.column_stack([Y_test[horizon] for horizon in sorted(Y_test.keys())])
-    
-    early_stopping = EarlyStopping(
-        monitor='val_loss',
-        patience=patience,
-        restore_best_weights=True,
-        verbose=1
-    )
-    
+
+    log_dir = f"logs/{TICKER}_{datetime.now().strftime('%Y%m%d-%H%M%S')}"
+
+    callbacks = [
+        EarlyStopping(monitor='val_loss', patience=patience, restore_best_weights=True, verbose=1),
+        ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=5, min_lr=1e-5, verbose=1),
+        TensorBoard(log_dir=log_dir, histogram_freq=1)
+    ]
+
     history = model.fit(
         X_train, y_train_combined,
         epochs=epochs,
         batch_size=batch_size,
         validation_data=(X_test, y_test_combined),
-        callbacks=[early_stopping],
+        callbacks=callbacks,
         verbose=1
     )
+
+    # Plot training & validation loss
+    plt.figure(figsize=(10, 6))
+    plt.plot(history.history['loss'], label='Train Loss (MSE)', color='blue')
+    plt.plot(history.history['val_loss'], label='Val Loss (MSE)', color='orange')
+    plt.title('Training vs Validation Loss')
+    plt.xlabel('Epoch')
+    plt.ylabel('Loss (MSE)')
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig(f'{TICKER}_{YEARS_OF_DATA}yr_{len(Y_train)}_loss_curve.png')
+    plt.close()
+
     
     return model, history
 
-def evaluate_model(model, X_test, Y_test, price_scaler, test_prices, horizons):
-    """Evaluate the model's performance for each prediction horizon."""
+
+def evaluate_model(model, X_test, Y_test, price_scaler, test_prices, horizons, num_predictors):
+    """Evaluate the model's performance for each prediction horizon, including adjusted R²."""
     # Make predictions for all horizons at once
     y_pred_scaled = model.predict(X_test)
-    
+
     results = {}
-    
+
     for i, horizon in enumerate(sorted(horizons)):
         # Extract predictions for this horizon
         horizon_pred_scaled = y_pred_scaled[:, i].reshape(-1, 1)
-        
+
         # Inverse transform to get actual prices
-        # We need to prepare a properly shaped array with zeros for inverse_transform
         horizon_pred_reshaped = np.zeros((len(horizon_pred_scaled), 1))
         horizon_pred_reshaped[:, 0] = horizon_pred_scaled.flatten()
-        
         horizon_pred = price_scaler.inverse_transform(horizon_pred_reshaped).flatten()
-        
+
         # Get actual prices for this horizon
         actual_prices = test_prices[horizon].values
-        
+
         # Calculate metrics
         mse = mean_squared_error(actual_prices, horizon_pred)
         rmse = math.sqrt(mse)
         mae = mean_absolute_error(actual_prices, horizon_pred)
         r2 = r2_score(actual_prices, horizon_pred)
         mape = np.mean(np.abs((actual_prices - horizon_pred) / actual_prices)) * 100
-        
+
+        # Compute adjusted R²
+        n = len(actual_prices)  # number of test samples
+        p = num_predictors  # number of predictors/features used for this model
+        adjusted_r2 = 1 - ((1 - r2) * (n - 1)) / (n - p - 1)
+
         results[horizon] = {
             'rmse': rmse,
             'mae': mae,
             'mape': mape,
             'r2': r2,
+            'adjusted_r2': adjusted_r2,
             'predictions': horizon_pred
         }
-    
+
     return results
+
 
 def plot_comparison_results(horizons, all_results, test_dates, test_prices):
     """Plot performance comparison between feature sets."""
@@ -438,8 +459,9 @@ def main():
         model, history = train_model(model, X_train, Y_train, X_test, Y_test, patience=PATIENCE)
         
         # Evaluate model
-        results = evaluate_model(model, X_test, Y_test, price_scaler, test_prices, PREDICTION_HORIZONS)
-        
+        results = evaluate_model(model, X_test, Y_test, price_scaler, test_prices, PREDICTION_HORIZONS,
+                                 num_predictors=len(features))
+
         # Store results
         models[feature_set] = model
         histories[feature_set] = history
@@ -453,7 +475,8 @@ def main():
             print(f"  MAE: ${results[horizon]['mae']:.2f}")
             print(f"  MAPE: {results[horizon]['mape']:.2f}%")
             print(f"  R²: {results[horizon]['r2']:.4f}")
-        
+            print(f"  Adjusted R²: {results[horizon]['adjusted_r2']:.4f}")
+
         # Save individual model
         model.save(f'{TICKER}_{YEARS_OF_DATA}yr_{feature_set}_model.h5')
     
