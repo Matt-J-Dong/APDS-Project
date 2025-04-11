@@ -19,9 +19,9 @@ import math
 # Configuration
 TICKER = 'AAPL'
 DATA_FILE = f'{TICKER}_with_sentiment.csv'
-YEARS_OF_DATA = 5  # Set to either 5 or 10 years
-SEQUENCE_LENGTH = 30  # Number of previous days to use
-PREDICTION_HORIZONS = [1, 7]  # Days to predict into the future
+YEARS_OF_DATA = 10  # Set to either 5 or 10 years
+SEQUENCE_LENGTH = 15 # Number of previous days to use
+PREDICTION_HORIZONS = [1, 3]  # Days to predict into the future
 RANDOM_SEED = 42
 NUM_EPOCHS = 100
 BATCH_SIZE = 32
@@ -154,12 +154,9 @@ def train_model(model, X_train, Y_train, X_test, Y_test, epochs=NUM_EPOCHS, batc
     y_train_combined = np.column_stack([Y_train[horizon] for horizon in sorted(Y_train.keys())])
     y_test_combined = np.column_stack([Y_test[horizon] for horizon in sorted(Y_test.keys())])
 
-    log_dir = f"logs/{TICKER}_{datetime.now().strftime('%Y%m%d-%H%M%S')}"
-
     callbacks = [
         EarlyStopping(monitor='val_loss', patience=patience, restore_best_weights=True, verbose=1),
         ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=5, min_lr=1e-5, verbose=1),
-        TensorBoard(log_dir=log_dir, histogram_freq=1)
     ]
 
     history = model.fit(
@@ -231,82 +228,60 @@ def evaluate_model(model, X_test, Y_test, price_scaler, test_prices, horizons, n
     return results
 
 
-def plot_comparison_results(horizons, all_results, test_dates, test_prices):
-    """Plot performance comparison between feature sets."""
-    # Create comparison bar charts for each metric and horizon
-    metrics = ['rmse', 'mae', 'mape', 'r2']
-    metric_names = ['RMSE ($)', 'MAE ($)', 'MAPE (%)', 'R² Score']
-    
-    # For each horizon
-    for horizon in sorted(horizons):
-        # Create a figure with subplots for each metric
-        fig, axes = plt.subplots(2, 2, figsize=(16, 12))
-        axes = axes.flatten()
-        
-        for i, (metric, name) in enumerate(zip(metrics, metric_names)):
-            # Extract metric values for each feature set
-            metric_values = []
-            
-            for feature_set in FEATURE_SETS.keys():
-                # For R², higher is better, so we'll negate the improvement calculation
-                if metric == 'r2':
-                    metric_values.append(all_results[feature_set][horizon][metric])
-                else:
-                    metric_values.append(all_results[feature_set][horizon][metric])
-            
-            # Create DataFrame for plotting
-            df_plot = pd.DataFrame({
-                'Feature Set': list(FEATURE_SETS.keys()),
-                name: metric_values
-            })
-            
-            # Plot
-            sns.barplot(x='Feature Set', y=name, data=df_plot, ax=axes[i])
-            axes[i].set_title(f'{name} for {horizon}-Day Horizon')
-            axes[i].grid(True, axis='y')
-            
-            # Add percentage improvement labels for RMSE, MAE, MAPE (lower is better)
-            if metric != 'r2':
-                baseline = metric_values[0]  # price_only is the baseline
-                for j, value in enumerate(metric_values):
-                    if j > 0:  # Skip baseline
-                        improvement = ((baseline - value) / baseline) * 100
-                        axes[i].text(j, value, f"{improvement:.1f}%", ha='center', va='bottom')
-            else:  # For R², higher is better
-                baseline = metric_values[0]  # price_only is the baseline
-                for j, value in enumerate(metric_values):
-                    if j > 0:  # Skip baseline
-                        improvement = ((value - baseline) / abs(baseline)) * 100
-                        axes[i].text(j, value, f"+{improvement:.1f}%", ha='center', va='bottom')
-        
-        plt.tight_layout()
-        plt.savefig(f'{TICKER}_{YEARS_OF_DATA}yr_{horizon}day_metric_comparison.png')
-        plt.close()
-    
-    # Plot predictions for each horizon and feature set
-    for horizon in sorted(horizons):
-        plt.figure(figsize=(16, 8))
-        
-        # Plot actual prices
-        plt.plot(test_dates[horizon], test_prices[horizon], label='Actual Price', color='blue', linewidth=2)
-        
-        # Plot predictions for each feature set
-        colors = ['red', 'green', 'purple']
-        linestyles = ['--', '-.', ':']
-        
-        for i, (feature_set, color, linestyle) in enumerate(zip(FEATURE_SETS.keys(), colors, linestyles)):
-            plt.plot(test_dates[horizon], all_results[feature_set][horizon]['predictions'], 
-                     label=f'{feature_set.replace("_", " ").title()}', color=color, linestyle=linestyle)
-        
-        plt.title(f'{TICKER} Stock Price Prediction Comparison ({horizon}-Day Horizon, {YEARS_OF_DATA}-Year Data)')
-        plt.xlabel('Date')
-        plt.ylabel('Price ($)')
-        plt.legend()
-        plt.grid(True)
-        plt.xticks(rotation=45)
-        plt.tight_layout()
-        plt.savefig(f'{TICKER}_{YEARS_OF_DATA}yr_{horizon}day_prediction_comparison.png')
-        plt.close()
+def plot_future_comparison(df, future_predictions, horizons):
+    """Plot the future price predictions from all models."""
+    # Get historical prices for context
+    historical_dates = df['Date_x'].iloc[-90:]  # Last 90 days
+    historical_prices = df['close_x'].iloc[-90:]
+
+    # Plot
+    plt.figure(figsize=(16, 8))
+
+    # Plot historical prices
+    plt.plot(historical_dates, historical_prices, label='Historical Price', color='blue', linewidth=2)
+
+    # Updated colors and markers for each feature set (4 values now)
+    colors = ['red', 'green', 'purple', 'orange']
+    markers = ['o', 's', '^', 'd']
+
+    # Create future dates
+    last_date = df['Date_x'].iloc[-1]
+    future_dates = [last_date + pd.Timedelta(days=h) for h in sorted(horizons)]
+
+    # Add the current price point to all lines
+    for i, feature_set in enumerate(FEATURE_SETS.keys()):
+        # Start with current price
+        dates = [last_date]
+        prices = [df['close_x'].iloc[-1]]
+
+        # Add each horizon's prediction
+        for horizon in sorted(horizons):
+            pred = future_predictions[feature_set][horizon]
+            dates.append(pred['prediction_date'])
+            prices.append(pred['predicted_price'])
+
+        # Plot this feature set's predictions
+        plt.plot(dates, prices, label=f'{feature_set.replace("_", " ").title()} Prediction',
+                 color=colors[i], linestyle='--', marker=markers[i])
+
+        # Add price labels to the last point
+        plt.annotate(f"${prices[-1]:.2f}",
+                     (dates[-1], prices[-1]),
+                     textcoords="offset points",
+                     xytext=(0, 10),
+                     ha='center',
+                     color=colors[i])
+
+    plt.title(f'{TICKER} Future Price Predictions ({YEARS_OF_DATA}-Year Training Data)')
+    plt.xlabel('Date')
+    plt.ylabel('Price ($)')
+    plt.legend()
+    plt.grid(True)
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig(f'{TICKER}_{YEARS_OF_DATA}yr_future_predictions.png')
+    plt.close()
+
 
 def predict_future_with_all_models(df, models, feature_scalers, price_scaler, horizons):
     """Predict future prices using all three models and compare."""
