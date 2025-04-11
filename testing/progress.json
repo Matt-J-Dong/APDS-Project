@@ -1,0 +1,110 @@
+{
+    "apple": {
+        "year": 2015,
+        "month": 2
+    },
+    "microsoft": {
+        "year": 2015,
+        "month": 1
+    },
+    "nvidia": {
+        "year": 2015,
+        "month": 1
+    },
+    "amazon": {
+        "year": 2025,
+        "month": 5
+    },
+    "google": {
+        "year": 2015,
+        "month": 1
+    },
+    "meta": {
+        "year": 2015,
+        "month": 1
+    },
+    "tesla": {
+        "year": 2015,
+        "month": 1
+    },
+    "broadcom": {
+        "year": 2015,
+        "month": 1
+    },
+    "netflix": {
+        "year": 2015,
+        "month": 1
+    },
+    "oracle": {
+        "year": 2015,
+        "month": 1
+    },
+    "salesforce": {
+        "year": 2015,
+        "month": 1
+    },
+    "cisco": {
+        "year": 2015,
+        "month": 1
+    },
+    "ibm": {
+        "year": 2015,
+        "month": 1
+    },
+    "palantir": {
+        "year": 2015,
+        "month": 1
+    },
+    "intuit": {
+        "year": 2015,
+        "month": 1
+    },
+    "servicenow": {
+        "year": 2015,
+        "month": 1
+    },
+    "adobe": {
+        "year": 2025,
+        "month": 5
+    },
+    "qualcomm": {
+        "year": 2015,
+        "month": 1
+    },
+    "amd": {
+        "year": 2025,
+        "month": 5
+    },
+    "texas_instruments": {
+        "year": 2015,
+        "month": 1
+    },
+    "uber": {
+        "year": 2015,
+        "month": 1
+    },
+    "booking": {
+        "year": 2015,
+        "month": 1
+    },
+    "adp": {
+        "year": 2025,
+        "month": 5
+    },
+    "fiserv": {
+        "year": 2015,
+        "month": 1
+    },
+    "applied_materials": {
+        "year": 2015,
+        "month": 1
+    },
+    "palo_alto": {
+        "year": 2015,
+        "month": 1
+    },
+    "intel": {
+        "year": 2015,
+        "month": 1
+    }
+}
