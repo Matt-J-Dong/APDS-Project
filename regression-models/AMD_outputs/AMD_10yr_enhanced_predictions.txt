@@ -1,0 +1,84 @@
+Enhanced Multi-Horizon LSTM Stock Price Prediction for AMD
+Using 10 years of historical data
+======================================================================
+
+Current Price (as of 2025-04-10): $88.70
+
+FEATURE SET COMPARISON
+----------------------------------------------------------------------
+
+Horizon: 1 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 7.4533
+  With Technicals: 8.7854 (-17.87% improvement)
+  With Sentiment: 8.1916 (-9.91% improvement)
+  Price Sentiment: 9.9074 (-32.93% improvement)
+
+MAE ($):
+  Price Only: 5.7807
+  With Technicals: 6.6057 (-14.27% improvement)
+  With Sentiment: 6.0645 (-4.91% improvement)
+  Price Sentiment: 7.4350 (-28.62% improvement)
+
+MAPE (%):
+  Price Only: 4.3694
+  With Technicals: 4.7502 (-8.71% improvement)
+  With Sentiment: 4.3453 (0.55% improvement)
+  Price Sentiment: 5.2555 (-20.28% improvement)
+
+R² Score:
+  Price Only: 0.9306
+  With Technicals: 0.9036 (-2.90% improvement)
+  With Sentiment: 0.9162 (-1.55% improvement)
+  Price Sentiment: 0.8774 (-5.72% improvement)
+
+
+Horizon: 3 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 9.5835
+  With Technicals: 11.3061 (-17.97% improvement)
+  With Sentiment: 10.1919 (-6.35% improvement)
+  Price Sentiment: 10.8773 (-13.50% improvement)
+
+MAE ($):
+  Price Only: 7.3063
+  With Technicals: 8.3898 (-14.83% improvement)
+  With Sentiment: 7.6475 (-4.67% improvement)
+  Price Sentiment: 8.2020 (-12.26% improvement)
+
+MAPE (%):
+  Price Only: 5.4094
+  With Technicals: 5.9944 (-10.82% improvement)
+  With Sentiment: 5.5551 (-2.69% improvement)
+  Price Sentiment: 5.9866 (-10.67% improvement)
+
+R² Score:
+  Price Only: 0.8856
+  With Technicals: 0.8408 (-5.06% improvement)
+  With Sentiment: 0.8706 (-1.69% improvement)
+  Price Sentiment: 0.8527 (-3.72% improvement)
+
+
+FUTURE PREDICTIONS
+----------------------------------------------------------------------
+
+1-Day Horizon (2025-04-11):
+  Price Only: $93.51 (5.42%, UP)
+  With Technicals: $89.54 (0.94%, UP)
+  With Sentiment: $90.42 (1.94%, UP)
+  Price Sentiment: $93.62 (5.55%, UP)
+
+3-Day Horizon (2025-04-13):
+  Price Only: $92.35 (4.11%, UP)
+  With Technicals: $89.52 (0.92%, UP)
+  With Sentiment: $90.63 (2.17%, UP)
+  Price Sentiment: $94.30 (6.31%, UP)
+
+DATASET INFORMATION
+----------------------------------------------------------------------
+Data range: 2015-04-14 to 2025-04-10
+Total data points: 2515
+Training data: 2012 points (80%)
+Testing data: 503 points (20%)
