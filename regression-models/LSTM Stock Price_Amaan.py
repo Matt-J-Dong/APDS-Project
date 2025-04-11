@@ -21,7 +21,7 @@ TICKER = 'AAPL'
 DATA_FILE = f'{TICKER}_with_sentiment.csv'
 YEARS_OF_DATA = 5  # Set to either 5 or 10 years
 SEQUENCE_LENGTH = 30  # Number of previous days to use
-PREDICTION_HORIZONS = [1, 10, 20, 30]  # Days to predict into the future
+PREDICTION_HORIZONS = [1, 7]  # Days to predict into the future
 RANDOM_SEED = 42
 NUM_EPOCHS = 100
 BATCH_SIZE = 32
@@ -142,7 +142,7 @@ def build_multi_output_model(input_shape, num_outputs):
     model.add(Dense(units=num_outputs))
     
     # Compile
-    model.compile(optimizer='adam', loss='mean_squared_error')
+    model.compile(optimizer='adam', loss='mean_squared_error', metrics=['mae'])
     
     model.summary()
     return model
@@ -152,20 +152,21 @@ def train_model(model, X_train, Y_train, X_test, Y_test, epochs=NUM_EPOCHS, batc
     # Combine Y_train values into a single array for multi-output training
     y_train_combined = np.column_stack([Y_train[horizon] for horizon in sorted(Y_train.keys())])
     y_test_combined = np.column_stack([Y_test[horizon] for horizon in sorted(Y_test.keys())])
-    
-    early_stopping = EarlyStopping(
-        monitor='val_loss',
-        patience=patience,
-        restore_best_weights=True,
-        verbose=1
-    )
-    
+
+    log_dir = f"logs/{TICKER}_{datetime.datetime.now().strftime('%Y%m%d-%H%M%S')}"
+
+    callbacks = [
+        EarlyStopping(monitor='val_loss', patience=patience, restore_best_weights=True, verbose=1),
+        ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=5, min_lr=1e-6, verbose=1),
+        TensorBoard(log_dir=log_dir, histogram_freq=1)
+    ]
+
     history = model.fit(
         X_train, y_train_combined,
         epochs=epochs,
         batch_size=batch_size,
         validation_data=(X_test, y_test_combined),
-        callbacks=[early_stopping],
+        callbacks=callbacks,
         verbose=1
     )
     
