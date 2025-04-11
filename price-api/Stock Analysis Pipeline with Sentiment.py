@@ -306,7 +306,7 @@ def merge_technical_and_sentiment(stock_file, technical_file, sentiment_df, outp
     if final_df['positive'].isna().any():
         print("Note: Some dates don't have sentiment data. Filling with neutral values.")
         final_df['positive'] = final_df['positive'].fillna(0.0)
-        final_df['neutral'] = final_df['neutral'].fillna(1.0)
+        final_df['neutral'] = final_df['neutral'].fillna(0.0)
         final_df['negative'] = final_df['negative'].fillna(0.0)
         final_df['score'] = final_df['score'].fillna(0.0)
     
