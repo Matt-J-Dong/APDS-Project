@@ -1,0 +1,84 @@
+Enhanced Multi-Horizon LSTM Stock Price Prediction for AAPL
+Using 10 years of historical data
+======================================================================
+
+Current Price (as of 2025-04-07): $181.46
+
+FEATURE SET COMPARISON
+----------------------------------------------------------------------
+
+Horizon: 1 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 4.5052
+  With Technicals: 6.9676 (-54.66% improvement)
+  With Sentiment: 6.4593 (-43.38% improvement)
+  Price Sentiment: 6.3321 (-40.55% improvement)
+
+MAE ($):
+  Price Only: 3.4948
+  With Technicals: 5.3147 (-52.08% improvement)
+  With Sentiment: 4.9386 (-41.31% improvement)
+  Price Sentiment: 5.0692 (-45.05% improvement)
+
+MAPE (%):
+  Price Only: 1.7408
+  With Technicals: 2.6712 (-53.45% improvement)
+  With Sentiment: 2.4429 (-40.34% improvement)
+  Price Sentiment: 2.5046 (-43.88% improvement)
+
+R² Score:
+  Price Only: 0.9690
+  With Technicals: 0.9259 (-4.45% improvement)
+  With Sentiment: 0.9363 (-3.37% improvement)
+  Price Sentiment: 0.9388 (-3.12% improvement)
+
+
+Horizon: 3 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 6.4513
+  With Technicals: 8.3249 (-29.04% improvement)
+  With Sentiment: 7.6176 (-18.08% improvement)
+  Price Sentiment: 8.9381 (-38.55% improvement)
+
+MAE ($):
+  Price Only: 4.9087
+  With Technicals: 6.4495 (-31.39% improvement)
+  With Sentiment: 5.8405 (-18.98% improvement)
+  Price Sentiment: 7.1822 (-46.32% improvement)
+
+MAPE (%):
+  Price Only: 2.4362
+  With Technicals: 3.2644 (-34.00% improvement)
+  With Sentiment: 2.9223 (-19.95% improvement)
+  Price Sentiment: 3.5146 (-44.26% improvement)
+
+R² Score:
+  Price Only: 0.9360
+  With Technicals: 0.8934 (-4.55% improvement)
+  With Sentiment: 0.9107 (-2.70% improvement)
+  Price Sentiment: 0.8771 (-6.29% improvement)
+
+
+FUTURE PREDICTIONS
+----------------------------------------------------------------------
+
+1-Day Horizon (2025-04-08):
+  Price Only: $200.80 (10.66%, UP)
+  With Technicals: $198.60 (9.44%, UP)
+  With Sentiment: $215.16 (18.57%, UP)
+  Price Sentiment: $211.35 (16.47%, UP)
+
+3-Day Horizon (2025-04-10):
+  Price Only: $202.78 (11.75%, UP)
+  With Technicals: $201.06 (10.80%, UP)
+  With Sentiment: $207.94 (14.59%, UP)
+  Price Sentiment: $207.92 (14.58%, UP)
+
+DATASET INFORMATION
+----------------------------------------------------------------------
+Data range: 2015-04-14 to 2025-04-07
+Total data points: 2512
+Training data: 2009 points (80%)
+Testing data: 503 points (20%)

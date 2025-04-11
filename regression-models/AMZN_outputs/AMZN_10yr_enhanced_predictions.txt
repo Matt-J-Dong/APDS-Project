@@ -1,0 +1,84 @@
+Enhanced Multi-Horizon LSTM Stock Price Prediction for AMZN
+Using 10 years of historical data
+======================================================================
+
+Current Price (as of 2025-04-10): $181.22
+
+FEATURE SET COMPARISON
+----------------------------------------------------------------------
+
+Horizon: 1 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 11.2662
+  With Technicals: 41.8741 (-271.68% improvement)
+  With Sentiment: 83.5991 (-642.03% improvement)
+  Price Sentiment: 32.3318 (-186.98% improvement)
+
+MAE ($):
+  Price Only: 9.4174
+  With Technicals: 38.7701 (-311.68% improvement)
+  With Sentiment: 73.0986 (-676.21% improvement)
+  Price Sentiment: 24.3847 (-158.93% improvement)
+
+MAPE (%):
+  Price Only: 5.6613
+  With Technicals: 23.7074 (-318.76% improvement)
+  With Sentiment: 42.4214 (-649.32% improvement)
+  Price Sentiment: 13.8216 (-144.14% improvement)
+
+R² Score:
+  Price Only: 0.8941
+  With Technicals: -0.4632 (-151.80% improvement)
+  With Sentiment: -4.8318 (-640.41% improvement)
+  Price Sentiment: 0.1277 (-85.72% improvement)
+
+
+Horizon: 3 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 11.0232
+  With Technicals: 23.7066 (-115.06% improvement)
+  With Sentiment: 72.8066 (-560.48% improvement)
+  Price Sentiment: 35.6155 (-223.09% improvement)
+
+MAE ($):
+  Price Only: 8.8860
+  With Technicals: 18.9872 (-113.68% improvement)
+  With Sentiment: 66.3777 (-646.99% improvement)
+  Price Sentiment: 30.8187 (-246.82% improvement)
+
+MAPE (%):
+  Price Only: 5.9396
+  With Technicals: 11.4037 (-91.99% improvement)
+  With Sentiment: 40.4544 (-581.10% improvement)
+  Price Sentiment: 21.0549 (-254.48% improvement)
+
+R² Score:
+  Price Only: 0.8970
+  With Technicals: 0.5237 (-41.62% improvement)
+  With Sentiment: -3.4927 (-489.37% improvement)
+  Price Sentiment: -0.0751 (-108.37% improvement)
+
+
+FUTURE PREDICTIONS
+----------------------------------------------------------------------
+
+1-Day Horizon (2025-04-11):
+  Price Only: $172.91 (-4.58%, DOWN)
+  With Technicals: $210.35 (16.08%, UP)
+  With Sentiment: $168.46 (-7.04%, DOWN)
+  Price Sentiment: $121.61 (-32.90%, DOWN)
+
+3-Day Horizon (2025-04-13):
+  Price Only: $179.38 (-1.02%, DOWN)
+  With Technicals: $150.88 (-16.74%, DOWN)
+  With Sentiment: $191.30 (5.56%, UP)
+  Price Sentiment: $176.08 (-2.83%, DOWN)
+
+DATASET INFORMATION
+----------------------------------------------------------------------
+Data range: 2015-04-14 to 2025-04-10
+Total data points: 2515
+Training data: 2012 points (80%)
+Testing data: 503 points (20%)
