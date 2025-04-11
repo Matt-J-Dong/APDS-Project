@@ -36,7 +36,8 @@ FEATURE_SETS = {
     'price_only': ['close_x'],
     'with_technicals': ['close_x', 'RSI', 'MACD', 'ADX', 'OBV', '+DI', '-DI', 'EMA_12', 'EMA_26'],
     'with_sentiment': ['close_x', 'RSI', 'MACD', 'ADX', 'OBV', '+DI', '-DI', 'EMA_12', 'EMA_26', 
-                      'positive', 'negative', 'neutral', 'score']
+                      'positive', 'negative', 'neutral'],
+    'price_sentiment': ['close_x', 'positive', 'negative', 'neutral']
 }
 
 def load_data(file_path, years=YEARS_OF_DATA):
