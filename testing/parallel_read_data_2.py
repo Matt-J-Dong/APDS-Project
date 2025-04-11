@@ -23,31 +23,31 @@ load_dotenv()  # Load environment variables (e.g., NYT_API_KEY)
 keyword_groups = {
     "apple": ["apple", "aapl"],
     "microsoft": ["microsoft", "msft"],
-    # "nvidia": ["nvidia", "nvda"],
-    # "amazon": ["amazon", "amzn"],
-    # "google": ["alphabet", "google", "goog", "googl"],
-    # "meta": ["meta", "facebook", "meta platforms", "meta platforms (facebook)"],
-    # "tesla": ["tesla", "tsla"],
-    # "broadcom": ["broadcom", "avgo"],
-    # "netflix": ["netflix", "nflx"],
-    # "oracle": ["oracle", "orcl"],
-    # "salesforce": ["salesforce", "crm"],
-    # "cisco": ["cisco", "csco"],
-    # "ibm": ["ibm"],
-    # "palantir": ["palantir", "pltr"],
-    # "intuit": ["intuit", "intu"],
-    # "servicenow": ["servicenow", "now"],
-    # "adobe": ["adobe", "adbe"],
-    # "qualcomm": ["qualcomm", "qcom"],
-    # "amd": ["amd"],
-    # "texas_instruments": ["texas instruments", "txn"],
-    # "uber": ["uber"],
-    # "booking": ["booking", "bkng", "booking.com"],
-    # "adp": ["automatic data processing", "adp"],
-    # "fiserv": ["fiserv", "fi"],
-    # "applied_materials": ["applied materials", "amat"],
-    # "palo_alto": ["palo alto networks", "panw"],
-    # "intel": ["intel", "intc"],
+    "nvidia": ["nvidia", "nvda"],
+    "amazon": ["amazon", "amzn"],
+    "google": ["alphabet", "google", "goog", "googl"],
+    "meta": ["meta", "facebook", "meta platforms", "meta platforms (facebook)"],
+    "tesla": ["tesla", "tsla"],
+    "broadcom": ["broadcom", "avgo"],
+    "netflix": ["netflix", "nflx"],
+    "oracle": ["oracle", "orcl"],
+    "salesforce": ["salesforce", "crm"],
+    "cisco": ["cisco", "csco"],
+    "ibm": ["ibm"],
+    "palantir": ["palantir", "pltr"],
+    "intuit": ["intuit", "intu"],
+    "servicenow": ["servicenow", "now"],
+    "adobe": ["adobe", "adbe"],
+    "qualcomm": ["qualcomm", "qcom"],
+    "amd": ["amd"],
+    "texas_instruments": ["texas instruments", "txn"],
+    "uber": ["uber"],
+    "booking": ["booking", "bkng", "booking.com"],
+    "adp": ["automatic data processing", "adp"],
+    "fiserv": ["fiserv", "fi"],
+    "applied_materials": ["applied materials", "amat"],
+    "palo_alto": ["palo alto networks", "panw"],
+    "intel": ["intel", "intc"],
 }
 
 # Publishers list
@@ -72,11 +72,10 @@ analyst_data_folder = "Analyst_Data"
 # Initialize file configurations at module level for multiprocessing
 file_configs = {}
 
-
 def initialize_file_configs():
     """Initialize file configurations once for all processes"""
     global file_configs
-
+    
     # Base files under Older_Data
     base_files = {
         os.path.join(base_data_folder, "abcnews-date-text.csv"): {
@@ -104,9 +103,7 @@ def initialize_file_configs():
 
     # Publisher-specific files
     for pub in publishers:
-        file_configs[
-            os.path.join(publishers_folder, f"{pub.replace(' ', '_')}_headlines.csv")
-        ] = {
+        file_configs[os.path.join(publishers_folder, f"{pub.replace(' ', '_')}_headlines.csv")] = {
             "date_field": "Date",
             "headline_field": "Headline",
         }
@@ -135,7 +132,6 @@ def initialize_file_configs():
             "date_field": "date",
             "headline_field": "headline",
         }
-
 
 # Initialize file configurations before creating worker processes
 initialize_file_configs()
@@ -195,9 +191,7 @@ def fetch_nyt_articles(group, search_terms, start_year=2020, start_month=1):
                 data = response.json()
                 articles.extend(data.get("response", {}).get("docs", []))
             else:
-                print(
-                    f"⚠️ NYT API error for {group} ({year}-{month}): {response.status_code}"
-                )
+                print(f"⚠️ NYT API error for {group} ({year}-{month}): {response.status_code}")
         except Exception as e:
             print(f"⚠️ NYT API connection failed for {group}: {str(e)}")
 
@@ -224,7 +218,6 @@ def fetch_nyt_articles(group, search_terms, start_year=2020, start_month=1):
                 continue
     return processed
 
-
 def process_keyword_group(args):
     """Process a single keyword group with multiprocessing support"""
     group, search_terms = args
@@ -239,9 +232,7 @@ def process_keyword_group(args):
     try:
         # Process all configured files
         for file_path, config in file_configs.items():
-            print(
-                f"🔍 [PID:{pid}] Processing {os.path.basename(file_path)} for {group}"
-            )
+            print(f"🔍 [PID:{pid}] Processing {os.path.basename(file_path)} for {group}")
             try:
                 with open(file_path, "r", encoding="utf-8") as f:
                     reader = csv.DictReader(f)
@@ -265,18 +256,10 @@ def process_keyword_group(args):
                         # Keyword matching
                         for headline in headlines:
                             year_month = (dt_obj.year, dt_obj.month)
-                            if any(
-                                term.lower() in headline.lower()
-                                for term in search_terms
-                            ):
+                            if any(term.lower() in headline.lower() for term in search_terms):
                                 dedup_key = (utc_str, headline)
-                                if (
-                                    dedup_key not in seen
-                                    and headline not in seen_monthly_titles[year_month]
-                                ):
-                                    results.append(
-                                        {"Time Data": utc_str, "Headline": headline}
-                                    )
+                                if dedup_key not in seen and headline not in seen_monthly_titles[year_month]:
+                                    results.append({"Time Data": utc_str, "Headline": headline})
                                     monthly_counter[year_month] += 1
                                     seen.add(dedup_key)
                                     seen_monthly_titles[year_month].add(headline)
@@ -299,22 +282,10 @@ def process_keyword_group(args):
                             try:
                                 dt = datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%SZ")
                                 year_month = (dt.year, dt.month)
-                                if any(
-                                    term.lower() in headline.lower()
-                                    for term in search_terms
-                                ):
+                                if any(term.lower() in headline.lower() for term in search_terms):
                                     dedup_key = (date_str, headline)
-                                    if (
-                                        dedup_key not in seen
-                                        and headline
-                                        not in seen_monthly_titles[year_month]
-                                    ):
-                                        results.append(
-                                            {
-                                                "Time Data": date_str,
-                                                "Headline": headline,
-                                            }
-                                        )
+                                    if dedup_key not in seen and headline not in seen_monthly_titles[year_month]:
+                                        results.append({"Time Data": date_str, "Headline": headline})
                                         monthly_counter[year_month] += 1
                                         seen.add(dedup_key)
                                         seen_monthly_titles[year_month].add(headline)
@@ -365,7 +336,7 @@ def process_keyword_group(args):
                     if current_date not in dates_present:
                         missing_dates.append(current_date.isoformat())
                     current_date += timedelta(days=1)
-
+                
                 if missing_dates:
                     missing_file = f"{group}_missing_dates.csv"
                     with open(missing_file, "w", encoding="utf-8", newline="") as f:
@@ -377,22 +348,21 @@ def process_keyword_group(args):
     except Exception as e:
         print(f"❌ [PID:{pid}] Critical error processing {group}: {str(e)}")
 
-
 if __name__ == "__main__":
     print("🚀 Starting parallel news aggregation")
     start_time = time.time()
-
+    
     # Set up multiprocessing pool
     cpu_count = multiprocessing.cpu_count()
     print(f"⚙️ System has {cpu_count} available CPU cores")
-
-    # Create process pool with 100% of available cores
-    pool_size = max(1, int(cpu_count * 1))
+    
+    # Create process pool with 80% of available cores
+    pool_size = max(1, int(cpu_count * 0.8))
     print(f"🔄 Creating process pool with {pool_size} workers")
-
+    
     try:
         with multiprocessing.Pool(processes=pool_size) as pool:
-            print("⏳ Processing keyword groups in parallel code...")
+            print("⏳ Processing keyword groups in parallel...")
             pool.map(process_keyword_group, keyword_groups.items())
     except KeyboardInterrupt:
         print("🛑 Process interrupted by user")
@@ -400,12 +370,12 @@ if __name__ == "__main__":
     finally:
         pool.close()
         pool.join()
-
+    
     total_time = time.time() - start_time
     print(f"🏁 All processes completed in {total_time:.2f} seconds")
-
+    
     # Save timing information
-    with open("time_parallel.txt", "w") as f:
+    with open("processing_metadata.txt", "w") as f:
         f.write(f"Parallel processing completed in {total_time:.2f} seconds\n")
         f.write(f"Used {pool_size} processes\n")
         f.write(f"Processed {len(keyword_groups)} keyword groups\n")
