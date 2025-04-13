@@ -1,3 +1,3 @@
-Sequential processing completed in 799.68 seconds
-Used 1 process
-Processed 2 keyword groups
+Sequential processing completed in 17794.87 seconds
+Used 1 processes
+Processed 27 keyword groups
