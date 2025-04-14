@@ -15,6 +15,7 @@ from keras.layers import Dense, LSTM, Dropout, BatchNormalization
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau, TensorBoard
 import tensorflow as tf
 from datetime import datetime, timedelta
+import time
 import os
 import math
 
@@ -548,4 +549,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    start_time = time.time()
+    future_predictions, all_results = main()
+    end_time = time.time()
+    duration = end_time - start_time
+    print(f"\nTotal execution time: {duration:.2f} seconds ({duration / 60:.2f} minutes)")
