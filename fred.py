@@ -1,6 +1,10 @@
 import requests
+from dotenv import load_dotenv
+import os
 
-API_KEY = "aba251875bb53e4ed3c2b74e30f19ace"
+load_dotenv()
+
+API_KEY = os.environ.get("FRED_KEY")
 series_id = "INTDSRUSM193N" #Any indicator found on FRED
 
 url = "https://api.stlouisfed.org/fred/series/observations"
