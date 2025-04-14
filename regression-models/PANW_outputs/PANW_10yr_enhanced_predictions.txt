@@ -1,0 +1,104 @@
+Enhanced Multi-Horizon LSTM Stock Price Prediction for PANW
+Using 10 years of historical data
+======================================================================
+
+Current Price (as of 2025-04-10): $168.27
+
+FEATURE SET COMPARISON
+----------------------------------------------------------------------
+
+Horizon: 1 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 17.78
+  With Technicals: 30.89 (-73.74% improvement)
+  With Sentiment: 29.98 (-68.64% improvement)
+  Price Sentiment: 17.50 (1.59% improvement)
+
+MAE ($):
+  Price Only: 9.44
+  With Technicals: 21.59 (-128.78% improvement)
+  With Sentiment: 21.61 (-128.95% improvement)
+  Price Sentiment: 9.20 (2.50% improvement)
+
+MAPE (%):
+  Price Only: 3.73
+  With Technicals: 8.91 (-139.21% improvement)
+  With Sentiment: 8.76 (-135.14% improvement)
+  Price Sentiment: 3.64 (2.20% improvement)
+
+R² Score:
+  Price Only: 0.93
+  With Technicals: 0.77 (-16.37% improvement)
+  With Sentiment: 0.79 (-14.95% improvement)
+  Price Sentiment: 0.93 (0.26% improvement)
+
+Direction Accuracy (%):
+  Price Only: 49.40
+  With Technicals: 51.00 (3.25% improvement)
+  With Sentiment: 50.00 (1.22% improvement)
+  Price Sentiment: 50.20 (1.63% improvement)
+
+
+Horizon: 3 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 24.16
+  With Technicals: 35.11 (-45.33% improvement)
+  With Sentiment: 29.71 (-23.00% improvement)
+  Price Sentiment: 23.81 (1.44% improvement)
+
+MAE ($):
+  Price Only: 12.90
+  With Technicals: 22.98 (-78.08% improvement)
+  With Sentiment: 17.81 (-38.05% improvement)
+  Price Sentiment: 12.65 (1.97% improvement)
+
+MAPE (%):
+  Price Only: 5.16
+  With Technicals: 9.85 (-90.76% improvement)
+  With Sentiment: 7.39 (-43.04% improvement)
+  Price Sentiment: 5.07 (1.92% improvement)
+
+R² Score:
+  Price Only: 0.86
+  With Technicals: 0.71 (-17.75% improvement)
+  With Sentiment: 0.79 (-8.18% improvement)
+  Price Sentiment: 0.87 (0.46% improvement)
+
+Direction Accuracy (%):
+  Price Only: 48.59
+  With Technicals: 50.40 (3.72% improvement)
+  With Sentiment: 53.41 (9.92% improvement)
+  Price Sentiment: 49.00 (0.83% improvement)
+
+
+FUTURE PREDICTIONS
+----------------------------------------------------------------------
+
+1-Day Horizon (2025-04-11):
+  Price Only: $158.03 (-6.09%, DOWN)
+    Direction Accuracy: 49.40% (Confidence: Low)
+  With Technicals: $197.61 (17.44%, UP)
+    Direction Accuracy: 51.00% (Confidence: Low)
+  With Sentiment: $192.83 (14.59%, UP)
+    Direction Accuracy: 50.00% (Confidence: Low)
+  Price Sentiment: $157.42 (-6.45%, DOWN)
+    Direction Accuracy: 50.20% (Confidence: Low)
+
+3-Day Horizon (2025-04-13):
+  Price Only: $157.69 (-6.29%, DOWN)
+    Direction Accuracy: 48.59% (Confidence: Low)
+  With Technicals: $205.49 (22.12%, UP)
+    Direction Accuracy: 50.40% (Confidence: Low)
+  With Sentiment: $178.78 (6.25%, UP)
+    Direction Accuracy: 53.41% (Confidence: Low)
+  Price Sentiment: $158.28 (-5.94%, DOWN)
+    Direction Accuracy: 49.00% (Confidence: Low)
+
+DATASET INFORMATION
+----------------------------------------------------------------------
+Data range: 2015-04-20 to 2025-04-10
+Total data points: 2511
+Training data: 2008 points (80%)
+Testing data: 503 points (20%)

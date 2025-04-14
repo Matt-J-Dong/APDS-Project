@@ -1,0 +1,104 @@
+Enhanced Multi-Horizon LSTM Stock Price Prediction for CRM
+Using 10 years of historical data
+======================================================================
+
+Current Price (as of 2025-04-10): $255.12
+
+FEATURE SET COMPARISON
+----------------------------------------------------------------------
+
+Horizon: 1 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 9.03
+  With Technicals: 12.65 (-40.06% improvement)
+  With Sentiment: 10.56 (-16.88% improvement)
+  Price Sentiment: 11.13 (-23.22% improvement)
+
+MAE ($):
+  Price Only: 6.28
+  With Technicals: 9.48 (-50.98% improvement)
+  With Sentiment: 7.96 (-26.81% improvement)
+  Price Sentiment: 8.25 (-31.39% improvement)
+
+MAPE (%):
+  Price Only: 2.40
+  With Technicals: 3.44 (-43.18% improvement)
+  With Sentiment: 3.07 (-27.80% improvement)
+  Price Sentiment: 3.09 (-28.53% improvement)
+
+R² Score:
+  Price Only: 0.96
+  With Technicals: 0.92 (-4.18% improvement)
+  With Sentiment: 0.94 (-1.59% improvement)
+  Price Sentiment: 0.94 (-2.25% improvement)
+
+Direction Accuracy (%):
+  Price Only: 50.20
+  With Technicals: 50.40 (0.40% improvement)
+  With Sentiment: 52.21 (4.00% improvement)
+  Price Sentiment: 49.80 (-0.80% improvement)
+
+
+Horizon: 3 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 11.53
+  With Technicals: 12.67 (-9.83% improvement)
+  With Sentiment: 12.07 (-4.69% improvement)
+  Price Sentiment: 13.27 (-15.06% improvement)
+
+MAE ($):
+  Price Only: 8.31
+  With Technicals: 9.58 (-15.20% improvement)
+  With Sentiment: 9.04 (-8.69% improvement)
+  Price Sentiment: 10.05 (-20.86% improvement)
+
+MAPE (%):
+  Price Only: 3.17
+  With Technicals: 3.59 (-13.30% improvement)
+  With Sentiment: 3.47 (-9.58% improvement)
+  Price Sentiment: 3.77 (-19.16% improvement)
+
+R² Score:
+  Price Only: 0.93
+  With Technicals: 0.92 (-1.52% improvement)
+  With Sentiment: 0.92 (-0.71% improvement)
+  Price Sentiment: 0.91 (-2.38% improvement)
+
+Direction Accuracy (%):
+  Price Only: 49.40
+  With Technicals: 50.60 (2.44% improvement)
+  With Sentiment: 49.60 (0.41% improvement)
+  Price Sentiment: 47.39 (-4.07% improvement)
+
+
+FUTURE PREDICTIONS
+----------------------------------------------------------------------
+
+1-Day Horizon (2025-04-11):
+  Price Only: $253.64 (-0.58%, DOWN)
+    Direction Accuracy: 50.20% (Confidence: Low)
+  With Technicals: $249.12 (-2.35%, DOWN)
+    Direction Accuracy: 50.40% (Confidence: Low)
+  With Sentiment: $248.29 (-2.68%, DOWN)
+    Direction Accuracy: 52.21% (Confidence: Low)
+  Price Sentiment: $256.18 (0.41%, UP)
+    Direction Accuracy: 49.80% (Confidence: Low)
+
+3-Day Horizon (2025-04-13):
+  Price Only: $252.71 (-0.94%, DOWN)
+    Direction Accuracy: 49.40% (Confidence: Low)
+  With Technicals: $250.69 (-1.74%, DOWN)
+    Direction Accuracy: 50.60% (Confidence: Low)
+  With Sentiment: $248.12 (-2.74%, DOWN)
+    Direction Accuracy: 49.60% (Confidence: Low)
+  Price Sentiment: $256.35 (0.48%, UP)
+    Direction Accuracy: 47.39% (Confidence: Low)
+
+DATASET INFORMATION
+----------------------------------------------------------------------
+Data range: 2015-04-20 to 2025-04-10
+Total data points: 2511
+Training data: 2008 points (80%)
+Testing data: 503 points (20%)

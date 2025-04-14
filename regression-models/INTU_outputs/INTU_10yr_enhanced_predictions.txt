@@ -1,0 +1,104 @@
+Enhanced Multi-Horizon LSTM Stock Price Prediction for INTU
+Using 10 years of historical data
+======================================================================
+
+Current Price (as of 2025-04-10): $577.47
+
+FEATURE SET COMPARISON
+----------------------------------------------------------------------
+
+Horizon: 1 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 19.46
+  With Technicals: 24.04 (-23.58% improvement)
+  With Sentiment: 23.75 (-22.08% improvement)
+  Price Sentiment: 18.05 (7.25% improvement)
+
+MAE ($):
+  Price Only: 15.06
+  With Technicals: 19.04 (-26.47% improvement)
+  With Sentiment: 19.01 (-26.27% improvement)
+  Price Sentiment: 13.97 (7.21% improvement)
+
+MAPE (%):
+  Price Only: 2.59
+  With Technicals: 3.32 (-27.93% improvement)
+  With Sentiment: 3.26 (-25.69% improvement)
+  Price Sentiment: 2.43 (6.18% improvement)
+
+R² Score:
+  Price Only: 0.93
+  With Technicals: 0.89 (-4.07% improvement)
+  With Sentiment: 0.89 (-3.78% improvement)
+  Price Sentiment: 0.94 (1.08% improvement)
+
+Direction Accuracy (%):
+  Price Only: 52.61
+  With Technicals: 52.61 (0.00% improvement)
+  With Sentiment: 49.20 (-6.49% improvement)
+  Price Sentiment: 50.20 (-4.58% improvement)
+
+
+Horizon: 3 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 23.55
+  With Technicals: 26.62 (-13.05% improvement)
+  With Sentiment: 26.69 (-13.36% improvement)
+  Price Sentiment: 22.22 (5.62% improvement)
+
+MAE ($):
+  Price Only: 18.18
+  With Technicals: 20.48 (-12.69% improvement)
+  With Sentiment: 21.19 (-16.55% improvement)
+  Price Sentiment: 17.29 (4.89% improvement)
+
+MAPE (%):
+  Price Only: 3.12
+  With Technicals: 3.61 (-15.56% improvement)
+  With Sentiment: 3.67 (-17.43% improvement)
+  Price Sentiment: 2.99 (4.25% improvement)
+
+R² Score:
+  Price Only: 0.89
+  With Technicals: 0.86 (-3.31% improvement)
+  With Sentiment: 0.86 (-3.39% improvement)
+  Price Sentiment: 0.91 (1.30% improvement)
+
+Direction Accuracy (%):
+  Price Only: 50.40
+  With Technicals: 51.00 (1.20% improvement)
+  With Sentiment: 51.20 (1.59% improvement)
+  Price Sentiment: 51.81 (2.79% improvement)
+
+
+FUTURE PREDICTIONS
+----------------------------------------------------------------------
+
+1-Day Horizon (2025-04-11):
+  Price Only: $583.65 (1.07%, UP)
+    Direction Accuracy: 52.61% (Confidence: Low)
+  With Technicals: $575.48 (-0.34%, DOWN)
+    Direction Accuracy: 52.61% (Confidence: Low)
+  With Sentiment: $572.37 (-0.88%, DOWN)
+    Direction Accuracy: 49.20% (Confidence: Low)
+  Price Sentiment: $585.79 (1.44%, UP)
+    Direction Accuracy: 50.20% (Confidence: Low)
+
+3-Day Horizon (2025-04-13):
+  Price Only: $583.33 (1.01%, UP)
+    Direction Accuracy: 50.40% (Confidence: Low)
+  With Technicals: $580.38 (0.50%, UP)
+    Direction Accuracy: 51.00% (Confidence: Low)
+  With Sentiment: $574.07 (-0.59%, DOWN)
+    Direction Accuracy: 51.20% (Confidence: Low)
+  Price Sentiment: $584.50 (1.22%, UP)
+    Direction Accuracy: 51.81% (Confidence: Low)
+
+DATASET INFORMATION
+----------------------------------------------------------------------
+Data range: 2015-04-20 to 2025-04-10
+Total data points: 2511
+Training data: 2008 points (80%)
+Testing data: 503 points (20%)

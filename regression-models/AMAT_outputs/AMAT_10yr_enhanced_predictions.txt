@@ -1,0 +1,104 @@
+Enhanced Multi-Horizon LSTM Stock Price Prediction for AMAT
+Using 10 years of historical data
+======================================================================
+
+Current Price (as of 2025-04-10): $138.24
+
+FEATURE SET COMPARISON
+----------------------------------------------------------------------
+
+Horizon: 1 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 11.21
+  With Technicals: 10.50 (6.39% improvement)
+  With Sentiment: 12.85 (-14.63% improvement)
+  Price Sentiment: 12.65 (-12.77% improvement)
+
+MAE ($):
+  Price Only: 8.40
+  With Technicals: 7.96 (5.13% improvement)
+  With Sentiment: 9.76 (-16.26% improvement)
+  Price Sentiment: 9.47 (-12.84% improvement)
+
+MAPE (%):
+  Price Only: 4.52
+  With Technicals: 4.32 (4.44% improvement)
+  With Sentiment: 5.24 (-15.82% improvement)
+  Price Sentiment: 5.12 (-13.24% improvement)
+
+R² Score:
+  Price Only: 0.88
+  With Technicals: 0.89 (1.69% improvement)
+  With Sentiment: 0.84 (-4.30% improvement)
+  Price Sentiment: 0.85 (-3.72% improvement)
+
+Direction Accuracy (%):
+  Price Only: 47.79
+  With Technicals: 48.80 (2.10% improvement)
+  With Sentiment: 46.79 (-2.10% improvement)
+  Price Sentiment: 47.19 (-1.26% improvement)
+
+
+Horizon: 3 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 12.58
+  With Technicals: 12.34 (1.87% improvement)
+  With Sentiment: 14.94 (-18.77% improvement)
+  Price Sentiment: 16.40 (-30.36% improvement)
+
+MAE ($):
+  Price Only: 9.54
+  With Technicals: 9.39 (1.56% improvement)
+  With Sentiment: 11.36 (-19.10% improvement)
+  Price Sentiment: 12.41 (-30.08% improvement)
+
+MAPE (%):
+  Price Only: 5.19
+  With Technicals: 5.10 (1.75% improvement)
+  With Sentiment: 6.11 (-17.73% improvement)
+  Price Sentiment: 6.64 (-28.01% improvement)
+
+R² Score:
+  Price Only: 0.85
+  With Technicals: 0.85 (0.67% improvement)
+  With Sentiment: 0.78 (-7.40% improvement)
+  Price Sentiment: 0.74 (-12.61% improvement)
+
+Direction Accuracy (%):
+  Price Only: 45.58
+  With Technicals: 44.98 (-1.32% improvement)
+  With Sentiment: 45.18 (-0.88% improvement)
+  Price Sentiment: 46.39 (1.76% improvement)
+
+
+FUTURE PREDICTIONS
+----------------------------------------------------------------------
+
+1-Day Horizon (2025-04-11):
+  Price Only: $138.70 (0.33%, UP)
+    Direction Accuracy: 47.79% (Confidence: Low)
+  With Technicals: $140.69 (1.77%, UP)
+    Direction Accuracy: 48.80% (Confidence: Low)
+  With Sentiment: $141.57 (2.41%, UP)
+    Direction Accuracy: 46.79% (Confidence: Low)
+  Price Sentiment: $145.57 (5.30%, UP)
+    Direction Accuracy: 47.19% (Confidence: Low)
+
+3-Day Horizon (2025-04-13):
+  Price Only: $138.90 (0.48%, UP)
+    Direction Accuracy: 45.58% (Confidence: Low)
+  With Technicals: $140.38 (1.55%, UP)
+    Direction Accuracy: 44.98% (Confidence: Low)
+  With Sentiment: $143.59 (3.87%, UP)
+    Direction Accuracy: 45.18% (Confidence: Low)
+  Price Sentiment: $142.14 (2.82%, UP)
+    Direction Accuracy: 46.39% (Confidence: Low)
+
+DATASET INFORMATION
+----------------------------------------------------------------------
+Data range: 2015-04-20 to 2025-04-10
+Total data points: 2511
+Training data: 2008 points (80%)
+Testing data: 503 points (20%)

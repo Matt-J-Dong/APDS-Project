@@ -19,7 +19,7 @@ import os
 import math
 
 # Configuration
-TICKER = 'AMD'
+TICKER = 'UBER'
 DATA_FILE = f'{TICKER}_with_sentiment.csv'
 YEARS_OF_DATA = 10  # Set to either 5 or 10 years
 SEQUENCE_LENGTH = 15  # Number of previous days to use

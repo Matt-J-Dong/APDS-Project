@@ -1,0 +1,104 @@
+Enhanced Multi-Horizon LSTM Stock Price Prediction for BKNG
+Using 10 years of historical data
+======================================================================
+
+Current Price (as of 2025-04-10): $4494.64
+
+FEATURE SET COMPARISON
+----------------------------------------------------------------------
+
+Horizon: 1 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 198.17
+  With Technicals: 308.58 (-55.71% improvement)
+  With Sentiment: 419.68 (-111.77% improvement)
+  Price Sentiment: 220.05 (-11.04% improvement)
+
+MAE ($):
+  Price Only: 155.43
+  With Technicals: 241.99 (-55.69% improvement)
+  With Sentiment: 341.47 (-119.69% improvement)
+  Price Sentiment: 175.17 (-12.70% improvement)
+
+MAPE (%):
+  Price Only: 3.91
+  With Technicals: 5.92 (-51.21% improvement)
+  With Sentiment: 8.39 (-114.40% improvement)
+  Price Sentiment: 4.47 (-14.20% improvement)
+
+R² Score:
+  Price Only: 0.93
+  With Technicals: 0.84 (-10.36% improvement)
+  With Sentiment: 0.70 (-25.35% improvement)
+  Price Sentiment: 0.92 (-1.69% improvement)
+
+Direction Accuracy (%):
+  Price Only: 50.00
+  With Technicals: 50.60 (1.20% improvement)
+  With Sentiment: 51.00 (2.01% improvement)
+  Price Sentiment: 52.41 (4.82% improvement)
+
+
+Horizon: 3 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 205.01
+  With Technicals: 317.47 (-54.86% improvement)
+  With Sentiment: 439.26 (-114.27% improvement)
+  Price Sentiment: 211.72 (-3.28% improvement)
+
+MAE ($):
+  Price Only: 157.99
+  With Technicals: 254.46 (-61.06% improvement)
+  With Sentiment: 339.99 (-115.20% improvement)
+  Price Sentiment: 164.83 (-4.33% improvement)
+
+MAPE (%):
+  Price Only: 4.01
+  With Technicals: 6.34 (-58.09% improvement)
+  With Sentiment: 8.17 (-103.95% improvement)
+  Price Sentiment: 4.25 (-6.02% improvement)
+
+R² Score:
+  Price Only: 0.93
+  With Technicals: 0.83 (-11.00% improvement)
+  With Sentiment: 0.67 (-28.25% improvement)
+  Price Sentiment: 0.92 (-0.52% improvement)
+
+Direction Accuracy (%):
+  Price Only: 48.39
+  With Technicals: 50.20 (3.73% improvement)
+  With Sentiment: 50.80 (4.98% improvement)
+  Price Sentiment: 50.40 (4.15% improvement)
+
+
+FUTURE PREDICTIONS
+----------------------------------------------------------------------
+
+1-Day Horizon (2025-04-11):
+  Price Only: $4292.37 (-4.50%, DOWN)
+    Direction Accuracy: 50.00% (Confidence: Low)
+  With Technicals: $3963.99 (-11.81%, DOWN)
+    Direction Accuracy: 50.60% (Confidence: Low)
+  With Sentiment: $3860.03 (-14.12%, DOWN)
+    Direction Accuracy: 51.00% (Confidence: Low)
+  Price Sentiment: $4340.13 (-3.44%, DOWN)
+    Direction Accuracy: 52.41% (Confidence: Low)
+
+3-Day Horizon (2025-04-13):
+  Price Only: $4316.11 (-3.97%, DOWN)
+    Direction Accuracy: 48.39% (Confidence: Low)
+  With Technicals: $3990.84 (-11.21%, DOWN)
+    Direction Accuracy: 50.20% (Confidence: Low)
+  With Sentiment: $3847.77 (-14.39%, DOWN)
+    Direction Accuracy: 50.80% (Confidence: Low)
+  Price Sentiment: $4394.75 (-2.22%, DOWN)
+    Direction Accuracy: 50.40% (Confidence: Low)
+
+DATASET INFORMATION
+----------------------------------------------------------------------
+Data range: 2015-04-20 to 2025-04-10
+Total data points: 2511
+Training data: 2008 points (80%)
+Testing data: 503 points (20%)

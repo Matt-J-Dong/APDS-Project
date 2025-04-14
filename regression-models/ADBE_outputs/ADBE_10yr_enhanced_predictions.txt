@@ -1,0 +1,104 @@
+Enhanced Multi-Horizon LSTM Stock Price Prediction for ADBE
+Using 10 years of historical data
+======================================================================
+
+Current Price (as of 2025-04-10): $350.05
+
+FEATURE SET COMPARISON
+----------------------------------------------------------------------
+
+Horizon: 1 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 18.11
+  With Technicals: 18.22 (-0.63% improvement)
+  With Sentiment: 20.57 (-13.59% improvement)
+  Price Sentiment: 20.62 (-13.87% improvement)
+
+MAE ($):
+  Price Only: 13.43
+  With Technicals: 13.48 (-0.36% improvement)
+  With Sentiment: 15.84 (-17.94% improvement)
+  Price Sentiment: 15.81 (-17.72% improvement)
+
+MAPE (%):
+  Price Only: 2.73
+  With Technicals: 2.71 (0.49% improvement)
+  With Sentiment: 3.18 (-16.61% improvement)
+  Price Sentiment: 3.20 (-17.33% improvement)
+
+R² Score:
+  Price Only: 0.93
+  With Technicals: 0.93 (-0.10% improvement)
+  With Sentiment: 0.91 (-2.23% improvement)
+  Price Sentiment: 0.91 (-2.28% improvement)
+
+Direction Accuracy (%):
+  Price Only: 51.81
+  With Technicals: 50.80 (-1.94% improvement)
+  With Sentiment: 53.61 (3.49% improvement)
+  Price Sentiment: 54.02 (4.26% improvement)
+
+
+Horizon: 3 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 23.65
+  With Technicals: 23.71 (-0.22% improvement)
+  With Sentiment: 25.77 (-8.97% improvement)
+  Price Sentiment: 25.72 (-8.75% improvement)
+
+MAE ($):
+  Price Only: 18.00
+  With Technicals: 17.81 (1.05% improvement)
+  With Sentiment: 19.73 (-9.65% improvement)
+  Price Sentiment: 19.98 (-11.00% improvement)
+
+MAPE (%):
+  Price Only: 3.66
+  With Technicals: 3.61 (1.35% improvement)
+  With Sentiment: 3.98 (-8.64% improvement)
+  Price Sentiment: 4.05 (-10.64% improvement)
+
+R² Score:
+  Price Only: 0.88
+  With Technicals: 0.88 (-0.06% improvement)
+  With Sentiment: 0.86 (-2.58% improvement)
+  Price Sentiment: 0.86 (-2.52% improvement)
+
+Direction Accuracy (%):
+  Price Only: 52.61
+  With Technicals: 51.81 (-1.53% improvement)
+  With Sentiment: 54.22 (3.05% improvement)
+  Price Sentiment: 56.22 (6.87% improvement)
+
+
+FUTURE PREDICTIONS
+----------------------------------------------------------------------
+
+1-Day Horizon (2025-04-11):
+  Price Only: $357.79 (2.21%, UP)
+    Direction Accuracy: 51.81% (Confidence: Low)
+  With Technicals: $355.67 (1.61%, UP)
+    Direction Accuracy: 50.80% (Confidence: Low)
+  With Sentiment: $363.63 (3.88%, UP)
+    Direction Accuracy: 53.61% (Confidence: Low)
+  Price Sentiment: $364.79 (4.21%, UP)
+    Direction Accuracy: 54.02% (Confidence: Low)
+
+3-Day Horizon (2025-04-13):
+  Price Only: $358.62 (2.45%, UP)
+    Direction Accuracy: 52.61% (Confidence: Low)
+  With Technicals: $355.62 (1.59%, UP)
+    Direction Accuracy: 51.81% (Confidence: Low)
+  With Sentiment: $367.66 (5.03%, UP)
+    Direction Accuracy: 54.22% (Confidence: Low)
+  Price Sentiment: $365.53 (4.42%, UP)
+    Direction Accuracy: 56.22% (Confidence: Low)
+
+DATASET INFORMATION
+----------------------------------------------------------------------
+Data range: 2015-04-20 to 2025-04-10
+Total data points: 2511
+Training data: 2008 points (80%)
+Testing data: 503 points (20%)

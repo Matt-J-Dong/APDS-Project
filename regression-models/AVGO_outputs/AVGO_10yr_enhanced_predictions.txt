@@ -1,0 +1,104 @@
+Enhanced Multi-Horizon LSTM Stock Price Prediction for AVGO
+Using 10 years of historical data
+======================================================================
+
+Current Price (as of 2025-04-10): $172.30
+
+FEATURE SET COMPARISON
+----------------------------------------------------------------------
+
+Horizon: 1 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 155.03
+  With Technicals: 251.98 (-62.54% improvement)
+  With Sentiment: 248.61 (-60.36% improvement)
+  Price Sentiment: 168.91 (-8.96% improvement)
+
+MAE ($):
+  Price Only: 83.56
+  With Technicals: 189.93 (-127.30% improvement)
+  With Sentiment: 190.65 (-128.16% improvement)
+  Price Sentiment: 83.82 (-0.31% improvement)
+
+MAPE (%):
+  Price Only: 16.45
+  With Technicals: 54.71 (-232.63% improvement)
+  With Sentiment: 54.25 (-229.85% improvement)
+  Price Sentiment: 19.32 (-17.46% improvement)
+
+R² Score:
+  Price Only: 0.90
+  With Technicals: 0.72 (-19.17% improvement)
+  With Sentiment: 0.73 (-18.35% improvement)
+  Price Sentiment: 0.88 (-2.19% improvement)
+
+Direction Accuracy (%):
+  Price Only: 46.39
+  With Technicals: 48.39 (4.33% improvement)
+  With Sentiment: 47.99 (3.46% improvement)
+  Price Sentiment: 45.58 (-1.73% improvement)
+
+
+Horizon: 3 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 177.28
+  With Technicals: 267.52 (-50.90% improvement)
+  With Sentiment: 273.63 (-54.35% improvement)
+  Price Sentiment: 190.48 (-7.45% improvement)
+
+MAE ($):
+  Price Only: 90.35
+  With Technicals: 203.25 (-124.95% improvement)
+  With Sentiment: 214.06 (-136.92% improvement)
+  Price Sentiment: 92.85 (-2.77% improvement)
+
+MAPE (%):
+  Price Only: 20.01
+  With Technicals: 58.30 (-191.31% improvement)
+  With Sentiment: 63.20 (-215.78% improvement)
+  Price Sentiment: 23.74 (-18.60% improvement)
+
+R² Score:
+  Price Only: 0.86
+  With Technicals: 0.69 (-20.10% improvement)
+  With Sentiment: 0.68 (-21.76% improvement)
+  Price Sentiment: 0.84 (-2.43% improvement)
+
+Direction Accuracy (%):
+  Price Only: 45.78
+  With Technicals: 45.78 (0.00% improvement)
+  With Sentiment: 46.79 (2.19% improvement)
+  Price Sentiment: 46.79 (2.19% improvement)
+
+
+FUTURE PREDICTIONS
+----------------------------------------------------------------------
+
+1-Day Horizon (2025-04-11):
+  Price Only: $155.22 (-9.91%, DOWN)
+    Direction Accuracy: 46.39% (Confidence: Low)
+  With Technicals: $336.79 (95.47%, UP)
+    Direction Accuracy: 48.39% (Confidence: Low)
+  With Sentiment: $391.05 (126.96%, UP)
+    Direction Accuracy: 47.99% (Confidence: Low)
+  Price Sentiment: $158.41 (-8.06%, DOWN)
+    Direction Accuracy: 45.58% (Confidence: Low)
+
+3-Day Horizon (2025-04-13):
+  Price Only: $154.90 (-10.10%, DOWN)
+    Direction Accuracy: 45.78% (Confidence: Low)
+  With Technicals: $343.61 (99.42%, UP)
+    Direction Accuracy: 45.78% (Confidence: Low)
+  With Sentiment: $396.32 (130.02%, UP)
+    Direction Accuracy: 46.79% (Confidence: Low)
+  Price Sentiment: $154.38 (-10.40%, DOWN)
+    Direction Accuracy: 46.79% (Confidence: Low)
+
+DATASET INFORMATION
+----------------------------------------------------------------------
+Data range: 2015-04-20 to 2025-04-10
+Total data points: 2511
+Training data: 2008 points (80%)
+Testing data: 503 points (20%)

@@ -1,0 +1,104 @@
+Enhanced Multi-Horizon LSTM Stock Price Prediction for TSLA
+Using 10 years of historical data
+======================================================================
+
+Current Price (as of 2025-04-10): $252.40
+
+FEATURE SET COMPARISON
+----------------------------------------------------------------------
+
+Horizon: 1 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 21.33
+  With Technicals: 54.76 (-156.76% improvement)
+  With Sentiment: 35.68 (-67.29% improvement)
+  Price Sentiment: 24.06 (-12.81% improvement)
+
+MAE ($):
+  Price Only: 17.03
+  With Technicals: 38.99 (-128.97% improvement)
+  With Sentiment: 27.35 (-60.60% improvement)
+  Price Sentiment: 19.14 (-12.37% improvement)
+
+MAPE (%):
+  Price Only: 7.57
+  With Technicals: 14.40 (-90.36% improvement)
+  With Sentiment: 11.20 (-48.01% improvement)
+  Price Sentiment: 8.62 (-13.96% improvement)
+
+R² Score:
+  Price Only: 0.90
+  With Technicals: 0.35 (-61.67% improvement)
+  With Sentiment: 0.72 (-19.83% improvement)
+  Price Sentiment: 0.87 (-3.01% improvement)
+
+Direction Accuracy (%):
+  Price Only: 52.81
+  With Technicals: 47.79 (-9.51% improvement)
+  With Sentiment: 54.02 (2.28% improvement)
+  Price Sentiment: 50.80 (-3.80% improvement)
+
+
+Horizon: 3 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 24.63
+  With Technicals: 43.56 (-76.87% improvement)
+  With Sentiment: 50.32 (-104.31% improvement)
+  Price Sentiment: 25.44 (-3.28% improvement)
+
+MAE ($):
+  Price Only: 19.47
+  With Technicals: 31.66 (-62.57% improvement)
+  With Sentiment: 39.66 (-103.67% improvement)
+  Price Sentiment: 20.44 (-4.96% improvement)
+
+MAPE (%):
+  Price Only: 8.43
+  With Technicals: 12.12 (-43.82% improvement)
+  With Sentiment: 16.96 (-101.16% improvement)
+  Price Sentiment: 9.00 (-6.80% improvement)
+
+R² Score:
+  Price Only: 0.87
+  With Technicals: 0.58 (-32.59% improvement)
+  With Sentiment: 0.45 (-48.60% improvement)
+  Price Sentiment: 0.86 (-1.02% improvement)
+
+Direction Accuracy (%):
+  Price Only: 53.41
+  With Technicals: 51.20 (-4.14% improvement)
+  With Sentiment: 51.00 (-4.51% improvement)
+  Price Sentiment: 53.21 (-0.38% improvement)
+
+
+FUTURE PREDICTIONS
+----------------------------------------------------------------------
+
+1-Day Horizon (2025-04-11):
+  Price Only: $250.55 (-0.73%, DOWN)
+    Direction Accuracy: 52.81% (Confidence: Low)
+  With Technicals: $221.55 (-12.22%, DOWN)
+    Direction Accuracy: 47.79% (Confidence: Low)
+  With Sentiment: $245.70 (-2.66%, DOWN)
+    Direction Accuracy: 54.02% (Confidence: Low)
+  Price Sentiment: $243.50 (-3.53%, DOWN)
+    Direction Accuracy: 50.80% (Confidence: Low)
+
+3-Day Horizon (2025-04-13):
+  Price Only: $248.39 (-1.59%, DOWN)
+    Direction Accuracy: 53.41% (Confidence: Low)
+  With Technicals: $227.52 (-9.86%, DOWN)
+    Direction Accuracy: 51.20% (Confidence: Low)
+  With Sentiment: $336.67 (33.39%, UP)
+    Direction Accuracy: 51.00% (Confidence: Low)
+  Price Sentiment: $248.78 (-1.43%, DOWN)
+    Direction Accuracy: 53.21% (Confidence: Low)
+
+DATASET INFORMATION
+----------------------------------------------------------------------
+Data range: 2015-04-20 to 2025-04-10
+Total data points: 2511
+Training data: 2008 points (80%)
+Testing data: 503 points (20%)

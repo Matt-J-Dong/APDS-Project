@@ -1,0 +1,104 @@
+Enhanced Multi-Horizon LSTM Stock Price Prediction for ORCL
+Using 10 years of historical data
+======================================================================
+
+Current Price (as of 2025-04-10): $133.35
+
+FEATURE SET COMPARISON
+----------------------------------------------------------------------
+
+Horizon: 1 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 7.26
+  With Technicals: 15.32 (-111.05% improvement)
+  With Sentiment: 15.91 (-119.21% improvement)
+  Price Sentiment: 11.71 (-61.36% improvement)
+
+MAE ($):
+  Price Only: 5.29
+  With Technicals: 11.99 (-126.72% improvement)
+  With Sentiment: 12.26 (-131.83% improvement)
+  Price Sentiment: 8.70 (-64.44% improvement)
+
+MAPE (%):
+  Price Only: 3.86
+  With Technicals: 8.27 (-114.03% improvement)
+  With Sentiment: 8.45 (-118.68% improvement)
+  Price Sentiment: 5.95 (-53.87% improvement)
+
+R² Score:
+  Price Only: 0.93
+  With Technicals: 0.67 (-27.67% improvement)
+  With Sentiment: 0.64 (-30.48% improvement)
+  Price Sentiment: 0.81 (-12.85% improvement)
+
+Direction Accuracy (%):
+  Price Only: 51.41
+  With Technicals: 52.01 (1.17% improvement)
+  With Sentiment: 48.39 (-5.86% improvement)
+  Price Sentiment: 51.61 (0.39% improvement)
+
+
+Horizon: 3 Days
+--------------------------------------------------
+RMSE ($):
+  Price Only: 8.26
+  With Technicals: 18.03 (-118.26% improvement)
+  With Sentiment: 16.66 (-101.67% improvement)
+  Price Sentiment: 13.98 (-69.21% improvement)
+
+MAE ($):
+  Price Only: 6.13
+  With Technicals: 14.53 (-137.07% improvement)
+  With Sentiment: 12.87 (-109.98% improvement)
+  Price Sentiment: 10.74 (-75.22% improvement)
+
+MAPE (%):
+  Price Only: 4.48
+  With Technicals: 10.11 (-125.87% improvement)
+  With Sentiment: 8.90 (-98.81% improvement)
+  Price Sentiment: 7.40 (-65.41% improvement)
+
+R² Score:
+  Price Only: 0.90
+  With Technicals: 0.54 (-40.37% improvement)
+  With Sentiment: 0.61 (-32.90% improvement)
+  Price Sentiment: 0.72 (-19.99% improvement)
+
+Direction Accuracy (%):
+  Price Only: 52.81
+  With Technicals: 51.41 (-2.66% improvement)
+  With Sentiment: 50.00 (-5.32% improvement)
+  Price Sentiment: 53.01 (0.38% improvement)
+
+
+FUTURE PREDICTIONS
+----------------------------------------------------------------------
+
+1-Day Horizon (2025-04-11):
+  Price Only: $139.45 (4.57%, UP)
+    Direction Accuracy: 51.41% (Confidence: Low)
+  With Technicals: $130.15 (-2.40%, DOWN)
+    Direction Accuracy: 52.01% (Confidence: Low)
+  With Sentiment: $135.40 (1.53%, UP)
+    Direction Accuracy: 48.39% (Confidence: Low)
+  Price Sentiment: $130.16 (-2.40%, DOWN)
+    Direction Accuracy: 51.61% (Confidence: Low)
+
+3-Day Horizon (2025-04-13):
+  Price Only: $137.77 (3.31%, UP)
+    Direction Accuracy: 52.81% (Confidence: Low)
+  With Technicals: $126.94 (-4.81%, DOWN)
+    Direction Accuracy: 51.41% (Confidence: Low)
+  With Sentiment: $135.72 (1.78%, UP)
+    Direction Accuracy: 50.00% (Confidence: Low)
+  Price Sentiment: $127.95 (-4.05%, DOWN)
+    Direction Accuracy: 53.01% (Confidence: Low)
+
+DATASET INFORMATION
+----------------------------------------------------------------------
+Data range: 2015-04-20 to 2025-04-10
+Total data points: 2511
+Training data: 2008 points (80%)
+Testing data: 503 points (20%)
