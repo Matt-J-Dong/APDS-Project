@@ -31,7 +31,7 @@ warnings.filterwarnings('ignore')
 
 # Configuration
 TICKER = 'AAPL'
-DATA_FILE = f'{TICKER}_with_sentiment.csv'
+DATA_FILE = f'../data/{TICKER}_with_sentiment.csv'
 YEARS_OF_DATA = 10
 SEQUENCE_LENGTH = 15
 PREDICTION_HORIZONS = [1, 3]

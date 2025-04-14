@@ -45,13 +45,13 @@ The script accepts two command-line arguments:
 Run the script using the following command:
 
 ```bash
-python sentiment_1.py <input_csv_path> <output_csv_path>
+python sentiment.py <input_csv_path> <output_csv_path>
 ```
 
 **Example:**
 
 ```bash
-python sentiment_1.py samsung_data_aggregated.csv samsung_sentiment_scores.csv
+python sentiment.py ../data/samsung_data_aggregated.csv samsung_sentiment_scores.csv
 ```
 
 ## What the Script Does
