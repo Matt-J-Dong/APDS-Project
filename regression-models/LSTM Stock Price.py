@@ -20,7 +20,7 @@ import math
 
 # Configuration
 TICKER = 'UBER'
-DATA_FILE = f'{TICKER}_with_sentiment.csv'
+DATA_FILE = f'data/{TICKER}_with_sentiment.csv'
 YEARS_OF_DATA = 10  # Set to either 5 or 10 years
 SEQUENCE_LENGTH = 15  # Number of previous days to use
 PREDICTION_HORIZONS = [1, 3]  # Days to predict into the future
@@ -423,7 +423,7 @@ def main():
     print(f"Running enhanced multi-horizon LSTM price prediction for {TICKER} using {YEARS_OF_DATA} years of data...")
 
     # Create a subdirectory named after the ticker for all outputs
-    output_dir = f"{TICKER}_outputs"
+    output_dir = f"results/{TICKER}_outputs"
     os.makedirs(output_dir, exist_ok=True)
 
     df = load_data(DATA_FILE, years=YEARS_OF_DATA)
