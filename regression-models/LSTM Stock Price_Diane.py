@@ -168,8 +168,21 @@ def train_model(model, X_train, Y_train, X_test, Y_test, epochs=NUM_EPOCHS, batc
     return model, history
 
 
+def calculate_direction_accuracy(actual_prices, predicted_prices):
+    """Calculate the accuracy of predicted price direction (up/down)."""
+    actual_directions = [1 if actual_prices[i] > actual_prices[i-1] else 0 
+                        for i in range(1, len(actual_prices))]
+    predicted_directions = [1 if predicted_prices[i] > predicted_prices[i-1] else 0 
+                           for i in range(1, len(predicted_prices))]
+    
+    correct_directions = sum(1 for a, p in zip(actual_directions, predicted_directions) if a == p)
+    direction_accuracy = (correct_directions / len(actual_directions)) * 100
+    
+    return direction_accuracy
+
+
 def evaluate_model_on_training_data(model, X_train, Y_train, price_scaler, horizons, num_predictors):
-    """Evaluate training performance for each horizon, including R² and adjusted R²."""
+    """Evaluate training performance for each horizon, including R² and adjusted R² and direction accuracy."""
     y_train_pred_scaled = model.predict(X_train)
     results = {}
     for i, horizon in enumerate(sorted(horizons)):
@@ -183,6 +196,7 @@ def evaluate_model_on_training_data(model, X_train, Y_train, price_scaler, horiz
         mae = mean_absolute_error(actual_train, horizon_pred)
         r2 = r2_score(actual_train, horizon_pred)
         mape = np.mean(np.abs((actual_train - horizon_pred) / actual_train)) * 100
+        direction_acc = calculate_direction_accuracy(actual_train, horizon_pred)
         n = len(actual_train)
         p = num_predictors
         adjusted_r2 = 1 - ((1 - r2) * (n - 1)) / (n - p - 1)
@@ -192,13 +206,14 @@ def evaluate_model_on_training_data(model, X_train, Y_train, price_scaler, horiz
             'mape': mape,
             'r2': r2,
             'adjusted_r2': adjusted_r2,
+            'direction_accuracy': direction_acc,
             'predictions': horizon_pred
         }
     return results
 
 
 def evaluate_model(model, X_test, Y_test, price_scaler, test_prices, horizons, num_predictors):
-    """Evaluate the model's performance on the test set for each horizon, including adjusted R²."""
+    """Evaluate the model's performance on the test set for each horizon, including direction accuracy."""
     y_pred_scaled = model.predict(X_test)
     results = {}
     for i, horizon in enumerate(sorted(horizons)):
@@ -212,6 +227,7 @@ def evaluate_model(model, X_test, Y_test, price_scaler, test_prices, horizons, n
         mae = mean_absolute_error(actual_prices, horizon_pred)
         r2 = r2_score(actual_prices, horizon_pred)
         mape = np.mean(np.abs((actual_prices - horizon_pred) / actual_prices)) * 100
+        direction_acc = calculate_direction_accuracy(actual_prices, horizon_pred)
         n = len(actual_prices)
         p = num_predictors
         adjusted_r2 = 1 - ((1 - r2) * (n - 1)) / (n - p - 1)
@@ -221,6 +237,7 @@ def evaluate_model(model, X_test, Y_test, price_scaler, test_prices, horizons, n
             'mape': mape,
             'r2': r2,
             'adjusted_r2': adjusted_r2,
+            'direction_accuracy': direction_acc,
             'predictions': horizon_pred
         }
     return results
@@ -228,12 +245,18 @@ def evaluate_model(model, X_test, Y_test, price_scaler, test_prices, horizons, n
 
 def plot_comparison_results(horizons, all_results, test_dates, test_prices, output_dir="."):
     """Plot performance comparison between feature sets and save plots to output_dir."""
-    metrics = ['rmse', 'mae', 'mape', 'r2']
-    metric_names = ['RMSE ($)', 'MAE ($)', 'MAPE (%)', 'R² Score']
+    metrics = ['rmse', 'mae', 'mape', 'r2', 'direction_accuracy']
+    metric_names = ['RMSE ($)', 'MAE ($)', 'MAPE (%)', 'R² Score', 'Direction Accuracy (%)']
     for horizon in sorted(horizons):
-        fig, axes = plt.subplots(2, 2, figsize=(16, 12))
-        axes = axes.flatten()
-        for i, (metric, name) in enumerate(zip(metrics, metric_names)):
+        # Create two separate figures - one for error metrics and one for accuracy metrics
+        fig1, axes1 = plt.subplots(2, 2, figsize=(16, 12))
+        axes1 = axes1.flatten()
+        
+        # Create a separate figure for direction accuracy
+        fig2, ax2 = plt.subplots(figsize=(10, 6))
+        
+        # Plot error metrics (RMSE, MAE, MAPE, R²)
+        for i, (metric, name) in enumerate(zip(metrics[:4], metric_names[:4])):
             metric_values = []
             for feature_set in FEATURE_SETS.keys():
                 metric_values.append(all_results[feature_set][horizon][metric])
@@ -241,25 +264,53 @@ def plot_comparison_results(horizons, all_results, test_dates, test_prices, outp
                 'Feature Set': list(FEATURE_SETS.keys()),
                 name: metric_values
             })
-            sns.barplot(x='Feature Set', y=name, data=df_plot, ax=axes[i])
-            axes[i].set_title(f'{name} for {horizon}-Day Horizon')
-            axes[i].grid(True, axis='y')
+            sns.barplot(x='Feature Set', y=name, data=df_plot, ax=axes1[i])
+            axes1[i].set_title(f'{name} for {horizon}-Day Horizon')
+            axes1[i].grid(True, axis='y')
             if metric != 'r2':
                 baseline = metric_values[0]
                 for j, value in enumerate(metric_values):
                     if j > 0:
                         improvement = ((baseline - value) / baseline) * 100
-                        axes[i].text(j, value, f"{improvement:.1f}%", ha='center', va='bottom')
+                        axes1[i].text(j, value, f"{improvement:.1f}%", ha='center', va='bottom')
             else:
                 baseline = metric_values[0]
                 for j, value in enumerate(metric_values):
                     if j > 0:
                         improvement = ((value - baseline) / abs(baseline)) * 100
-                        axes[i].text(j, value, f"+{improvement:.1f}%", ha='center', va='bottom')
+                        axes1[i].text(j, value, f"+{improvement:.1f}%", ha='center', va='bottom')
+        
+        # Plot direction accuracy
+        direction_values = []
+        for feature_set in FEATURE_SETS.keys():
+            direction_values.append(all_results[feature_set][horizon]['direction_accuracy'])
+        
+        df_direction = pd.DataFrame({
+            'Feature Set': list(FEATURE_SETS.keys()),
+            'Direction Accuracy (%)': direction_values
+        })
+        
+        bar_plot = sns.barplot(x='Feature Set', y='Direction Accuracy (%)', data=df_direction, ax=ax2)
+        ax2.set_title(f'Direction Accuracy for {horizon}-Day Horizon')
+        ax2.grid(True, axis='y')
+        
+        # Add percentage values on top of the bars
+        baseline = direction_values[0]
+        for j, value in enumerate(direction_values):
+            ax2.text(j, value, f"{value:.1f}%", ha='center', va='bottom')
+            if j > 0:
+                improvement = ((value - baseline) / baseline) * 100
+                ax2.text(j, value/2, f"+{improvement:.1f}%", ha='center', va='center', color='white', fontweight='bold')
+        
+        ax2.set_ylim(0, max(direction_values) * 1.15)  # Add some space for the labels
+        
         plt.tight_layout()
-        plt.savefig(os.path.join(output_dir, f'{TICKER}_{YEARS_OF_DATA}yr_{horizon}day_metric_comparison.png'))
-        plt.close()
+        fig1.savefig(os.path.join(output_dir, f'{TICKER}_{YEARS_OF_DATA}yr_{horizon}day_metric_comparison.png'))
+        fig2.savefig(os.path.join(output_dir, f'{TICKER}_{YEARS_OF_DATA}yr_{horizon}day_direction_accuracy.png'))
+        plt.close(fig1)
+        plt.close(fig2)
 
+    # Price prediction comparison plots
     for horizon in sorted(horizons):
         plt.figure(figsize=(16, 8))
         plt.plot(test_dates[horizon], test_prices[horizon], label='Actual Price', color='blue', linewidth=2)
@@ -280,8 +331,8 @@ def plot_comparison_results(horizons, all_results, test_dates, test_prices, outp
         plt.close()
 
 
-def predict_future_with_all_models(df, models, feature_scalers, price_scaler, horizons):
-    """Predict future prices using all models and return a dictionary of predictions."""
+def predict_future_with_all_models(df, models, feature_scalers, price_scaler, horizons, all_results):
+    """Predict future prices using all models and return a dictionary of predictions with confidence."""
     print("\nPredicting future prices with all models...")
     future_predictions = {}
     for feature_set, model in models.items():
@@ -301,6 +352,18 @@ def predict_future_with_all_models(df, models, feature_scalers, price_scaler, ho
             change = predicted_price - current_price
             change_pct = (change / current_price) * 100
             direction = "UP" if change > 0 else "DOWN"
+            
+            # Get the direction accuracy for this feature set and horizon
+            direction_accuracy = all_results[feature_set][horizon]['direction_accuracy']
+            
+            # Determine confidence level based on direction accuracy
+            if direction_accuracy >= 70:
+                confidence = "High"
+            elif direction_accuracy >= 60:
+                confidence = "Medium"
+            else:
+                confidence = "Low"
+                
             last_date = df['Date_x'].iloc[-1]
             future_date = last_date + pd.Timedelta(days=horizon)
             future_predictions[feature_set][horizon] = {
@@ -310,7 +373,9 @@ def predict_future_with_all_models(df, models, feature_scalers, price_scaler, ho
                 'predicted_price': predicted_price,
                 'change': change,
                 'change_pct': change_pct,
-                'direction': direction
+                'direction': direction,
+                'direction_accuracy': direction_accuracy,
+                'confidence': confidence
             }
     return future_predictions
 
@@ -334,12 +399,14 @@ def plot_future_comparison(df, future_predictions, horizons, output_dir="."):
             prices.append(pred['predicted_price'])
         plt.plot(dates, prices, label=f'{feature_set.replace("_", " ").title()} Prediction',
                  color=colors[i], linestyle='--', marker=markers[i])
-        plt.annotate(f"${prices[-1]:.2f}",
+        # Add annotations with price and confidence level
+        plt.annotate(f"${prices[-1]:.2f} ({future_predictions[feature_set][sorted(horizons)[-1]]['confidence']} confidence)",
                      (dates[-1], prices[-1]),
                      textcoords="offset points",
                      xytext=(0, 10),
                      ha='center',
-                     color=colors[i])
+                     color=colors[i],
+                     fontsize=8)
     plt.title(f'{TICKER} Future Price Predictions ({YEARS_OF_DATA}-Year Training Data)')
     plt.xlabel('Date')
     plt.ylabel('Price ($)')
@@ -352,7 +419,7 @@ def plot_future_comparison(df, future_predictions, horizons, output_dir="."):
 
 
 def main():
-    """Main function to run the enhanced multi-horizon LSTM prediction pipeline."""
+    """Main function to run the enhanced multi-horizon LSTM prediction pipeline with direction accuracy."""
     print(f"Running enhanced multi-horizon LSTM price prediction for {TICKER} using {YEARS_OF_DATA} years of data...")
 
     # Create a subdirectory named after the ticker for all outputs
@@ -399,6 +466,7 @@ def main():
             print(f"  Train MAPE: {train_results[horizon]['mape']:.2f}%")
             print(f"  Train R²: {train_results[horizon]['r2']:.4f}")
             print(f"  Train Adjusted R²: {train_results[horizon]['adjusted_r2']:.4f}")
+            print(f"  Train Direction Accuracy: {train_results[horizon]['direction_accuracy']:.2f}%")
 
         print(f"\nTesting performance for {feature_set}:")
         for horizon in sorted(PREDICTION_HORIZONS):
@@ -408,11 +476,12 @@ def main():
             print(f"  MAPE: {results[horizon]['mape']:.2f}%")
             print(f"  R²: {results[horizon]['r2']:.4f}")
             print(f"  Adjusted R²: {results[horizon]['adjusted_r2']:.4f}")
+            print(f"  Direction Accuracy: {results[horizon]['direction_accuracy']:.2f}%")
 
         model.save(os.path.join(output_dir, f'{TICKER}_{YEARS_OF_DATA}yr_{feature_set}_model.h5'))
 
     plot_comparison_results(PREDICTION_HORIZONS, all_results, test_dates, test_prices, output_dir=output_dir)
-    future_predictions = predict_future_with_all_models(df, models, feature_scalers, price_scaler, PREDICTION_HORIZONS)
+    future_predictions = predict_future_with_all_models(df, models, feature_scalers, price_scaler, PREDICTION_HORIZONS, all_results)
     plot_future_comparison(df, future_predictions, PREDICTION_HORIZONS, output_dir=output_dir)
 
     with open(os.path.join(output_dir, f'{TICKER}_{YEARS_OF_DATA}yr_enhanced_predictions.txt'), 'w') as f:
@@ -429,23 +498,27 @@ def main():
         for horizon in sorted(PREDICTION_HORIZONS):
             f.write(f"Horizon: {horizon} Days\n")
             f.write("-" * 50 + "\n")
-            for metric in ['rmse', 'mae', 'mape', 'r2']:
-                metric_name = {'rmse': 'RMSE ($)', 'mae': 'MAE ($)', 'mape': 'MAPE (%)', 'r2': 'R² Score'}[metric]
+            for metric in ['rmse', 'mae', 'mape', 'r2', 'direction_accuracy']:
+                if metric == 'direction_accuracy':
+                    metric_name = 'Direction Accuracy (%)'
+                else:
+                    metric_name = {'rmse': 'RMSE ($)', 'mae': 'MAE ($)', 'mape': 'MAPE (%)', 'r2': 'R² Score'}[metric]
+                
                 baseline = all_results['price_only'][horizon][metric]
                 f.write(f"{metric_name}:\n")
                 for feature_set in FEATURE_SETS.keys():
                     value = all_results[feature_set][horizon][metric]
                     if feature_set == 'price_only':
-                        f.write(f"  {feature_set.replace('_', ' ').title()}: {value:.4f}\n")
+                        f.write(f"  {feature_set.replace('_', ' ').title()}: {value:.2f}\n")
                     else:
-                        if metric != 'r2':
-                            improvement = ((baseline - value) / baseline) * 100
-                            f.write(
-                                f"  {feature_set.replace('_', ' ').title()}: {value:.4f} ({improvement:.2f}% improvement)\n")
-                        else:
+                        if metric in ['r2', 'direction_accuracy']:
                             improvement = ((value - baseline) / abs(baseline)) * 100
                             f.write(
-                                f"  {feature_set.replace('_', ' ').title()}: {value:.4f} ({improvement:.2f}% improvement)\n")
+                                f"  {feature_set.replace('_', ' ').title()}: {value:.2f} ({improvement:.2f}% improvement)\n")
+                        else:
+                            improvement = ((baseline - value) / baseline) * 100
+                            f.write(
+                                f"  {feature_set.replace('_', ' ').title()}: {value:.2f} ({improvement:.2f}% improvement)\n")
                 f.write("\n")
             f.write("\n")
 
@@ -458,6 +531,7 @@ def main():
                 pred = future_predictions[feature_set][horizon]
                 f.write(
                     f"  {feature_set.replace('_', ' ').title()}: ${pred['predicted_price']:.2f} ({pred['change_pct']:.2f}%, {pred['direction']})\n")
+                f.write(f"    Direction Accuracy: {pred['direction_accuracy']:.2f}% (Confidence: {pred['confidence']})\n")
             f.write("\n")
 
         f.write("DATASET INFORMATION\n")
