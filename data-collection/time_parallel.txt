@@ -1,3 +1,5 @@
-Parallel processing completed in 1955.66 seconds
-Used 22 processes
-Processed 27 keyword groups
+Parallel processing benchmark results:
+2 processes: 8975.80 seconds
+4 processes: 3710.67 seconds
+8 processes: 2300.04 seconds
+16 processes: 1929.20 seconds
