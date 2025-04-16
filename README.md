@@ -11,7 +11,7 @@ Make sure to `pip install -r requirements.txt` before running code, to ensure th
 
 ## Core Developers
 - Matthew Dong <matthew.dong@nyu.edu>
--
+- Amaan Mansuri <amaan.mansuri@nyu.edu>
 -
 -
 -
