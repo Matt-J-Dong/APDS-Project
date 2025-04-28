@@ -21,7 +21,7 @@ import math
 
 # Configuration
 TICKER = 'AAPL'
-DATA_FILE = f'data/{TICKER}_with_sentiment.csv'
+DATA_FILE = f'../data/{TICKER}_with_sentiment.csv'
 YEARS_OF_DATA = 10  # Set to either 5 or 10 years
 SEQUENCE_LENGTH = 15  # Number of previous days to use
 PREDICTION_HORIZONS = [1, 3]  # Days to predict into the future
