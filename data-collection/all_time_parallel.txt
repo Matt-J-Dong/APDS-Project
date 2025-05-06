@@ -1,5 +1,7 @@
 Parallel processing benchmark results:
+1 process: 17794.87 seconds
 2 processes: 8975.80 seconds
 4 processes: 3710.67 seconds
 8 processes: 2300.04 seconds
 16 processes: 1929.20 seconds
+22 processes: 1955.66 seconds
