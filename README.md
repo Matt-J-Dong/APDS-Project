@@ -13,5 +13,5 @@ Make sure to `pip install -r requirements.txt` before running code, to ensure th
 - Matthew Dong <matthew.dong@nyu.edu>
 - Amaan Mansuri <amaan.mansuri@nyu.edu>
 - Conghui Duan <cd3792@nyu.edu>
--
--
+- Sui Jiet Tay <st5494@nyu.edu>
+- Vishwa Raval <vmr7988@nyu.edu>
